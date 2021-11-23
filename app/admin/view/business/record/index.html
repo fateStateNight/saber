@@ -1,0 +1,44 @@
+<div class="layui-col-md12">
+    <div class="layui-card">
+        <div class="layui-card-header">商家详情</div>
+        <div class="layui-card-body">
+
+            <ul class="layui-timeline">
+                {foreach $recordData as $k=>$record}
+                <li class="layui-timeline-item">
+                    <i class="layui-icon layui-timeline-axis"></i>
+                    <div class="layui-timeline-content layui-text">
+                        <h3 class="layui-timeline-title">{$record.create_time}</h3>
+                        <div><span>商家名称：</span><span>{$record.title}</span></div>
+                        <div><span><i class="layui-icon layui-icon-login-qq"></i>QQ号：</span><span>{$record.qq_number}</span></div>
+                        <div><span><i class="layui-icon layui-icon-login-wechat"></i>微信号：</span><span>{$record.weixin}</span></div>
+                        <div><span>钉钉号：</span><span>{$record.dingding}</span></div>
+                        <div><span><i class="layui-icon layui-icon-cellphone"></i>手机号：</span><span>{$record.phone}</span></div>
+                        {if $record.enclosure != ''}
+                        <blockquote class="layui-elem-quote"><a href="{$record.enclosure}">{$record.enclosure}</a></blockquote>
+                        {/if}
+                        {if $record.detail != ''}
+                        <div class="layuimini-notice">
+                            <span class="layuimini-notice-title">商家描述</span>
+                            <span class="layuimini-notice-extra">{$record.create_time}</span>
+                            <span style="margin-left:20px;color:green;cursor: pointer;">(点击查看)</span>
+                            <div class="layuimini-notice-content layui-hide">
+                                {$record.detail|raw|htmlspecialchars_decode|html_entity_decode}
+                            </div>
+                        </div>
+                        {/if}
+                    </div>
+                </li>
+                {/foreach}
+                <li class="layui-timeline-item">
+                    <i class="layui-icon layui-timeline-axis"></i>
+                    <div class="layui-timeline-content layui-text">
+                        <div class="layui-timeline-title">过去</div>
+                    </div>
+                </li>
+            </ul>
+
+
+        </div>
+    </div>
+</div>

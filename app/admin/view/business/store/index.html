@@ -1,0 +1,35 @@
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <table id="currentTable" class="layui-table layui-hide"
+               data-auth-add="{:auth('business.store/add')}"
+               data-auth-edit="{:auth('business.store/edit')}"
+               {if $adminInfo['auth_ids'] == 7}
+               data-auth-delete="{:auth('business.store/delete')}"
+                {/if}
+               lay-filter="currentTable">
+        </table>
+    </div>
+</div>
+
+<script type="text/html" id="toolbarStore">
+    <div class="layui-btn-container">
+        <div class="layui-table-tool-temp">
+            <button class="layui-btn layui-btn-sm layuimini-btn-primary" data-table-refresh="currentTableRenderId"><i class="fa fa-refresh"></i> </button>
+            <button class="layui-btn layui-btn-normal layui-btn-sm" data-open="business.store/add" data-title="添加" data-full="true" data-table="currentTableRenderId"><i class="fa fa-plus "></i> 添加</button>
+            <button class="layui-btn layui-btn-sm layui-btn-danger" data-url="business.store/delete" data-table-delete="currentTableRenderId"><i class="fa fa-trash-o"></i> 删除</button>
+            <button class="layui-btn layui-btn-sm" id="store-import"><i class="layui-icon">&#xe67c;</i>导入</button>
+            <button class="layui-btn layui-btn-sm" id="store-update" ><i class="fa fa-hourglass"></i>更新</button>
+            <button class="layui-btn layui-btn-sm layui-btn-success easyadmin-export-btn" data-url="business.store/export" data-table-export="currentTableRenderId"><i class="fa fa-file-excel-o"></i> 导出</button>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="controlPlan">
+    <a class="layui-btn layui-btn-xs layui-btn-normal" target="_self" layuimini-content-href="{:__url('business.record/index')}?store_id={{d.id}}" href="javascript:void(0);" data-title="查看">查看</a>
+    {{#  if(d.record_num <= 5){ }}
+    <a class="layui-btn layui-btn-xs layui-btn-success" data-open="business.store/edit?id={{d.id}}" data-title="编辑" data-full="true">编辑</a>
+    {{#  } }}
+    {{#  if(d.priveledge == 7){ }}
+    <a class="layui-btn layui-btn-danger layui-btn-xs" data-request="business.store/delete?id={{d.id}}" data-title="确定删除？">删除</a>
+    {{#  } }}
+</script>

@@ -1,0 +1,154 @@
+<div class="layuimini-container">
+    <form id="app-form" class="layui-form layuimini-form">
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">活动ID</label>
+            <div class="layui-input-block">
+                <input type="text" name="event_id" class="layui-input"  placeholder="请输入活动ID" value="0">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">订单编号</label>
+            <div class="layui-input-block">
+                <input type="text" name="trade_parent_id" class="layui-input" lay-verify="required" placeholder="请输入订单编号" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">商品ID</label>
+            <div class="layui-input-block">
+                <input type="text" name="item_id" class="layui-input" lay-verify="required" placeholder="请输入商品ID" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">商品标题</label>
+            <div class="layui-input-block">
+                <input type="text" name="item_title" class="layui-input" lay-verify="required" placeholder="请输入商品标题" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">店铺名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="seller_shop_title" class="layui-input"  placeholder="请输入店铺名称" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">掌柜旺旺</label>
+            <div class="layui-input-block">
+                <input type="text" name="seller_nick" class="layui-input"  placeholder="请输入掌柜旺旺" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">商品单价</label>
+            <div class="layui-input-block">
+                <input type="text" name="item_price" class="layui-input" lay-verify="required" placeholder="请输入商品单价" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">点击时间</label>
+            <div class="layui-input-block">
+                <input type="text" name="click_time" class="layui-input"  placeholder="请输入点击时间" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">预售付款时间</label>
+            <div class="layui-input-block">
+                <input type="text" name="tk_deposit_time" class="layui-input"  placeholder="请输入预售付款时间" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">淘宝预售付款时间</label>
+            <div class="layui-input-block">
+                <input type="text" name="tb_deposit_time" class="layui-input"  placeholder="请输入淘宝预售付款时间" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">预售付款金额</label>
+            <div class="layui-input-block">
+                <input type="text" name="deposit_price" class="layui-input"  placeholder="请输入预售付款金额" value="0">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">订单创建时间</label>
+            <div class="layui-input-block">
+                <input type="text" name="tk_create_time" class="layui-input"  placeholder="请输入订单创建时间" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">淘宝付款时间</label>
+            <div class="layui-input-block">
+                <input type="text" name="tb_paid_time" class="layui-input"  placeholder="请输入淘宝付款时间" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">付款时间</label>
+            <div class="layui-input-block">
+                <input type="text" name="tk_paid_time" class="layui-input"  placeholder="请输入付款时间" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">付款金额</label>
+            <div class="layui-input-block">
+                <input type="text" name="alipay_total_price" class="layui-input" lay-verify="required" placeholder="请输入付款金额" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">收货付款金额</label>
+            <div class="layui-input-block">
+                <input type="text" name="pay_price" class="layui-input" lay-verify="required" placeholder="请输入收货付款金额" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">订单状态</label>
+            <div class="layui-input-block">
+                <select name="tk_status" lay-verify="required">
+                    <option value=''></option>
+                    {foreach $getTkStatusList as $k=>$v}
+                    <option value='{$k}' >{$v}</option>
+                    {/foreach}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">商品数量</label>
+            <div class="layui-input-block">
+                <input type="text" name="item_num" class="layui-input"  placeholder="请输入商品数量" value="0">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">服务费率</label>
+            <div class="layui-input-block">
+                <input type="text" name="tk_service_rate" class="layui-input"  placeholder="请输入服务费率" value="0">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">预估付款服务费</label>
+            <div class="layui-input-block">
+                <input type="text" name="pre_service_fee" class="layui-input"  placeholder="请输入预估付款服务费" value="0">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">预估结算服务费</label>
+            <div class="layui-input-block">
+                <input type="text" name="service_fee" class="layui-input"  placeholder="请输入预估结算服务费" value="0">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">渠道ID</label>
+            <div class="layui-input-block">
+                <input type="text" name="cp_channel_id" class="layui-input"  placeholder="请输入渠道ID" value="0">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">渠道名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="cp_channel_name" class="layui-input"  placeholder="请输入渠道名称" value="">
+            </div>
+        </div>
+        <div class="hr-line"></div>
+        <div class="layui-form-item text-center">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit>确认</button>
+            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
+        </div>
+
+    </form>
+</div>

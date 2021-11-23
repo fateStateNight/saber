@@ -1,0 +1,423 @@
+<link rel="stylesheet" href="__STATIC__/admin/css/admin/admin_group.css" media="all">
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <div class="layui-card">
+            <div class="layui-card-header" style="line-height: normal;height:auto;">
+                <form class="layui-form" action="">
+                    <div class="layui-row layui-col-space10">
+                        <div class="layui-col-md3">
+                            <div class="grid-demo grid-demo-bg1">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">群组名称</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入群组名称" class="layui-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md3">
+                            <div class="grid-demo">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">群组创建时间</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="date" id="date" lay-verify="date" data-date="" data-date-type="date" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md2">
+                            <div class="grid-demo grid-demo-bg1">
+                                <button type="button" class="layui-btn">
+                                    <i class="layui-icon layui-icon-search"></i>搜索
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="layui-row layui-col-space10">
+                    <div class="layui-col-md2">
+                        <button type="button" class="layui-btn" data-open="system.admin_group/add" data-full="true">
+                            <i class="layui-icon">&#xe608;</i> 新建
+                        </button>
+                        <button type="button" class="layui-btn layui-btn-danger" id="deleteGroup">
+                            <i class="layui-icon">&#xe640;</i> 删除
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-card-body">
+                <div class="layui-row layui-col-space30">
+                    {if $groupList == ''}
+                    <div style="width: 100%; height: 100px;text-align: center;line-height: 100px;">暂无群组</div>
+                    {else}
+                    {foreach $groupList as $id=>$groupInfo}
+
+                    <div class="layui-col-md3 card-box" style="margin:20px 40px;border-radius: 18px;border: 2px solid #d2d2d2;background-color: #fbfbfb;">
+                        <div class="layuiadmin-card-text">
+                            <div class="layui-text-top">
+                                <div class="layui-row layui-form">
+                                    <div class="layui-col-xs1">
+                                        {if $groupInfo.create_id == $adminInfo.id}
+                                        <div class="layui-form-item" style="margin-top:-10px;" pane="">
+                                            <div class="layui-input-inline">
+                                                <input type="checkbox" name="group_select" lay-skin="primary" title="" value="{$groupInfo.id}" >
+                                            </div>
+                                        </div>
+                                        {/if}
+                                    </div>
+                                    <div class="layui-col-xs4">
+                                        <img src="{$groupInfo.group_image}" style="width:100%;height:140px;">
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label"> 群组名称：</label>
+                                        <div class="layui-form-mid layui-word-aux">{$groupInfo.title}</div>
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label"> 群组人数：</label>
+                                        <div class="layui-form-mid layui-word-aux">{$groupInfo.member_num}</div>
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label"> 备注：</label>
+                                        <div class="layui-form-mid layui-word-aux">{$groupInfo.remark}</div>
+                                    </div>
+                                    {if $groupInfo.create_id == $adminInfo.id}
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label">是否公开：</label>
+                                        <div class="layui-input-block">
+                                            <input type="checkbox" name="publish" publish-groupId="{$groupInfo.id}" lay-filter="publish-switch" lay-skin="switch" lay-text="ON|OFF" {if $groupInfo.publish == '1'}checked="checked"{/if} >
+                                        </div>
+                                    </div>
+                                    {/if}
+
+                                </div>
+                            </div>
+                            <div class="layui-row layui-col-space10">
+                                {if $groupInfo.create_id == $adminInfo.id}
+                                <div class="layui-col-md4">
+                                    <button type="button" class="layui-btn layui-btn-normal layui-btn-radius" data-open="system.admin_group/edit?id={$groupInfo.id}" data-full="true">编辑群组</button>
+                                </div>
+                                {else}
+                                    {in name="groupInfo.id" value="$innerGroupId"}
+                                    <div class="layui-col-md4">
+                                        <button type="button" class="layui-btn layui-btn-danger layui-btn-radius" data-request="system.admin_group/quitGroup?groupId={$groupInfo.id}">退出群组</button>
+                                    </div>
+                                    {else}
+                                    <div class="layui-col-md4">
+                                        <button type="button" class="layui-btn layui-btn-warm layui-btn-radius" data-request="system.admin_group/joinGroup?groupId={$groupInfo.id}">进入群组</button>
+                                    </div>
+                                    {/in}
+                                {/if}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/foreach}
+                    {/if}
+                    <!--<div class="layui-col-md3 card-box" style="margin:20px 40px;border-radius: 18px;border: 2px solid #d2d2d2;background-color: #fbfbfb;">
+                        <div class="layuiadmin-card-text">
+                            <div class="layui-text-top">
+                                <div class="layui-row layui-form">
+&lt;!&ndash;                                    <form class="layui-form" action="">&ndash;&gt;
+                                        <div class="layui-col-xs1">
+                                            <div class="layui-form-item" style="margin-top:-10px;" pane="">
+                                                <div class="layui-input-inline">
+                                                    <input type="checkbox" name="group_select" lay-skin="primary" title="" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-xs4">
+                                            <img src="https://www.childrendream.cn/upload/20201103/d7cacae74487ad1c04cee5cfbdc686ea.jpg" style="width:100%;height:140px;">
+                                        </div>
+                                        <div class="layui-col-xs7">
+                                                <label class="layui-form-label"> 群组名称：</label>
+                                                <div class="layui-form-mid layui-word-aux">奋达科技</div>
+                                        </div>
+                                        <div class="layui-col-xs7">
+                                                <label class="layui-form-label"> 群组人数：</label>
+                                                <div class="layui-form-mid layui-word-aux">22</div>
+                                        </div>
+                                        <div class="layui-col-xs7">
+                                                <label class="layui-form-label"> 备注：</label>
+                                                <div class="layui-form-mid layui-word-aux">似懂非懂</div>
+                                        </div>
+                                        <div class="layui-col-xs7">
+                                                <label class="layui-form-label">是否公开：</label>
+                                                <div class="layui-input-block">
+                                                    <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
+                                                </div>
+                                        </div>
+&lt;!&ndash;                                    </form>&ndash;&gt;
+                                </div>
+                            </div>
+                            <div class="layui-row layui-col-space10">
+                                <div class="layui-col-md4">
+                                    <button type="button" class="layui-btn layui-btn-normal layui-btn-radius">编辑群组</button>
+                                </div>
+                                <div class="layui-col-md4">
+                                    <button type="button" class="layui-btn layui-btn-warm layui-btn-radius">进入群组</button>
+                                </div>
+                                <div class="layui-col-md4">
+                                    <button type="button" class="layui-btn layui-btn-danger layui-btn-radius">退出群组</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-col-md3 card-box" style="margin:20px 40px;border-radius: 18px;border: 2px solid #d2d2d2;background-color: #fbfbfb;">
+                        <div class="layuiadmin-card-text">
+                            <div class="layui-text-top">
+                                <div class="layui-row layui-form">
+                                    &lt;!&ndash;                                    <form class="layui-form" action="">&ndash;&gt;
+                                    <div class="layui-col-xs1">
+                                        <div class="layui-form-item" style="margin-top:-10px;" pane="">
+                                            <div class="layui-input-inline">
+                                                <input type="checkbox" name="group_select" lay-skin="primary" title="" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-xs4">
+                                        <img src="https://www.childrendream.cn/upload/20201103/d7cacae74487ad1c04cee5cfbdc686ea.jpg" style="width:100%;height:140px;">
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label"> 群组名称：</label>
+                                        <div class="layui-form-mid layui-word-aux">奋达科技</div>
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label"> 群组人数：</label>
+                                        <div class="layui-form-mid layui-word-aux">22</div>
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label"> 备注：</label>
+                                        <div class="layui-form-mid layui-word-aux">似懂非懂</div>
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label">是否公开：</label>
+                                        <div class="layui-input-block">
+                                            <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
+                                        </div>
+                                    </div>
+                                    &lt;!&ndash;                                    </form>&ndash;&gt;
+                                </div>
+                            </div>
+                            <div class="layui-row layui-col-space10">
+                                <div class="layui-col-md4">
+                                    <button type="button" class="layui-btn layui-btn-normal layui-btn-radius">编辑群组</button>
+                                </div>
+                                <div class="layui-col-md4">
+                                    <button type="button" class="layui-btn layui-btn-warm layui-btn-radius">进入群组</button>
+                                </div>
+                                <div class="layui-col-md4">
+                                    <button type="button" class="layui-btn layui-btn-danger layui-btn-radius">退出群组</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-col-md3 card-box" style="margin:20px 40px;border-radius: 18px;border: 2px solid #d2d2d2;background-color: #fbfbfb;">
+                        <div class="layuiadmin-card-text">
+                            <div class="layui-text-top">
+                                <div class="layui-row layui-form">
+                                    &lt;!&ndash;                                    <form class="layui-form" action="">&ndash;&gt;
+                                    <div class="layui-col-xs1">
+                                        <div class="layui-form-item" style="margin-top:-10px;" pane="">
+                                            <div class="layui-input-inline">
+                                                <input type="checkbox" name="group_select" lay-skin="primary" title="" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-xs4">
+                                        <img src="https://www.childrendream.cn/upload/20201103/d7cacae74487ad1c04cee5cfbdc686ea.jpg" style="width:100%;height:140px;">
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label"> 群组名称：</label>
+                                        <div class="layui-form-mid layui-word-aux">奋达科技</div>
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label"> 群组人数：</label>
+                                        <div class="layui-form-mid layui-word-aux">22</div>
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label"> 备注：</label>
+                                        <div class="layui-form-mid layui-word-aux">似懂非懂</div>
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label">是否公开：</label>
+                                        <div class="layui-input-block">
+                                            <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
+                                        </div>
+                                    </div>
+                                    &lt;!&ndash;                                    </form>&ndash;&gt;
+                                </div>
+                            </div>
+                            <div class="layui-row layui-col-space10">
+                                <div class="layui-col-md4">
+                                    <button type="button" class="layui-btn layui-btn-normal layui-btn-radius">编辑群组</button>
+                                </div>
+                                <div class="layui-col-md4">
+                                    <button type="button" class="layui-btn layui-btn-warm layui-btn-radius">进入群组</button>
+                                </div>
+                                <div class="layui-col-md4">
+                                    <button type="button" class="layui-btn layui-btn-danger layui-btn-radius">退出群组</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-col-md3 card-box" style="margin:20px 40px;border-radius: 18px;border: 2px solid #d2d2d2;background-color: #fbfbfb;">
+                        <div class="layuiadmin-card-text">
+                            <div class="layui-text-top">
+                                <div class="layui-row layui-form">
+                                    &lt;!&ndash;                                    <form class="layui-form" action="">&ndash;&gt;
+                                    <div class="layui-col-xs1">
+                                        <div class="layui-form-item" style="margin-top:-10px;" pane="">
+                                            <div class="layui-input-inline">
+                                                <input type="checkbox" name="group_select" lay-skin="primary" title="" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-xs4">
+                                        <img src="https://www.childrendream.cn/upload/20201103/d7cacae74487ad1c04cee5cfbdc686ea.jpg" style="width:100%;height:140px;">
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label"> 群组名称：</label>
+                                        <div class="layui-form-mid layui-word-aux">奋达科技</div>
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label"> 群组人数：</label>
+                                        <div class="layui-form-mid layui-word-aux">22</div>
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label"> 备注：</label>
+                                        <div class="layui-form-mid layui-word-aux">似懂非懂</div>
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label">是否公开：</label>
+                                        <div class="layui-input-block">
+                                            <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
+                                        </div>
+                                    </div>
+                                    &lt;!&ndash;                                    </form>&ndash;&gt;
+                                </div>
+                            </div>
+                            <div class="layui-row layui-col-space10">
+                                <div class="layui-col-md4">
+                                    <button type="button" class="layui-btn layui-btn-normal layui-btn-radius">编辑群组</button>
+                                </div>
+                                <div class="layui-col-md4">
+                                    <button type="button" class="layui-btn layui-btn-warm layui-btn-radius">进入群组</button>
+                                </div>
+                                <div class="layui-col-md4">
+                                    <button type="button" class="layui-btn layui-btn-danger layui-btn-radius">退出群组</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-col-md3 card-box" style="margin:20px 40px;border-radius: 18px;border: 2px solid #d2d2d2;background-color: #fbfbfb;">
+                        <div class="layuiadmin-card-text">
+                            <div class="layui-text-top">
+                                <div class="layui-row layui-form">
+                                    &lt;!&ndash;                                    <form class="layui-form" action="">&ndash;&gt;
+                                    <div class="layui-col-xs1">
+                                        <div class="layui-form-item" style="margin-top:-10px;" pane="">
+                                            <div class="layui-input-inline">
+                                                <input type="checkbox" name="group_select" lay-skin="primary" title="" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-xs4">
+                                        <img src="https://www.childrendream.cn/upload/20201103/d7cacae74487ad1c04cee5cfbdc686ea.jpg" style="width:100%;height:140px;">
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label"> 群组名称：</label>
+                                        <div class="layui-form-mid layui-word-aux">奋达科技</div>
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label"> 群组人数：</label>
+                                        <div class="layui-form-mid layui-word-aux">22</div>
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label"> 备注：</label>
+                                        <div class="layui-form-mid layui-word-aux">似懂非懂</div>
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label">是否公开：</label>
+                                        <div class="layui-input-block">
+                                            <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
+                                        </div>
+                                    </div>
+                                    &lt;!&ndash;                                    </form>&ndash;&gt;
+                                </div>
+                            </div>
+                            <div class="layui-row layui-col-space10">
+                                <div class="layui-col-md4">
+                                    <button type="button" class="layui-btn layui-btn-normal layui-btn-radius">编辑群组</button>
+                                </div>
+                                <div class="layui-col-md4">
+                                    <button type="button" class="layui-btn layui-btn-warm layui-btn-radius">进入群组</button>
+                                </div>
+                                <div class="layui-col-md4">
+                                    <button type="button" class="layui-btn layui-btn-danger layui-btn-radius">退出群组</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-col-md3 card-box" style="margin:20px 40px;border-radius: 18px;border: 2px solid #d2d2d2;background-color: #fbfbfb;">
+                        <div class="layuiadmin-card-text">
+                            <div class="layui-text-top">
+                                <div class="layui-row layui-form">
+                                    &lt;!&ndash;                                    <form class="layui-form" action="">&ndash;&gt;
+                                    <div class="layui-col-xs1">
+                                        <div class="layui-form-item" style="margin-top:-10px;" pane="">
+                                            <div class="layui-input-inline">
+                                                <input type="checkbox" name="group_select" lay-skin="primary" title="" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-xs4">
+                                        <img src="https://www.childrendream.cn/upload/20201103/d7cacae74487ad1c04cee5cfbdc686ea.jpg" style="width:100%;height:140px;">
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label"> 群组名称：</label>
+                                        <div class="layui-form-mid layui-word-aux">奋达科技</div>
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label"> 群组人数：</label>
+                                        <div class="layui-form-mid layui-word-aux">22</div>
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label"> 备注：</label>
+                                        <div class="layui-form-mid layui-word-aux">似懂非懂</div>
+                                    </div>
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-form-label">是否公开：</label>
+                                        <div class="layui-input-block">
+                                            <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
+                                        </div>
+                                    </div>
+                                    &lt;!&ndash;                                    </form>&ndash;&gt;
+                                </div>
+                            </div>
+                            <div class="layui-row layui-col-space10">
+                                <div class="layui-col-md4">
+                                    <button type="button" class="layui-btn layui-btn-normal layui-btn-radius">编辑群组</button>
+                                </div>
+                                <div class="layui-col-md4">
+                                    <button type="button" class="layui-btn layui-btn-warm layui-btn-radius">进入群组</button>
+                                </div>
+                                <div class="layui-col-md4">
+                                    <button type="button" class="layui-btn layui-btn-danger layui-btn-radius">退出群组</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>

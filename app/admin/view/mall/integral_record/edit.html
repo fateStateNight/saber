@@ -1,0 +1,66 @@
+<div class="layuimini-container">
+    <form id="app-form" class="layui-form layuimini-form">
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">积分商品ID</label>
+            <div class="layui-input-block">
+                <select name="goods_id" >
+                    <option value=''></option>
+                    {foreach $getMallIntegralGoodsList as $k=>$v}
+                    <option value='{$k}' {in name="k" value="$row.goods_id"}selected=""{/in}>{$v}</option>
+                    {/foreach}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">淘礼金商品ID</label>
+            <div class="layui-input-block">
+                <input type="text" name="taolijin_goods_id" class="layui-input"  placeholder="请输入淘礼金商品ID" value="{$row.taolijin_goods_id|default=''}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">记录标题</label>
+            <div class="layui-input-block">
+                <input type="text" name="record_title" class="layui-input"  placeholder="请输入记录标题" value="{$row.record_title|default=''}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">积分状态</label>
+            <div class="layui-input-block">
+                {foreach $getIntegralStatusList as $k=>$v}
+                <input type="radio" name="integral_status" value="{$k}" title="{$v}" {in name="k" value="$row.integral_status"}checked=""{/in}>
+                {/foreach}
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户ID</label>
+            <div class="layui-input-block">
+                <select name="user_id" >
+                    <option value=''></option>
+                    {foreach $getSystemWeixinUserList as $k=>$v}
+                    <option value='{$k}' {in name="k" value="$row.user_id"}selected=""{/in}>{$v}</option>
+                    {/foreach}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">积分数值</label>
+            <div class="layui-input-block">
+                <input type="text" name="integral_value" class="layui-input"  placeholder="请输入积分数值" value="{$row.integral_value|default=''}">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">备注说明</label>
+            <div class="layui-input-block">
+                <textarea name="remark" class="layui-textarea"  placeholder="请输入备注说明">{$row.remark|raw|default=''}</textarea>
+            </div>
+        </div>
+        <div class="hr-line"></div>
+        <div class="layui-form-item text-center">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit>确认</button>
+            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
+        </div>
+
+    </form>
+</div>
