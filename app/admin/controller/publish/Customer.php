@@ -11,7 +11,7 @@ use think\App;
 use think\facade\Db;
 
 /**
- * @ControllerAnnotation(title="publish_customer")
+ * @ControllerAnnotation(title="社群用户")
  */
 class Customer extends AdminController
 {

@@ -3,13 +3,11 @@ define(["jquery", "easy-admin"], function ($, ea) {
     var init = {
         table_elem: '#currentTable',
         table_render_id: 'currentTableRenderId',
-        index_url: 'mall.goods/index',
-        add_url: 'mall.goods/add',
-        edit_url: 'mall.goods/edit',
-        delete_url: 'mall.goods/delete',
-        export_url: 'mall.goods/export',
-        modify_url: 'mall.goods/modify',
-        publish_url: 'mall.goods/publish',
+        index_url: 'publish.goods_record/index',
+        edit_url: 'publish.goods_record/edit',
+        delete_url: 'publish.goods_record/delete',
+        export_url: 'publish.goods_record/export',
+        publish_url: 'publish.goods_record/publish',
     };
 
     var Controller = {
@@ -17,17 +15,7 @@ define(["jquery", "easy-admin"], function ($, ea) {
         index: function () {
             ea.table.render({
                 init: init,
-                toolbar: ['refresh',
-                    [{
-                        text: '添加',
-                        url: init.add_url,
-                        method: 'open',
-                        auth: 'add',
-                        class: 'layui-btn layui-btn-normal layui-btn-sm',
-                        icon: 'fa fa-plus ',
-                        extend: 'data-full="true"',
-                    }],
-                    'delete', 'export'],
+                toolbar: ['refresh', 'delete', 'export'],
                 cols: [[
                     {type: "checkbox"},
                     {field: 'id', width: 80, title: 'ID'},
@@ -58,9 +46,29 @@ define(["jquery", "easy-admin"], function ($, ea) {
                     {field: 'stock', width: 100, title: '剩余库存'},
                     {field: 'virtual_sales', width: 100, title: '虚拟销量'},*/
                     {field: 'sales', width: 80, title: '销量'},
-                    {field: 'status', title: '状态', width: 85, search: 'select', selectList: {0: '未推广', 1: '推广中', 2: '推广完成', 3: '已停止'}},
+                    {field: 'status', title: '状态', width: 85, search: 'select', selectList: {0: '未推广', 1: '推广中', 2: '推广完成', 3: '已停止'}, templet: function(d){
+
+                        switch(d.status){
+                            case 0:
+                                statusName = '<button class="layui-btn layui-btn-radius layui-btn-primary layui-btn-xs">'+this.selectList[d.status]+'</button>';
+                                break;
+                            case 1:
+                                statusName = '<button class="layui-btn layui-btn-radius layui-btn-warm layui-btn-xs">'+this.selectList[d.status]+'</button>';
+                                break;
+                            case 2:
+                                statusName = '<button class="layui-btn layui-btn-radius layui-btn-normal layui-btn-xs">'+this.selectList[d.status]+'</button>';
+                                break;
+                            case 3:
+                                statusName = '<button class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs">'+this.selectList[d.status]+'</button>';
+                                break;
+                            default:
+                                statusName = '<button class="layui-btn layui-btn-radius layui-btn-primary layui-btn-xs">'+this.selectList[d.status]+'</button>';
+                                break;
+                        }
+                        return statusName;
+                        }},
                     {field: 'create_time', minWidth: 80, title: '创建时间', search: 'range'},
-                    {width: 250, title: '操作', toolbar: '#controlPlan'},
+                    {width: 300, title: '操作', toolbar: '#controlPlan'},
                     /*{
                         width: 250,
                         title: '操作',

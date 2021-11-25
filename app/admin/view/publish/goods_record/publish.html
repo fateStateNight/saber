@@ -58,7 +58,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">销量</label>
             <div class="layui-input-block">
-                <input type="text" name="sales" class="layui-input" lay-verify="required" placeholder="请输入虚拟销量" value="{$row.sales|default=''}" {if $adminInfo['auth_ids'] == 9} disabled="disabled" {/if}>
+                <input type="text" name="sales" class="layui-input" lay-verify="required" placeholder="请输入虚拟销量" value="{$row.sales|default=''}">
             </div>
         </div>
 
@@ -83,18 +83,17 @@
             </div>
         </div>
 
-        {if $row.admin_id == $adminInfo['id'] && $adminInfo['auth_ids'] != 9}
         <div class="layui-form-item">
             <label class="layui-form-label">推广状态</label>
             <div class="layui-input-block">
-                <select name="status" lay-verify="required" data-value="{$row.status|default='0'}">
-                    {foreach $getStatusList as $k=>$v}
-                    <option value='{$k}' {in name="k" value="$row.status"}selected=""{/in}>{$v}</option>
-                    {/foreach}
+                <select name="status" lay-verify="required">
+                    <option value="0">未推广</option>
+                    <option value="1" selected="selected">推广中</option>
+                    <option value="2">推广完成</option>
+                    <option value="3">已停止</option>
                 </select>
             </div>
         </div>
-        {/if}
 
         <div class="hr-line"></div>
         <div class="layui-form-item text-center">
