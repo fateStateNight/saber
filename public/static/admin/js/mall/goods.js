@@ -30,8 +30,8 @@ define(["jquery", "easy-admin"], function ($, ea) {
                     'delete', 'export'],
                 cols: [[
                     {type: "checkbox"},
-                    {field: 'id', width: 80, title: 'ID'},
-                    {field: 'creater.nickname', title: '创建人', templet: function(d){
+                    {field: 'id', width: 80, title: 'ID', hide:true},
+                    {field: 'creater.nickname', width: 80 , title: '招商人', templet: function(d){
                             if(d.creater_id != 0 && d.creater_id != null && d.creater != ''){
                                 createrName = d.creater.nickname;
                             }else{
@@ -39,7 +39,7 @@ define(["jquery", "easy-admin"], function ($, ea) {
                             }
                             return createrName;
                         }},
-                    {field: 'admin.nickname', title: '推广人', templet: function(d){
+                    {field: 'admin.nickname', width: 80 , title: '推广人', templet: function(d){
                             if(d.admin_id != 0 && d.admin_id != null && d.admin != ''){
                                 adminName = d.admin.nickname;
                             }else{
@@ -48,16 +48,17 @@ define(["jquery", "easy-admin"], function ($, ea) {
                             return adminName;
                         }},
                     {field: 'sort', width: 80, title: '排序', edit: 'text', hide:true},
-                    {field: 'cate.title', minWidth: 80, title: '商品分类'},
+                    {field: 'cate.title', minWidth: 80, title: '商品分类', hide:true},
                     {field: 'title', minWidth: 80, title: '商品名称'},
-                    {field: 'goods_link', minWidth: 80, title: '商品链接', search: false},
-                    {field: 'coupon_link', minWidth: 80, title: '优惠券链接', search: false},
+                    {field: 'images', minWidth: 80, title: '商品图片', search: false, templet: ea.table.image},
+                    {field: 'goods_link', minWidth: 80, title: '商品链接', search: false, templet: ea.table.url},
+                    {field: 'coupon_link', minWidth: 80, title: '优惠券链接', search: false, templet: ea.table.url},
                     {field: 'market_price', width: 100, title: '市场价', templet: ea.table.price},
                     {field: 'discount_price', width: 100, title: '券后价', templet: ea.table.price},
                     /*{field: 'total_stock', width: 100, title: '库存统计'},
                     {field: 'stock', width: 100, title: '剩余库存'},
                     {field: 'virtual_sales', width: 100, title: '虚拟销量'},*/
-                    {field: 'sales', width: 80, title: '销量'},
+                    {field: 'sales', width: 80, title: '销量', hide:true},
                     {field: 'status', title: '状态', width: 85, search: 'select', selectList: {0: '未推广', 1: '推广中', 2: '推广完成', 3: '已停止'}},
                     {field: 'create_time', minWidth: 80, title: '创建时间', search: 'range'},
                     {width: 250, title: '操作', toolbar: '#controlPlan'},
