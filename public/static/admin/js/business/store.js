@@ -33,15 +33,17 @@ define(["jquery", "easy-admin", "formSelects", "miniTab"], function ($, ea, form
                 cols: [[
                     {type: 'checkbox'},
                     {field: 'id', title: 'id', hide: true},
+                    {field: 'shop_id', title: '店铺ID', hide: true},
                     {field: 'title', title: '商家标题'},
                     {field: 'qq_number', title: 'QQ号'},
                     {field: 'weixin', title: '微信号'},
                     {field: 'dingding', title: '钉钉号'},
                     {field: 'phone', title: '手机号'},
+                    {field: 'total_commission', title: '近30天佣金'},
                     {field: 'share_level', title: '分享', search: 'select', selectList: {0: '关闭', 1: '开启'}, templet: ea.table.switch},
-                    {field: 'creater_id', title: '创建者ID', hide: true},
-                    {field: 'detail', title: '商家信息', hide: true},
-                    {field: 'enclosure', title: '商家附件', templet: function(d){
+                    {field: 'creater_id', title: '创建者ID', search: false, hide: true},
+                    {field: 'detail', title: '商家信息', search: false, hide: true},
+                    {field: 'enclosure', title: '商家附件', search: false, hide: true, templet: function(d){
                             if(d.enclosure != '' && d.enclosure != null){
                                 showInfo = '<a class="layui-btn layui-btn-xs layui-btn-warm" href="'+d.enclosure+'">下载</a>';
                             }else{
@@ -49,7 +51,7 @@ define(["jquery", "easy-admin", "formSelects", "miniTab"], function ($, ea, form
                             }
                             return showInfo;
                         }},
-                    {field: 'create_time', title: '创建时间', hide:true},
+                    {field: 'create_time', title: '创建时间', hide:true, search: 'range'},
                     {field: 'systemAdmin.nickname', title: '昵称', hide:true},
                     {field: 'systemAdmin.head_img', title: '头像', search: false, templet: ea.table.image, hide: true},
                     {width: 250, title: '操作', toolbar: '#controlPlan'},

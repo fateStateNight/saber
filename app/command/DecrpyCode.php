@@ -27,9 +27,13 @@ class DecrpyCode extends Command
     {
     	// 指令输出
     	$output->writeln('decrpyCode');
+        $output->writeln('export the info of business');
     	//$this->updateMoreShopInfo();
     	//$this->updateShopNullData();
         //$this->getShopTransferData();
+        //更新商家相关信息
+        //$this->update();
+        //导出商家数据
         $this->exportOrderData();
         $output->writeln('execute is over!');
     	return true;
@@ -262,31 +266,35 @@ class DecrpyCode extends Command
         return $resultData;
     }
 
-    /*public function update()
+    public function update()
     {
         //获取已有的商家数据
         $storeObj = new \app\admin\model\BusinessStore();
-        $storeArr = $storeObj->where('id','>=','7226')//7223、
-            ->where('id','<=','15093')
+        $storeArr = $storeObj->where('id','>=','136')//7223、
+            ->where('id','<=','136')
             ->where('shop_id','>',0)
             ->select()
             ->toArray();
-
 
 
         $loopnum = 0;
         $shopContactInfo = [];
         foreach($storeArr as $storeInfo){
             $updateData = [];
-            $shopContactInfo = $this->getPublicShopContactInfo($storeInfo['shop_id'],'eb3d85b6b0350');
+            $shopContactInfo = $this->getPublicShopContactInfo($storeInfo['shop_id'],'f3ef8371e7f5e');
+            //var_dump($shopContactInfo);die;
+            echo $storeInfo['title'].'------检索中'.$loopnum."\r\n";
 
             if(!is_array($shopContactInfo)){
-                continue;
+                echo '获取数据异常1----'.$loopnum."\r\n";
+                break;
             }
             if(!array_key_exists('data',$shopContactInfo)){
-                continue;
+                echo '获取数据异常2----'.$loopnum."\r\n";
+                break;
             }
             if($shopContactInfo['info']['ok'] != 'true'){
+                echo '获取数据异常3----'.$loopnum."\r\n";
                 continue;
             }
             if(array_key_exists('QQ',$shopContactInfo['data']['card']['jsonData']) && $shopContactInfo['data']['card']['jsonData']['QQ'] != ''){
@@ -295,14 +303,24 @@ class DecrpyCode extends Command
             if(array_key_exists('微信',$shopContactInfo['data']['card']['jsonData']) && $shopContactInfo['data']['card']['jsonData']['微信'] != ''){
                 $updateData['weixin'] = $shopContactInfo['data']['card']['jsonData']['微信'];
             }
-            $updateData['detail'] = $shopContactInfo['data']['card']['content'];
+            if(array_key_exists('thirtyCmCommisionAmt', $shopContactInfo['data']['dspMap'])){
+                $updateData['total_commission'] = $shopContactInfo['data']['dspMap']['thirtyCmCommisionAmt'][0];
+            }
+            if($storeInfo['detail'] != null){
+                $sourceData = json_decode($storeInfo['detail'], true);
+            }else{
+                $sourceData = [];
+            }
+            if(array_key_exists('jsonData', $shopContactInfo['data']['card'])){
+                $sourceData['alimama'] = $shopContactInfo['data']['card']['jsonData'];
+            }
+            $updateData['detail'] = json_encode($sourceData);
             $save = $storeObj::update($updateData,['id'=>$storeInfo['id']]);
             $loopnum++;
             //usleep(300000);
-            echo $storeInfo['title'].'|'.$loopnum."\r\n";
+            echo $storeInfo['title'].'|已更新'.$loopnum."\r\n";
         }
-        $save ? $this->success('更新成功'.$loopnum) : $this->error('更新失败'.$loopnum);
-    }*/
+    }
 
     //根据店铺ID获取公共店铺联系方式信息
     public function getPublicShopContactInfo($shopId,$token)
@@ -314,7 +332,7 @@ class DecrpyCode extends Command
         $url = 'https://pub.alimama.com/shopdetail/shopinfo.json?oriMemberId='.$shopId.'&t='.$timeStr.'&pvid=undefined&_tb_token_='.$token.'&_input_charset=utf-8';
         //$data['shopid'] = '2153863260';
         //$data['sellerid'] = '2153863260';
-        $cookies = 't=903865ab2fa4fcbf20274a49b3b0960f; cna=jrcVFkkHOgoCAXWY8dpsCkSG; _ga=GA1.2.1709063850.1613631129; _gid=GA1.2.904003747.1613631129; __guid=116136583.2915079402919763500.1613631245428.83; account-path-guide-s1=true; enc=ZjRvEh1dz8pwq1fOpVLnP6%2FpBpQoln99pOzt7R35lo2tDtBCoggnEDRzZdgUsTf2Kmfx0m%2FNRHSFZ7JY2PNKYA%3D%3D; pub-message-center=1; v=0; cookie2=10c01e7fd5bcf44b4ae01a0f550df71f; _tb_token_=5e388d9bd1e0; xlly_s=1; alimamapwag=TW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV09XNjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS83OC4wLjM5MDQuMTA4IFNhZmFyaS81MzcuMzY%3D; cookie32=10ccba842ca5610cb7c0a618575ea16b; alimamapw=QHIhHCQmECJTRHELRnsMQycDQHMlHCdbECVWRHcOaggBAlYCBAdTCQBXAl9WAlMIAAsDVVFWVAdV%0AX1ZTUQMG; cookie31=MTE5NTE4NjQxLCVFNSU5MCU5QiVFNSVBRCU5MCVFNSVBNiU4MiVFNCVCOSVBNiVFOSU5QyVCMiw4MzcwNzA3NTZAcXEuY29tLFRC; login=W5iHLLyFOGW7aA%3D%3D; monitor_count=19; _gat_UA-141509622-12=1; x5sec=7b22756e696f6e2d7075623b32223a223765396537363132316533653335656236663439393966623266313131346331434f664676594547454b4f582f4a6670687158445a7a44436c372b4941773d3d227d; tfstk=cbrABgAeX_f0GnH8LrQk1MgY-TVOZ8ftNKGMX9vI_uld5vxOijZ3vsFClAMW4TC..; l=eBQr_UuPv0Zx_f_DBOfZourza77T7IRAguPzaNbMiOCP9v1W5rpFW6i3OuYXCnGVhsgkR3rEQAfvBeYBqhfnZrn_uBaE3jHmn; isg=BN7eb-LuMiYGOWbDtk84XS3eL3Qgn6IZJxeukohnVyEcq36F8C1FKzRBp7enk5ox';
+        $cookies = 't=8235eeaf9b5b1b78ffa6871921597187; cna=lwHrGTXHwiICARsTbIC7NedR; cookie2=1245b3577b230a937e315349e72ed015; _tb_token_=f3ef8371e7f5e; account-path-guide-s1=true; xlly_s=1; v=0; alimamapwag=TW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzk2LjAuNDY2NC40NSBTYWZhcmkvNTM3LjM2; cookie32=9a5cfc3d8c4428b27195b464068327a6; alimamapw=FnEjQSQHHCELQyJzV1tfAWpRBlZWUgMGDlVbU1QMVAEAAgBSBAFRBlMGCAMNVwdQBA%3D%3D; cookie31=MjIwNDE0MDE3MCwlRTglQkYlQjAlRTclODglQjcxOTkzLGxpc2h1MUBjaGlsZHJlbmRyZWFtLmNuLFRC; pub-message-center=1; enc=rlE23xPMyrYXrEp1ntbA%2Be7JVpSy6Ckzp%2BvVom0NqDbkrkj%2FfVXU889plK23yJ1%2Fpe3qb00Vk9kWL5Xf%2BGCniA%3D%3D; JSESSIONID=8C0DC658A0A3C69ECA676E24D76492FC; login=UIHiLt3xD8xYTw%3D%3D; x5sec=7b22756e696f6e2d7075623b32223a223764613331643030623430623532613233643562656439653134653538336434434c586576493047454976307237482b39616238475367434d4d4b5876346744227d; l=eBx-uzlmg132Zme8KOfZourza77TSIRAguPzaNbMiOCPsu5e5KdCW6IhMaYwCnGVhs3JR3uQQyaYBeYBq3xonxvTuBaE3vkmn; tfstk=cpG5BFseHgjWqwpFa4TVzlg2pnFOZBQ_RLZoPvHT6PvN6lg5i65afnVqKMFUJr1..; isg=BDAwaV9UJZzJd_lFuv5T020WAf6CeRTDdjoymCqB2gte5dCP0otHUsDTPe2F9cyb';
 
         //执行请求获取数据
         $ch = curl_init();
@@ -469,6 +487,8 @@ class DecrpyCode extends Command
             '微信号' => 'string',
             '钉钉号' => 'string',
             '手机号' => 'string',
+            '30天佣金' => 'string',
+            '详情' => 'string',
         );
         $writer = new \XLSXWriter();
         $writer->writeSheetHeader('Sheet1', $header );
@@ -476,8 +496,8 @@ class DecrpyCode extends Command
         $pageNum = 0;
             //$output->writeln(date('Y-m-d H:i:s').' :get data time');
             $orderList = $storeObj->where('shop_id','>',0)
-                ->field('shop_id,title,qq_number,weixin,dingding,phone')
-                ->limit(0,230000)
+                ->field('shop_id,title,qq_number,weixin,dingding,phone,total_commission,detail')
+                ->limit(122,230000)
                 ->order('id', 'asc')
                 //->limit(1)
                 ->select();
