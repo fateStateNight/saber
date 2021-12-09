@@ -1,5 +1,5 @@
 define(["jquery", "easy-admin", "echarts", "echarts-theme", "miniAdmin", "miniTab"], function ($, ea, echarts, undefined, miniAdmin, miniTab) {
-
+    var layim = layui.layim;
     var Controller = {
         index: function () {
             var options = {
@@ -25,6 +25,39 @@ define(["jquery", "easy-admin", "echarts", "echarts-theme", "miniAdmin", "miniTa
                     })
                 });
             });
+
+            /*
+            *  处理socket消息
+            * */
+            /*var socket = new WebSocket('wss://www.childrendream.cn/websocket/');
+            //连接成功时触发
+            socket.onopen = function(){
+                console.log('hello,ready?');
+                //socket.send('连接成功,Hi Server, I am someone!');
+                //var user_id = $("#user_id").html();
+                console.log(1);
+                let message = {
+                    "type":"reg",
+                    "content":{
+                        "uid":1,
+                    },
+                };
+                socket.send(JSON.stringify(message));
+            };
+
+            //监听接收消息
+            socket.onmessage = function(res){
+                console.log(res);
+                if(typeof res === 'object'){
+                    var content = JSON.parse(res.data);
+                    res = content;
+                }
+                console.log(res);
+                if(res.type === 'getMessage'){
+                    layim.getMessage(res.content); //res.data即你发送消息传递的数据（阅读：监听发送的消息）
+                }
+            };*/
+
         },
         welcome: function () {
 
@@ -64,7 +97,7 @@ define(["jquery", "easy-admin", "echarts", "echarts-theme", "miniAdmin", "miniTa
             /**
              * 报表功能
              */
-            var echartsRecords = echarts.init(document.getElementById('echarts-records'), 'walden');
+            /*var echartsRecords = echarts.init(document.getElementById('echarts-records'), 'walden');
             var optionRecords = {
                 title: {
                     text: '访问统计'
@@ -130,7 +163,7 @@ define(["jquery", "easy-admin", "echarts", "echarts-theme", "miniAdmin", "miniTa
             echartsRecords.setOption(optionRecords);
             window.addEventListener("resize", function () {
                 echartsRecords.resize();
-            });
+            });*/
         },
         editAdmin: function () {
             ea.listen();

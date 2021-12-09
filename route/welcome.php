@@ -36,6 +36,8 @@ Route::view('/', 'company@index');
 
 Route::view('/company-map', 'company@company-map');
 
+Route::view('/map', 'company@map');
+
 /*Route::view('/', 'index@welcome', [
     'version' => time(),
     'data'    => [

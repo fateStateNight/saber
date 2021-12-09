@@ -497,7 +497,7 @@ class DecrpyCode extends Command
             //$output->writeln(date('Y-m-d H:i:s').' :get data time');
             $orderList = $storeObj->where('shop_id','>',0)
                 ->field('shop_id,title,qq_number,weixin,dingding,phone,total_commission,detail')
-                ->limit(122,230000)
+                ->limit(0,230000)
                 ->order('id', 'asc')
                 //->limit(1)
                 ->select();
