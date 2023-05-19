@@ -1,0 +1,92 @@
+<div class="layuimini-container">
+    <form id="app-form" class="layui-form layuimini-form">
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">群名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" class="layui-input"  placeholder="请输入群名称" value="{$row.title|default=''}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">群成员数</label>
+            <div class="layui-input-block">
+                <input type="text" name="member_num" class="layui-input"  placeholder="请输入群成员数" value="{$row.member_num|default=''}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">男成员数</label>
+            <div class="layui-input-block">
+                <input type="text" name="man_num" class="layui-input"  placeholder="请输入男成员数" value="{$row.man_num|default=''}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">女成员数</label>
+            <div class="layui-input-block">
+                <input type="text" name="woman_num" class="layui-input"  placeholder="请输入女成员数" value="{$row.woman_num|default=''}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">群ID</label>
+            <div class="layui-input-block">
+                <input type="text" name="weixin_room_id" class="layui-input"  placeholder="请输入群ID" value="{$row.weixin_room_id|default=''}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">商品图片</label>
+            <div class="layui-input-block layuimini-upload">
+                <input name="group_image" class="layui-input layui-col-xs6"   placeholder="请上传商品图片" value="{$row.group_image|default=''}">
+                <div class="layuimini-upload-btn">
+                    <span><a class="layui-btn" data-upload="group_image" data-upload-number="one" data-upload-exts="png|jpg|ico|jpeg" data-upload-icon="image"><i class="fa fa-upload"></i> 上传</a></span>
+                    <span><a class="layui-btn layui-btn-normal" id="select_group_image" data-upload-select="group_image" data-upload-number="one" data-upload-mimetype="image/*"><i class="fa fa-list"></i> 选择</a></span>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">来源类型</label>
+            <div class="layui-input-block">
+                {foreach $getSourceTypeList as $k=>$v}
+                <input type="radio" name="source_type" value="{$k}" title="{$v}" {in name="k" value="$row.source_type"}checked=""{/in}>
+                {/foreach}
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">管理账号ID</label>
+            <div class="layui-input-block">
+                <select name="belong_id" >
+                    <option value=''></option>
+                    {foreach $getSystemAdminList as $k=>$v}
+                    <option value='{$k}' {in name="k" value="$row.belong_id"}selected=""{/in}>{$v}</option>
+                    {/foreach}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">群类型</label>
+            <div class="layui-input-block">
+                {foreach $getGroupTypeList as $k=>$v}
+                <input type="radio" name="group_type" value="{$k}" title="{$v}" {in name="k" value="$row.group_type"}checked=""{/in}>
+                {/foreach}
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">群创建时间</label>
+            <div class="layui-input-block">
+                <input type="text" name="group_create_time" class="layui-input" data-date="" data-date-type="datetime"  placeholder="请输入群创建时间" value="{$row.group_create_time|default=''}">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">备注说明</label>
+            <div class="layui-input-block">
+                <textarea name="remark" class="layui-textarea"  placeholder="请输入备注说明">{$row.remark|raw|default=''}</textarea>
+            </div>
+        </div>
+        <div class="hr-line"></div>
+        <div class="layui-form-item text-center">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit>确认</button>
+            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
+        </div>
+
+    </form>
+</div>

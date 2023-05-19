@@ -1,0 +1,22 @@
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <table id="currentTable" class="layui-table layui-hide"
+               data-auth-add="{:auth('publish.customer/add')}"
+               data-auth-edit="{:auth('publish.customer/edit')}"
+               data-auth-delete="{:auth('publish.customer/delete')}"
+               lay-filter="currentTable">
+        </table>
+    </div>
+</div>
+
+<script type="text/html" id="toolbarCustomer">
+    <div class="layui-btn-container">
+        <div class="layui-table-tool-temp">
+        <button class="layui-btn layui-btn-sm layuimini-btn-primary" data-table-refresh="currentTableRenderId"><i class="fa fa-refresh"></i> </button>
+        <button class="layui-btn layui-btn-normal layui-btn-sm" data-open="publish.customer/add" data-title="添加"><i class="fa fa-plus"></i> 添加</button>
+        <button class="layui-btn layui-btn-sm layui-btn-danger" data-url="publish.customer/delete" data-table-delete="currentTableRenderId"><i class="fa fa-trash-o"></i> 删除</button>
+        <button class="layui-btn layui-btn-sm" id="file-import"><i class="layui-icon">&#xe67c;</i>导入</button>
+        <button class="layui-btn layui-btn-sm layui-btn-success easyadmin-export-btn" data-url="publish.customer/export" data-table-export="currentTableRenderId"><i class="fa fa-file-excel-o"></i> 导出</button>
+        </div>
+    </div>
+</script>

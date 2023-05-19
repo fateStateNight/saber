@@ -1,0 +1,154 @@
+<div class="layuimini-container">
+    <form id="app-form" class="layui-form layuimini-form">
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">活动ID</label>
+            <div class="layui-input-block">
+                <input type="text" name="eventId" class="layui-input" lay-verify="required" placeholder="请输入活动ID" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">团长ID</label>
+            <div class="layui-input-block">
+                <input type="text" name="accountId" class="layui-input" lay-verify="required" placeholder="请输入团长ID" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">活动类型</label>
+            <div class="layui-input-block">
+                <input type="text" name="sceneId" class="layui-input" lay-verify="required" placeholder="请输入活动类型" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">活动类型名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="sceneName" class="layui-input" lay-verify="required" placeholder="请输入活动类型名称" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">活动标题</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" class="layui-input" lay-verify="required" placeholder="请输入活动标题" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">审核通过</label>
+            <div class="layui-input-block">
+                <input type="text" name="auditPassed" class="layui-input"  placeholder="请输入审核通过" value="0">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">已报名</label>
+            <div class="layui-input-block">
+                <input type="text" name="auditTotal" class="layui-input"  placeholder="请输入已报名" value="0">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">待审核</label>
+            <div class="layui-input-block">
+                <input type="text" name="auditWait" class="layui-input"  placeholder="请输入待审核" value="0">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">报名商品</label>
+            <div class="layui-input-block">
+                <input type="text" name="itemNum" class="layui-input"  placeholder="请输入报名商品" value="0">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">活动状态</label>
+            <div class="layui-input-block">
+                <select name="status" lay-verify="required">
+                    <option value=''></option>
+                    {foreach $getStatusList as $k=>$v}
+                    <option value='{$k}' >{$v}</option>
+                    {/foreach}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">钉钉名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="dingTalkName" class="layui-input" lay-verify="required" placeholder="请输入钉钉名称" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">总付款金额</label>
+            <div class="layui-input-block">
+                <input type="text" name="cmAlipayAmt" class="layui-input"  placeholder="请输入总付款金额" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">佣金率</label>
+            <div class="layui-input-block">
+                <input type="text" name="commissionRate" class="layui-input"  placeholder="请输入佣金率" value="0">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">服务费</label>
+            <div class="layui-input-block">
+                <input type="text" name="serviceRate" class="layui-input"  placeholder="请输入服务费" value="0">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">引流UV</label>
+            <div class="layui-input-block">
+                <input type="text" name="clickUv" class="layui-input"  placeholder="请输入引流UV" value="0">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">付款金额</label>
+            <div class="layui-input-block">
+                <input type="text" name="alipayAmt" class="layui-input"  placeholder="请输入付款金额" value="0">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">付款笔数</label>
+            <div class="layui-input-block">
+                <input type="text" name="alipayNum" class="layui-input"  placeholder="请输入付款笔数" value="0">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">预估付款服务费</label>
+            <div class="layui-input-block">
+                <input type="text" name="preServiceFee" class="layui-input"  placeholder="请输入预估付款服务费" value="0">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">结算金额</label>
+            <div class="layui-input-block">
+                <input type="text" name="settleAmt" class="layui-input"  placeholder="请输入结算金额" value="0">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">结算笔数</label>
+            <div class="layui-input-block">
+                <input type="text" name="settleNum" class="layui-input"  placeholder="请输入结算笔数" value="0">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">预估结算服务费</label>
+            <div class="layui-input-block">
+                <input type="text" name="cmServiceFee" class="layui-input"  placeholder="请输入预估结算服务费" value="0">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">活动开始时间</label>
+            <div class="layui-input-block">
+                <input type="text" name="startTime" class="layui-input"  placeholder="请输入活动开始时间" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">活动结束时间</label>
+            <div class="layui-input-block">
+                <input type="text" name="endTime" class="layui-input"  placeholder="请输入活动结束时间" value="">
+            </div>
+        </div>
+        <div class="hr-line"></div>
+        <div class="layui-form-item text-center">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit>确认</button>
+            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
+        </div>
+
+    </form>
+</div>

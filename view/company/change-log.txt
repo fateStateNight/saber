@@ -1,0 +1,9 @@
+Version: 1.0.1
+Date:    12-11-2020
+=========================== 
+Fixed: Minor CSS Issue Fixed.
+
+Version: 1.0.0
+Date:    10-11-2020 
+=========================== 
+Initial Release

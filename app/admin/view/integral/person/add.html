@@ -1,0 +1,59 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>申请积分</title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="__STATIC__/admin/css/integral/style.css" rel="stylesheet" type="text/css" />
+    <link href="__STATIC__/admin/css/integral/person.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<section class="jui-flexView">
+    <header class="jui-navBar jui-navBar-fixed">
+        <a href="javascript:;" class="jui-navBar-item"><i class="icon icon-return"></i></a>
+        <div class="jui-center">
+            <span class="jui-center-title">申请积分</span>
+        </div>
+        <a href="javascript:;" class="jui-navBar-item" data-ydui-actionsheet="{target:'#actionSheet',closeElement:'#cancel'}"><i class="icon icon-share"></i></a>
+    </header>-->
+    <div class="layuimini-container">
+    <form id="app-form" class="layui-form layuimini-form">
+        <div id="goodsData" style="display: none;">{$goodsData}</div>
+        <input type="hidden" name="record_title" value="">
+        <input type="hidden" name="user_id" value="{$userInfo.id}">
+        <input type="hidden" name="integral_value" value="">
+        <input type="hidden" name="integral_status" value="1">
+        <div class="layui-form-item">
+            <label class="layui-form-label">已购买商品ID</label>
+            <div class="layui-input-block">
+                <select name="goods_id" id="goodsSelect" lay-filter="goodsSelect" lay-verify="required" >
+                    <option value=''></option>
+                    {if $goodsSelect != ''}
+                    {foreach $goodsSelect as $k=>$v}
+                    <option value='{$k}' >{$v}</option>
+                    {/foreach}
+                    {/if}
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">备注说明</label>
+            <div class="layui-input-block">
+                <textarea name="remark" class="layui-textarea"  placeholder="请输入备注说明"></textarea>
+            </div>
+        </div>
+        <div class="hr-line"></div>
+        <div class="layui-form-item text-center">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-filter="apply" lay-submit>申请</button>
+        </div>
+
+    </form>
+</div>
+<!--
+</section>
+</body>-->

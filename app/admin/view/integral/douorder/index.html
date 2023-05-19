@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>抖音订单</title>
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<link href="__STATIC__/admin/css/integral/douorder.css" rel="stylesheet" type="text/css" />
+
+	<script src="__STATIC__/plugs/layui-v2.5.6/layui.all.js?v={$version}" charset="utf-8"></script>
+	<script src="__STATIC__/plugs/require-2.3.6/require.js?v={$version}" charset="utf-8"></script>
+	<script>
+		window.CONFIG = {
+			ADMIN: "{$adminModuleName|default='admin'}",
+			CONTROLLER_JS_PATH: "{$thisControllerJsPath|default=''}",
+			ACTION: "{$thisAction|default=''}",
+			AUTOLOAD_JS: "{$autoloadJs|default='false'}",
+			IS_SUPER_ADMIN: "{$isSuperAdmin|default='false'}",
+			VERSION: "{$version|default='1.0.0'}",
+		};
+		var BASE_URL = document.scripts[document.scripts.length - 1].src.substring(0, document.scripts[document.scripts.length - 1].src.lastIndexOf("/") + 1);
+		BASE_URL = window.location.protocol + '//' + window.location.host + '/static/';
+		window.BASE_URL = BASE_URL;
+		require.config({
+			urlArgs: "v=" + CONFIG.VERSION,//CONFIG.VERSION//new Date().getTime()
+			baseUrl: BASE_URL,
+			paths: {
+				"jquery": ["plugs/jquery-3.4.1/jquery-3.4.1.min"],
+				"jquery-particleground": ["plugs/jq-module/jquery.particleground.min"],
+				"easy-admin": ["plugs/easy-admin/easy-admin"],
+				"layuiall": ["plugs/layui-v2.5.6/layui.all"],
+				"tableSelect": ["plugs/lay-module/tableSelect/tableSelect"],
+				"ckeditor": ["plugs/ckeditor4/ckeditor"],
+			}
+		});
+
+		// 路径配置信息
+		var PATH_CONFIG = {
+			iconLess: BASE_URL + "plugs/font-awesome-4.7.0/less/variables.less",
+		};
+		window.PATH_CONFIG = PATH_CONFIG;
+
+		// 初始化控制器对应的JS自动加载
+		if ("undefined" != typeof CONFIG.AUTOLOAD_JS && CONFIG.AUTOLOAD_JS) {
+			require([BASE_URL + CONFIG.CONTROLLER_JS_PATH], function (Controller) {
+				if (eval('Controller.' + CONFIG.ACTION)) {
+					eval('Controller.' + CONFIG.ACTION + '()');
+				}
+			});
+		}
+	</script>
+</head>
+<body>
+
+<div class="mobile-wrapper">
+	<!--======= Header =======-->
+	<header class="header today-box" id="today-box">
+		<div class="layui-container">
+			<div class="layui-row">
+				<div class="layui-col-xs12"><div class="imageDivContainer"></div></div>
+			</div>
+			<div class="layui-row layui-col-space10">
+				<div class="layui-col-xs6">
+					<div class="grid-demo grid-demo-bg1">渠道标志：<span id="groupTitle"></span></div>
+				</div>
+				<!--<div class="layui-col-xs4">
+					<div class="grid-demo grid-demo-bg1">产品名称：<span></span></div>
+				</div>-->
+				<div class="layui-col-xs6">
+					<div class="grid-demo grid-demo-bg1">订单总数：<span id="totalNum"></span><span id="totalRewardNum"></span></div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="layui-tab" lay-filter="dou-order">
+		<ul class="layui-tab-title layui-row tab-title-show" id="order-tab-title">
+			<li class="layui-this layui-col-xs6">近期订单</li>
+			<li class="layui-col-xs6">奖励订单</li>
+		</ul>
+		<div class="layui-tab-content">
+			<div class="layui-tab-item layui-show">
+				<section class="layui-container order-tab">
+					<div class="layui-row">
+						<div class="layui-col-xs5 content-align-center">
+							<span class="title-content">订单号</span>
+						</div>
+						<div class="layui-col-xs4 content-align-center">
+							<span class="title-content">支付时间</span>
+						</div>
+						<div class="layui-col-xs3 content-align-center">
+							<span class="title-content">订单状态</span>
+						</div>
+					</div>
+					<ul class="flow-default" id="order_content"></ul>
+				</section>
+			</div>
+			<div class="layui-tab-item">
+				<section class="layui-container order-tab">
+					<section class="layui-container order-tab">
+						<div class="layui-row">
+							<div class="layui-col-xs5 content-align-center">
+								<span class="title-content">订单号</span>
+							</div>
+							<div class="layui-col-xs4 content-align-center">
+								<span class="title-content">成交日期</span>
+							</div>
+							<div class="layui-col-xs3 content-align-center">
+								<span class="title-content">奖励类型</span>
+							</div>
+						</div>
+						<ul class="flow-default" id="reward_content"></ul>
+					</section>
+				</section>
+			</div>
+		</div>
+	</div>
+	<!--<footer class="aui-footer aui-footer-fixed">
+		<a href="javascript:void(0);" class="aui-tabBar-item aui-tabBar-item-active order-btn">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-ions"></i>
+                    </span>
+			<span class="aui-tabBar-item-text">近期订单</span>
+		</a>
+		<a href="javascript:void(0);" class="aui-tabBar-item reward-btn">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-car"></i>
+                    </span>
+			<span class="aui-tabBar-item-text">奖励订单</span>
+		</a>
+	</footer>-->
+
+</div>
+
+</body>
+
+</html>

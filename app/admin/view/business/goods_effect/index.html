@@ -1,0 +1,101 @@
+<div class="layuimini-container">
+    <div class="layui-card">
+        <div class="layui-card-header">{$goodsRow.title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$goodsRow.itemId}</div>
+        <div class="layui-card-body">
+            <div class="layui-row">
+                <div id="everyday_goods_publish_effect" style="width: auto;height:600px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-card">
+        <div class="layui-card-header">{$goodsRow.title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;推广效果统计</div>
+        <div class="layui-card-body">
+
+            <div class="layui-row layui-col-space20">
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">商品名称  <i class="layui-icon layui-icon-about" lay-tips="商品标题" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$goodsRow.title}</div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">排期  <i class="layui-icon layui-icon-about" lay-tips="报名活动商品持续的时长" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$goodsRow.diffDay}</div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">引流UV  <i class="layui-icon layui-icon-about" lay-tips="在推广排期内所有商品推广后总去重引入UV" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$goodsRow.clickUv}</div>
+                </div>
+            </div>
+
+            <div class="layui-row layui-col-space20">
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">付款金额  <i class="layui-icon layui-icon-about" lay-tips="在推广排期内买家拍下并付款金额" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$goodsRow.alipayAmt}</div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">券使用量  <i class="layui-icon layui-icon-about" lay-tips="在排期时间内，该商品所匹配的优惠券，实际使用的数量" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$goodsRow.couponUseNum}</div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">付款笔数  <i class="layui-icon layui-icon-about" lay-tips="在推广排期内通过团长招商活动带来的买家付款的订单笔数" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$goodsRow.alipayNum}</div>
+                </div>
+            </div>
+
+
+            <div class="layui-row layui-col-space20">
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">报名佣金比率  <i class="layui-icon layui-icon-about" lay-tips="商家报名活动时设置的佣金比率" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$goodsRow.commissionRate}%</div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">最高佣金比率  <i class="layui-icon layui-icon-about" lay-tips="商家当前最高公开设置的佣金比率" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$goodsRow.currentMaxCommissionRate}%</div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">服务费率  <i class="layui-icon layui-icon-about" lay-tips="商家报名活动时设置的服务费率" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$goodsRow.serviceRate}%</div>
+                </div>
+            </div>
+
+
+            <div class="layui-row layui-col-space20">
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">预估付款服务费  <i class="layui-icon layui-icon-about" lay-tips="审核通过商品的付款金额*对应服务费率的总和" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$goodsRow.preServiceFee}</div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">结算笔数  <i class="layui-icon layui-icon-about" lay-tips="在推广排期内通过团长招商活动带来的买家确认收货的订单笔数" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$goodsRow.settleNum}</div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">结算金额  <i class="layui-icon layui-icon-about" lay-tips="在推广排期内买家付款的订单，对应确认收货的付款金额（不包含运费金额）" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$goodsRow.settleAmt}</div>
+                </div>
+            </div>
+
+
+            <div class="layui-row layui-col-space20">
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">预估结算服务费  <i class="layui-icon layui-icon-about" lay-tips="审核通过商品的结算金额*对应服务费率的总和" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$goodsRow.cmServiceFee}</div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">淘宝客数  <i class="layui-icon layui-icon-about" lay-tips="在排期时间内有推广并达成消费者付款的淘宝客数" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$goodsRow.taokeNum}</div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">暂时置空</div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;"></div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+    var effectData = '<?php echo json_encode($effectData) ?>';
+</script>

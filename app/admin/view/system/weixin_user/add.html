@@ -1,0 +1,80 @@
+<div class="layuimini-container">
+    <form id="app-form" class="layui-form layuimini-form">
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户昵称</label>
+            <div class="layui-input-block">
+                <input type="text" name="nickname" class="layui-input" lay-verify="required" placeholder="请输入用户昵称" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户ID</label>
+            <div class="layui-input-block">
+                <input type="text" name="openid" class="layui-input"  placeholder="请输入用户ID" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">性别</label>
+            <div class="layui-input-block">
+                <input type="text" name="sex" class="layui-input" lay-verify="required" placeholder="请输入性别" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">省份</label>
+            <div class="layui-input-block">
+                <input type="text" name="province" class="layui-input" lay-verify="required" placeholder="请输入省份" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">城市</label>
+            <div class="layui-input-block">
+                <input type="text" name="city" class="layui-input" lay-verify="required" placeholder="请输入城市" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">社群ID</label>
+            <div class="layui-input-block">
+                <select name="group_id" lay-verify="required" lay-search>
+                    <option value=''></option>
+                    {foreach $getPublishWeixinGroupsList as $k=>$v}
+                    <option value='{$k}' >{$v}</option>
+                    {/foreach}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">头像</label>
+            <div class="layui-input-block layuimini-upload">
+                <input name="headimgurl" class="layui-input layui-col-xs6"   placeholder="请上传头像" value="">
+                <div class="layuimini-upload-btn">
+                    <span><a class="layui-btn" data-upload="headimgurl" data-upload-number="one" data-upload-exts="png|jpg|ico|jpeg" data-upload-icon="image"><i class="fa fa-upload"></i> 上传</a></span>
+                    <span><a class="layui-btn layui-btn-normal" id="select_headimgurl" data-upload-select="headimgurl" data-upload-number="one" data-upload-mimetype="image/*"><i class="fa fa-list"></i> 选择</a></span>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">状态</label>
+            <div class="layui-input-block">
+                <input type="text" name="status" class="layui-input"  placeholder="请输入状态" value="1">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">剩余积分</label>
+            <div class="layui-input-block">
+                <input type="text" name="integral" class="layui-input"  placeholder="请输入积分" value="0">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">备注说明</label>
+            <div class="layui-input-block">
+                <textarea name="remark" class="layui-textarea"  placeholder="请输入备注说明"></textarea>
+            </div>
+        </div>
+        <div class="hr-line"></div>
+        <div class="layui-form-item text-center">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit>确认</button>
+            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,129 @@
+<div class="layuimini-container">
+
+    {if $eventId > 0 }
+    <div class="layui-card">
+        <div class="layui-card-header">推广效果数据汇总</div>
+        <div class="layui-card-body">
+
+            <div class="layui-row layui-col-space20">
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">活动名称  <i class="layui-icon layui-icon-about" lay-tips="活动标题" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 18px; font-weight: bold;">{$showEventArr.title}</div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">活动时间  <i class="layui-icon layui-icon-about" lay-tips="报名活动商品持续的时间" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12">{$showEventArr.startTime} 至 {$showEventArr.endTime}</div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">推广商品数  <i class="layui-icon layui-icon-about" lay-tips="在推广期内总共审核通过的商品数量" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$showEventArr.auditPassed}</div>
+                </div>
+            </div>
+
+            <div class="layui-row layui-col-space20">
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">引流UV  <i class="layui-icon layui-icon-about" lay-tips="在推广排期内所有商品推广后总去重引入UV" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$showEventArr.clickUv}</div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">付款金额  <i class="layui-icon layui-icon-about" lay-tips="在推广排期内买家拍下并付款金额" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$showEventArr.alipayAmt}</div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">付款笔数  <i class="layui-icon layui-icon-about" lay-tips="在推广排期内通过团长招商活动带来的买家付款的订单笔数" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$showEventArr.alipayNum}</div>
+                </div>
+            </div>
+
+
+            <div class="layui-row layui-col-space20">
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">预估付款服务费  <i class="layui-icon layui-icon-about" lay-tips="审核通过商品的付款金额*对应服务费率的总和" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$showEventArr.preServiceFee}</div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">结算笔数  <i class="layui-icon layui-icon-about" lay-tips="在推广排期内通过团长招商活动带来的买家确认收货的订单笔数" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$showEventArr.settleNum}</div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">结算金额  <i class="layui-icon layui-icon-about" lay-tips="在推广排期内买家付款的订单，对应确认收货的付款金额（不包含运费金额）" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$showEventArr.settleAmt}</div>
+                </div>
+            </div>
+
+
+            <div class="layui-row layui-col-space20">
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">预估结算服务费  <i class="layui-icon layui-icon-about" lay-tips="审核通过商品的结算金额*对应服务费率的总和" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$showEventArr.cmServiceFee}</div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">活动佣金比率要求  <i class="layui-icon layui-icon-about" lay-tips="活动设置的最低报名佣金比率" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;"> 大于或等于{$showEventArr.commissionRate}%</div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-col-md12">活动服务费率要求  <i class="layui-icon layui-icon-about" lay-tips="活动设置的报名服务费率" style="font-size: 20px;"></i></div>
+                    <div class="layui-col-md12" style="font-size: 20px; font-weight: bold;">{$showEventArr.serviceRate}%</div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    {/if}
+
+    <div class="layuimini-main">
+        <table id="currentTable" class="layui-table layui-hide"
+               data-auth-add="{:auth('business.goods/add')}"
+               data-auth-edit="{:auth('business.goods/edit')}"
+               data-auth-delete="{:auth('business.goods/delete')}"
+               lay-filter="currentTable">
+        </table>
+    </div>
+</div>
+
+
+<script type="text/html" id="toolbarGoods">
+    <div class="layui-btn-container">
+        <div class="layui-table-tool-temp">
+            <button class="layui-btn layui-btn-sm layuimini-btn-primary" data-table-refresh="currentTableRenderId"><i class="fa fa-refresh"></i> </button>
+            {if $adminInfo.auth_ids == 7 || $adminInfo.auth_ids == 1}
+
+            <button class="layui-btn layui-btn-sm" admin-data="{$adminInfo.id}" data-url="business.goods/edit" data-table-edit="currentTableRenderId" data-title="修改" data-width="50%" data-height="50%"><i class="layui-icon layui-icon-edit"></i>修改 </button>
+            {/if}
+            <button class="layui-btn layui-btn-sm" admin-data="{$adminInfo.id}" data-checkbox="true" data-table-export="currentTableRenderId" data-url="business.goods/export" data-title="导出" data-width="50%" data-height="50%"><i class="layui-icon layui-icon-export"></i>导出 </button>
+
+
+            <button id="claimAll" class="layui-btn layui-btn-sm layui-btn-warm claimAll" admin-data="{$adminInfo.id}" data-checkbox="true" data-request="business.goods/claimAll" data-title="批量认领" ><i class="layui-icon layui-icon-edit"></i>批量认领 </button>
+
+            <button id="passAll" class="layui-btn layui-btn-sm layui-btn-normal claimAll" admin-data="{$adminInfo.id}" data-checkbox="true" data-request="business.goods/passAll" data-title="批量通过" ><i class="layui-icon layui-icon-ok-circle"></i>批量通过 </button>
+
+            <button id="refuseAll" class="layui-btn layui-btn-sm layui-btn-danger claimAll" admin-data="{$adminInfo.id}" data-checkbox="true" data-request="business.goods/refuseAll" data-title="批量拒绝" ><i class="layui-icon layui-icon-close-fill"></i>批量拒绝 </button>
+<!--            <button class="layui-btn layui-btn-sm" data-url="business.goods/edit" data-table-delete="currentTableRenderId"><i class="fa fa-trash-o"></i> 修改</button>-->
+        </div>
+    </div>
+</script>
+
+
+<script type="text/html" id="controlPlanGoods">
+    {{#  if(d.auditorId == 0 && d.auditStatus == 1){ }}
+    <a class="layui-btn layui-btn-xs layui-btn-warm" data-request="business.goods/claim?id={{d.id}}" href="javascript:void(0);" lay-event="claim" data-title="认领">认领</a>
+    {{#  } }}
+    {{#  if(d.auditorId != 0 && d.auditStatus == 1){ }}
+    <a class="layui-btn layui-btn-xs layui-btn-normal" data-request="business.goods/pass?id={{d.id}}" href="javascript:void(0);" lay-event="pass" data-title="通过">通过</a>
+
+    <a class="layui-btn layui-btn-xs layui-btn-danger" data-request="business.goods/refuse?id={{d.id}}" href="javascript:void(0);" lay-event="refuse" data-title="拒绝">拒绝</a>
+    {{#  } }}
+    {{#  if(d.priveledge == 7 || d.priveledge == 1){ }}
+    <a class="layui-btn layui-btn-xs" data-open="business.goods/edit?id={{d.id}}" data-title="修改" data-width="50%" data-height="50%">修改</a>
+    {{# } }}
+    <a class="layui-btn layui-btn-xs layui-btn-normal" target="_self" layuimini-content-href="{:__url('business.goods_effect/index')}?id={{d.id}}" href="javascript:void(0);" lay-event="check" data-title="{{d.title}}">推广详情</a>
+    <!--<a class="layui-btn layui-btn-xs layui-btn-success" data-open="business.goods/detail?id={{d.id}}" href="javascript:void(0);" data-title="商品推广效果详情" data-full="false">查看</a>-->
+</script>
+
+
+<style type="text/css">
+    .claimAll{
+        display: none;
+    }
+</style>
