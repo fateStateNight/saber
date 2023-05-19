@@ -10,8 +10,13 @@ require.config({
         "echarts-theme": ["plugs/echarts/echarts-theme"],
         "easy-admin": ["plugs/easy-admin/easy-admin"],
         "layuiall": ["plugs/layui-v2.5.6/layui.all"],
+<<<<<<< HEAD
         "layui": ["plugs/layui-v2.5.6/layui"],
         //"layui": ["plugs/lay-module/layim-v3.7.6/dist/layui"],
+=======
+        //"layui": ["plugs/layui-v2.5.6/layui"],
+        "layui": ["plugs/lay-module/layim-v3.7.6/dist/layui"],
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
         "miniAdmin": ["plugs/lay-module/layuimini/miniAdmin"],
         "miniMenu": ["plugs/lay-module/layuimini/miniMenu"],
         "miniTab": ["plugs/lay-module/layuimini/miniTab"],

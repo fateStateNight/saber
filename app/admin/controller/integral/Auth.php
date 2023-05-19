@@ -19,7 +19,11 @@ class Auth extends AdminController
     {
         parent::__construct($app);
         $this->model = new IntegralAuth();
+<<<<<<< HEAD
         //$this->init();
+=======
+        $this->init();
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
     }
 
     public function init()
@@ -53,6 +57,7 @@ class Auth extends AdminController
 
     public function index()
     {
+<<<<<<< HEAD
         $content = $this->request->get();
         $newContent = date("Y-m-d H:i:s")." ".json_encode($content)."\r\n";
         file_put_contents('/tmp/douyin_auth.log',$newContent,FILE_APPEND);
@@ -66,6 +71,9 @@ class Auth extends AdminController
         $newContent = date("Y-m-d H:i:s")." ".$content."\r\n";
         file_put_contents('/tmp/douyin_callback.log',$newContent,FILE_APPEND);
         return true;
+=======
+        
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
     }
     
 }

@@ -25,6 +25,7 @@ class Test extends Command
     {
     	// 指令输出
     	$output->writeln('test');
+<<<<<<< HEAD
 
         /*$businessGoodsModel = new \app\admin\model\BusinessGoods();
 
@@ -79,6 +80,8 @@ class Test extends Command
             }
         }*/
         //var_export($ret);die;
+=======
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
         /*$goodsObj = new \app\admin\model\MallTaolijinGoods();
         $ret = $goodsObj->where('account_id','=',13)
             ->where('create_time','>=','2020-12-01 00:00:00')
@@ -128,8 +131,13 @@ class Test extends Command
         }else{
             $output->writeln('the file import faith');
         }*/
+<<<<<<< HEAD
         //$this->exportBusinessData();
         //$this->exportSaleData();
+=======
+        $this->exportBusinessData();
+        $this->exportSaleData();
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
 
         /*$webhook = "https://oapi.dingtalk.com/robot/send?access_token=d61f7604aa6dfc87d2052d19ed4b29d24463ffdbfe6257068e4e6fad0cf1d4c5";
         $message="我就是我, 是不一样的烟火";
@@ -142,6 +150,7 @@ class Test extends Command
         return true;
     }
 
+<<<<<<< HEAD
     public function getParams($url)
     {
         $refer_url = parse_url($url);
@@ -159,6 +168,8 @@ class Test extends Command
         return $arr;
     }
 
+=======
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
     public function request_by_curl($remote_server, $post_string) {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $remote_server);
@@ -179,6 +190,7 @@ class Test extends Command
     {
         //获取已有的商家数据
         $storeObj = new \app\admin\model\BusinessStore();
+<<<<<<< HEAD
         //$shopIDArr = $this->getshopIDArr();
         $storeArr = $storeObj
             //->where('id','>=','7226')
@@ -205,18 +217,30 @@ class Test extends Command
         }
         echo $num;
         //return false;
+=======
+        $storeArr = $storeObj->where('id','>=','7226')//7223、
+            ->where('id','<=','15093')
+            ->where('shop_id','>',0)
+            ->select()
+            ->toArray();
+
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
         //导出文件方法
         /*$tableName = $storeObj->getName();
         $tableName = CommonTool::humpToLine(lcfirst($tableName));
         $prefix = config('database.connections.mysql.prefix');
         $dbList = Db::query("show full columns from {$prefix}{$tableName}");
         $header = [];
+<<<<<<< HEAD
         $size = 10000;
+=======
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
         foreach ($dbList as $vo) {
             $comment = !empty($vo['Comment']) ? $vo['Comment'] : $vo['Field'];
             $header[$comment] = 'string';
         }
         $writer = new \XLSXWriter();
+<<<<<<< HEAD
         echo "2222\r\n";
         $writer->writeSheetHeader('Sheet1', $header );
         //foreach($storeArr as $storeInfo){
@@ -238,6 +262,11 @@ class Test extends Command
                     $writer->writeSheetRow('Sheet1', $storeInfo );
                 }
             }
+=======
+        $writer->writeSheetHeader('Sheet1', $header );
+        foreach($storeArr as $storeInfo){
+            $writer->writeSheetRow('Sheet1', $storeInfo );
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
         }
         $filePath = '/tmp/shop123.xlsx';
         $writer->writeToFile($filePath);
@@ -264,6 +293,7 @@ class Test extends Command
         }
         echo "商家ID数据更新完毕！ \r\n";
         return false;*/
+<<<<<<< HEAD
         echo '1111'."\r\n";
         $shopContactInfo = [];
         foreach($noStoreArr as $keynum=>$storeInfo){
@@ -275,6 +305,13 @@ class Test extends Command
             }else{
                 continue;
             }
+=======
+        $shopContactInfo = [];
+        foreach($storeArr as $storeInfo){
+            $updateData = [];
+            $shopContactInfo = $this->getPublicShopContactInfo($storeInfo['shop_id'],'eb3d85b6b0350');
+            //var_export($shopContactInfo);die;
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
             /*if(!is_array($shopContactInfo)){
                 $shopContactInfo = $this->getPublicShopContactInfo($storeInfo['shop_id'],'f3e943131733a');
             }*/
@@ -287,6 +324,7 @@ class Test extends Command
             if($shopContactInfo['info']['ok'] != 'true'){
                 continue;
             }
+<<<<<<< HEAD
             if(!is_array($shopContactInfo['data']['cpsSh30data'])){
                 continue;
             }
@@ -297,6 +335,15 @@ class Test extends Command
                 $updateData['weixin'] = $shopContactInfo['data']['card']['jsonData']['微信'];
             }
             $updateData['detail'] = $shopContactInfo['data']['card']['content'];*/
+=======
+            if(array_key_exists('QQ',$shopContactInfo['data']['card']['jsonData']) && $shopContactInfo['data']['card']['jsonData']['QQ'] != ''){
+                $updateData['qq_number'] = $shopContactInfo['data']['card']['jsonData']['QQ'];
+            }
+            if(array_key_exists('微信',$shopContactInfo['data']['card']['jsonData']) && $shopContactInfo['data']['card']['jsonData']['微信'] != ''){
+                $updateData['weixin'] = $shopContactInfo['data']['card']['jsonData']['微信'];
+            }
+            $updateData['detail'] = $shopContactInfo['data']['card']['content'];
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
             //var_dump($updateData);die;
             $save = $storeObj::update($updateData,['id'=>$storeInfo['id']]);
             //var_dump($save);die;
@@ -304,8 +351,12 @@ class Test extends Command
             //usleep(300000);
             echo $storeInfo['title'].'|'.$loopnum."\r\n";
         }
+<<<<<<< HEAD
         echo '更新成功'.$loopnum."\r\n";
         //$save ? $this->success('更新成功'.$loopnum) : $this->error('更新失败'.$loopnum);
+=======
+        $save ? $this->success('更新成功'.$loopnum) : $this->error('更新失败'.$loopnum);
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
     }
 
     //根据店铺ID获取公共店铺联系方式信息
@@ -315,11 +366,19 @@ class Test extends Command
             return ['message'=>'error'];
         }
         $timeStr = $this->msectime();
+<<<<<<< HEAD
         //$url = 'https://pub.alimama.com/shopdetail/shopinfo.json?oriMemberId='.$shopId.'&t='.$timeStr.'&pvid=undefined&_tb_token_='.$token.'&_input_charset=utf-8';
         $url = 'https://pub.alimama.com/shopdetail/keeper30DayRpt.json?oriMemberId='.$shopId.'&t='.$timeStr.'&pvid=undefined&_tb_token_='.$token.'&_input_charset=utf-8';
         //$data['shopid'] = '2153863260';
         //$data['sellerid'] = '2153863260';
         $cookies = 't=0e8be2df669f49ea41fd2b83cd859189; cna=+vscGbxObiQCARsTbHuOqLq+; _ga=GA1.1.664267944.1622714210; _ga_Q39CBKW296=GS1.1.1625724227.5.1.1625724303.0; t_alimama=3be8245eace528c826f0ea36cf872870; v_alimama=0; cookie2_alimama=1ebe15d5ef236ea76ab8b9602a3cd0e3; _tb_token_=7bbae553b8ef3; alimamapwag=TW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzExMC4wLjAuMCBTYWZhcmkvNTM3LjM2; cookie32=0c8e6a49eda9f71bc61730e277d6ab3a; alimamapw=QFJWVAwHVwNtAwYEA2wFAl1WAlFVUQVVVwELA1VTAAYGAApRVgFVV1MDU1JXUw%3D%3D; cookie31=MTIwMzQzMTA0LHRiNDI5MDU1XzIwMTMsMTE3NDgxMjgzN0BxcS5jb20sVEI%3D; JSESSIONID=BA832743E085C467594F2B14EB026173; login=W5iHLLyFOGW7aA%3D%3D; xlly_s=1; isg=BGJi36-HcoMkgGpZewqPGYH0s-jEs2bNVM8XVKz7clWAfwP5lUPf3VK9r7uD795l; l=fB_HazBuj3jPgcQzBO5aourza77O6IRb8sPzaNbMiIEGa6sf9F1NENCs8-owWdtjgTCjletrl5ZFzdBzZ34daxDDBeXFfk5InxvtaQtJe; tfstk=c61PBFDaS7FrwU_LXIAF0j8v8AARa3Ql-j86Ekn-rAs3IRpMbsjjvE4rFE8IuDvl.';
+=======
+        $url = 'https://pub.alimama.com/shopdetail/shopinfo.json?oriMemberId='.$shopId.'&t='.$timeStr.'&pvid=undefined&_tb_token_='.$token.'&_input_charset=utf-8';
+        //$data['shopid'] = '2153863260';
+        //$data['sellerid'] = '2153863260';
+        $cookies = 't=903865ab2fa4fcbf20274a49b3b0960f; cna=jrcVFkkHOgoCAXWY8dpsCkSG; _ga=GA1.2.1709063850.1613631129; _gid=GA1.2.904003747.1613631129; __guid=116136583.2915079402919763500.1613631245428.83; account-path-guide-s1=true; enc=ZjRvEh1dz8pwq1fOpVLnP6%2FpBpQoln99pOzt7R35lo2tDtBCoggnEDRzZdgUsTf2Kmfx0m%2FNRHSFZ7JY2PNKYA%3D%3D; pub-message-center=1; v=0; cookie2=10c01e7fd5bcf44b4ae01a0f550df71f; _tb_token_=5e388d9bd1e0; xlly_s=1; alimamapwag=TW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV09XNjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS83OC4wLjM5MDQuMTA4IFNhZmFyaS81MzcuMzY%3D; cookie32=10ccba842ca5610cb7c0a618575ea16b; alimamapw=QHIhHCQmECJTRHELRnsMQycDQHMlHCdbECVWRHcOaggBAlYCBAdTCQBXAl9WAlMIAAsDVVFWVAdV%0AX1ZTUQMG; cookie31=MTE5NTE4NjQxLCVFNSU5MCU5QiVFNSVBRCU5MCVFNSVBNiU4MiVFNCVCOSVBNiVFOSU5QyVCMiw4MzcwNzA3NTZAcXEuY29tLFRC; login=W5iHLLyFOGW7aA%3D%3D; monitor_count=19; _gat_UA-141509622-12=1; x5sec=7b22756e696f6e2d7075623b32223a223765396537363132316533653335656236663439393966623266313131346331434f664676594547454b4f582f4a6670687158445a7a44436c372b4941773d3d227d; tfstk=cbrABgAeX_f0GnH8LrQk1MgY-TVOZ8ftNKGMX9vI_uld5vxOijZ3vsFClAMW4TC..; l=eBQr_UuPv0Zx_f_DBOfZourza77T7IRAguPzaNbMiOCP9v1W5rpFW6i3OuYXCnGVhsgkR3rEQAfvBeYBqhfnZrn_uBaE3jHmn; isg=BN7eb-LuMiYGOWbDtk84XS3eL3Qgn6IZJxeukohnVyEcq36F8C1FKzRBp7enk5ox';
+
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
         //执行请求获取数据
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -579,6 +638,7 @@ class Test extends Command
         return $result;
     }
 
+<<<<<<< HEAD
     public function getshopIDArr()
     {
         return ['725677994',
@@ -1585,3 +1645,6 @@ class Test extends Command
 
 }
 
+=======
+}
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e

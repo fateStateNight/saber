@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /*a:2:{s:49:"/app/app/admin/view/system/script_task/index.html";i:1651202244;s:39:"/app/app/admin/view/layout/default.html";i:1602818599;}*/ ?>
+=======
+<?php /*a:2:{s:49:"/app/app/admin/view/system/script_task/index.html";i:1608001426;s:39:"/app/app/admin/view/layout/default.html";i:1602818599;}*/ ?>
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,7 +48,11 @@
     <a class="layui-btn layui-btn-xs layui-btn-success" data-open="system.script_task/edit?id={{d.id}}" data-title="编辑" data-full="true">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" data-request="system.script_task/delete?id={{d.id}}" data-title="确定删除？">删除</a>
     {{#  } }}
+<<<<<<< HEAD
     {{#  if(d.type == 2 && d.file_url !== '' && d.file_url !== 'undefined'){ }}
+=======
+    {{#  if(d.type == 2 && d.file_url != ''){ }}
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
     <a class="layui-btn layui-btn-xs layui-btn-success" href="{{d.file_url}}" data-title="下载"><i class="layui-icon layui-icon-download-circle"></i>下载</a>
     {{#  } }}
 </script>

@@ -38,6 +38,7 @@ class ScriptTask extends AdminController
                 return $this->selectList();
             }
             list($page, $limit, $where) = $this->buildTableParames();
+<<<<<<< HEAD
             if(session('admin')['auth_ids'] == 7 || session('admin')['auth_ids'] == 1){
                 $count = $this->model
                     ->withJoin('systemAdmin', 'LEFT')
@@ -80,6 +81,31 @@ class ScriptTask extends AdminController
                         }
                     }else{
                         $list[$keyNum]['task_content'] = '';
+=======
+            $count = $this->model
+                ->withJoin('systemAdmin', 'LEFT')
+                ->where($where)
+                ->where('relation_id', '=', 0)
+                ->count();
+            $list = [];
+            if($count > 0){
+                $list = $this->model
+                    ->withJoin('systemAdmin', 'LEFT')
+                    ->where($where)
+                    ->where('relation_id', '=', 0)
+                    ->page($page, $limit)
+                    ->order($this->sort)
+                    ->select()
+                    ->toArray();
+                foreach($list as $keyNum=>$data){
+                    if($data['type'] == 1){
+                        $taskContent = json_decode($data['task_content'], true);
+                        $list[$keyNum]['task_content'] = "更新 ".$taskContent['start_time']." 到 ".$taskContent['end_time']." 的订单数据";
+                    }elseif($data['type'] == 2){
+                        $taskContent = json_decode($data['task_content'], true);
+                        $list[$keyNum]['task_content'] = "导出 ".$taskContent['start_time']." 到 ".$taskContent['end_time']." 的订单数据";
+                        $list[$keyNum]['file_url'] = (array_key_exists('file_url',$taskContent))?$taskContent['file_url']:'';
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                     }
                 }
             }
@@ -115,7 +141,11 @@ class ScriptTask extends AdminController
                 }elseif($data['type'] == 2){
                     $taskContent = json_decode($data['task_content'], true);
                     $recordData[$keyNum]['task_content'] = "导出 ".$taskContent['start_time']." 到 ".$taskContent['end_time']." 的订单数据";
+<<<<<<< HEAD
                     if(array_key_exists('file_url', $taskContent) && ($data['create_time'] > date('Y-m-d H:i:s', strtotime('-1 month')))){
+=======
+                    if(array_key_exists('file_url', $taskContent)){
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                         $recordData[$keyNum]['file_url'] = $taskContent['file_url'];
                     }else{
                         $recordData[$keyNum]['file_url'] = '';
@@ -155,6 +185,7 @@ class ScriptTask extends AdminController
                 $this->error('创建失败');
             }
             if($save){
+<<<<<<< HEAD
                 //将系统任务剔除
                 if($post['type'] == 0){
                     $this->error('创建系统任务成功');
@@ -162,6 +193,11 @@ class ScriptTask extends AdminController
                 //将主任务切割为子任务
                 $primaryId = $this->model->id;
                 $interval_time = 3600*24;//1天为一个时间段
+=======
+                //将主任务切割为子任务
+                $primaryId = $this->model->id;
+                $interval_time = 3600*24;//5天为一个时间段
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                 $loopNum = 0;
                 do{
                     $childStartTime = date('Y-m-d H:i:s',strtotime($post['start_time'])+$interval_time*$loopNum);
@@ -204,7 +240,11 @@ class ScriptTask extends AdminController
         $row->isEmpty() && $this->error('数据不存在');
         try {
             $save = $row->delete();
+<<<<<<< HEAD
             //$this->model->where('relation_id', '=', $id)->delete();
+=======
+            $this->model->where('relation_id', '=', $id)->delete();
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
         } catch (\Exception $e) {
             $this->error('删除失败');
         }

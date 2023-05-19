@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /*a:2:{s:36:"/app/app/admin/view/index/index.html";i:1639013632;s:39:"/app/app/admin/view/layout/default.html";i:1602818599;}*/ ?>
+=======
+<?php /*a:2:{s:36:"/app/app/admin/view/index/index.html";i:1604061878;s:39:"/app/app/admin/view/layout/default.html";i:1602818599;}*/ ?>
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
 <!DOCTYPE html>
 <html>
 <head>

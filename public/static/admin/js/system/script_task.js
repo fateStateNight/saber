@@ -20,6 +20,7 @@ define(["jquery", "easy-admin"], function ($, ea) {
                 toolbar: ['refresh', 'delete', 'export'],
                 cols: [[
                     {type: 'checkbox'},
+<<<<<<< HEAD
                     {field: 'id', title: 'id', hide: true, search:false},
                     {field: 'title', title: '任务标题'},
                     {field: 'type', title: '任务类型', search: 'select', selectList: {"0":"系统任务","1":"订单数据更新","2":"订单数据导出"}, hide: true},
@@ -30,6 +31,18 @@ define(["jquery", "easy-admin"], function ($, ea) {
                     {field: 'systemAdmin.head_img', title: '头像', search: false, templet: ea.table.image},
                     {field: 'create_time', title: '创建时间', search:'scope'},
                     {width: 180, title: '操作', toolbar: '#controlPlan'},
+=======
+                    {field: 'id', title: 'id'},
+                    {field: 'title', title: '任务标题'},
+                    {field: 'type', title: '任务类型', search: 'select', selectList: ["系统任务","订单数据更新","订单数据导出"]},
+                    {field: 'task_status', search: 'select', selectList: ["未执行","执行中","已完成"], title: '任务状态'},
+                    {field: 'task_content', title: '任务内容'},
+                    {field: 'creater_id', title: '创建人ID', hide: true},
+                    {field: 'systemAdmin.nickname', title: '昵称'},
+                    {field: 'systemAdmin.head_img', title: '头像', search: false, templet: ea.table.image},
+                    {field: 'create_time', title: '创建时间'},
+                    {width: 250, title: '操作', toolbar: '#controlPlan'},
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                 ]],
             });
 

@@ -80,7 +80,11 @@ class Login extends AdminController
 
     /**
      * 用户退出
+<<<<<<< HEAD
      *
+=======
+     * @return mixed
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
      */
     public function out()
     {
@@ -96,6 +100,7 @@ class Login extends AdminController
     {
         return Captcha::create();
     }
+<<<<<<< HEAD
 
     /**
      * 淘宝回调地址请求
@@ -188,4 +193,6 @@ class Login extends AdminController
         echo $online_gif[$flag];
     }
 
+=======
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
 }

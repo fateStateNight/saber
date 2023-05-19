@@ -10,7 +10,10 @@ use jianyan\excel\Excel;
 use think\App;
 use think\facade\Cache;
 use function Qiniu\base64_urlSafeDecode;
+<<<<<<< HEAD
 use app\admin\model\SystemDouyinAccount;
+=======
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
 
 /**
  * @ControllerAnnotation(title="常用工具")
@@ -20,8 +23,11 @@ class CommonTools extends AdminController
 
     use \app\admin\traits\Curd;
 
+<<<<<<< HEAD
     protected $douyinModel;
 
+=======
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
     public function __construct(App $app)
     {
         parent::__construct($app);
@@ -30,12 +36,17 @@ class CommonTools extends AdminController
 
         $taoAccountModel = new \app\admin\model\MallTaolijinGoods();
 
+<<<<<<< HEAD
         $this->douyinModel = new \app\admin\model\SystemDouyinAccount();
 
         $this->assign('getSystemTaobaoAccountList', $taoAccountModel->getSystemTaobaoAccountList());
 
         $this->assign('douAccountList', $this->douyinModel->getDouAccountList());
 
+=======
+        $this->assign('getSystemTaobaoAccountList', $taoAccountModel->getSystemTaobaoAccountList());
+
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
     }
 
     public function redisTest()
@@ -77,6 +88,7 @@ class CommonTools extends AdminController
 
 
     //获取招商数据并导出
+<<<<<<< HEAD
     public function analysisDouCommand()
     {
         $post = $this->request->post();
@@ -110,6 +122,28 @@ class CommonTools extends AdminController
             'code'  => 0,
             'msg'   => '',
             'data'  => $result,
+=======
+    public function getBusinessInfo()
+    {
+        $post = $this->request->post();
+        if($post['activeId'] == ''){
+            $this->error('活动ID不能为空！');
+        }
+        if($post['cookie_content'] == ''){
+            $this->error('账号cookie不能为空！');
+        }
+        $eventIdArr = explode(',',$post['activeId']);
+        $cookies = $post['cookie_content'];
+        $businessFile = $this->exportBusinessData($eventIdArr,$cookies);
+        $saleFile = $this->exportSaleData($eventIdArr,$cookies);
+        $data = [
+            'code'  => 0,
+            'msg'   => '',
+            'data'  => [
+                'businessFile' => '/download/'.$businessFile,
+                'saleFile' => '/download/'.$saleFile
+            ],
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
         ];
         return json($data);
     }
@@ -638,6 +672,7 @@ class CommonTools extends AdminController
 
 
     public function apiTest()
+<<<<<<< HEAD
     {
         try{
             if(1){
@@ -662,6 +697,9 @@ class CommonTools extends AdminController
 
 
         die();
+=======
+    {die();
+>>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
         //测试接口
         /*[
             'key' => null,
