@@ -560,7 +560,7 @@ class BusinessScene extends TimeModel
         curl_close($ch);
         $result = json_decode($output,true);
         $result = $result?$result:[];
-        $this->write_log('/tmp/goodsVerify.log',serialize($result));
+        //$this->write_log('/tmp/goodsVerify.log',serialize($result));
         return $result;
     }
 

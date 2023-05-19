@@ -51,10 +51,16 @@ class SycOrderDatas extends Command
             $this->orderModelObj = new \app\admin\model\BusinessOrder();
         }
         //如果存在日期参数，按照日期更新数据，不读取任务数据
-        if($currentDay){
+        if($currentDay == 'today'){
             $taskInfo = [
                 'taskId' => 0,
                 'carryDate' => date("Y-m-d 00:00:00")
+            ];
+        }elseif($currentDay){
+            $currentDate = date("Y-m-d", strtotime($currentDay))." 00:00:00";
+            $taskInfo = [
+                'taskId' => 0,
+                'carryDate' => $currentDate
             ];
         }else{
             //获取任务信息

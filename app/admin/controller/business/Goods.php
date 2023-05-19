@@ -120,7 +120,9 @@ class Goods extends AdminController
             list($page, $limit, $where) = $this->buildTableParames();
             if($eventId){
                 //更新商品信息数据
-                $ret = $this->updateEventGoodsData($showEventArr);
+                if($page <= 1){
+                    $ret = $this->updateEventGoodsData($showEventArr);
+                }
                 if(session('admin')['auth_ids'] == 7 || session('admin')['auth_ids'] == 1){
                     //管理员和超级管理员能查看所有数据
                     $count = $this->model
@@ -133,7 +135,7 @@ class Goods extends AdminController
                         ->where(['business_goods.eventId'=>$eventId])
                         ->where($where)
                         ->page($page, $limit)
-                        ->order(['endTime'=>'desc','id'=>'desc'])
+                        ->order(['auditStatus'=>'asc','endTime'=>'desc','id'=>'desc'])
                         ->select();
                 }else{
                     $where_1 = ['auditorId' => session('admin')['id']];
@@ -169,7 +171,7 @@ class Goods extends AdminController
                         })
                         ->where($where)
                         ->page($page, $limit)
-                        ->order(['endTime'=>'desc','id'=>'desc'])
+                        ->order(['auditStatus'=>'asc','endTime'=>'desc','id'=>'desc'])
                         ->select();
                 }
             }else{
@@ -470,6 +472,10 @@ class Goods extends AdminController
             $verifyRet = $this->model->modifyNewItemStatus($accountInfo[0]['token'], $accountInfo[0]['cookies'],$signGoodsStr,1);
             if(!$verifyRet || !array_key_exists('data',$verifyRet) || !array_key_exists('success',$verifyRet)){
                 $this->error('批量修改审核状态失败！');
+            }
+            //20230519 根据修改结果判断是否成功
+            if($verifyRet['data'] != ''){
+                $this->error($verifyRet['data'][0]['extInfo']['title']."<br/>".$verifyRet['data'][0]['bizCheckErrorInfoList'][0]);
             }
             //修改数据表中数据状态
             if($verifyRet['success']){
