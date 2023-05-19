@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
 ![EasyAdmin-logo](public/static/common/images/logo-2.png)
 
@@ -13,23 +13,7 @@
 
 ## 项目介绍
 
-基于ThinkPHP6.0和layui的快速开发的后台管理系统。
-
-技术交流QQ群：[763822524](https://jq.qq.com/?_wv=1027&k=5IHJawE) `加群请备注来源：如gitee、github、官网等`。
-
-## 站点地址
-
-* 官方网站：[http://easyadmin.99php.cn](http://easyadmin.99php.cn)
-
-* 文档地址：[http://easyadmin.99php.cn/docs](http://easyadmin.99php.cn/docs)
-
-* 演示地址：[http://easyadmin.99php.cn/admindemo](http://easyadmin.99php.cn/admindemo)（账号：admin，密码：123456。备注：只有查看信息的权限）
- 
-## 代码仓库
-
-* GitHub地址：[https://github.com/zhongshaofa/easyadmin](https://github.com/zhongshaofa/easyadmin)
-
-* Gitee地址：[https://gitee.com/zhongshaofa/easyadmin](https://gitee.com/zhongshaofa/easyadmin)
+基于ThinkPHP6.0和layui的快速开发且仅用于公司内部管理的后台管理系统。
 
 
 ## 项目特性
@@ -66,69 +50,4 @@
 * 上传文件记录管理
 * 后台路径自定义，防止别人找到对应的后台地址
 
-## 特别感谢
-
-以下项目排名不分先后
-
-* ThinkPHP：[https://github.com/top-think/framework](https://github.com/top-think/framework)
-
-* Layuimini：[https://github.com/zhongshaofa/layuimini](https://github.com/zhongshaofa/layuimini)
-
-* Annotations：[https://github.com/doctrine/annotations](https://github.com/doctrine/annotations)
-
-* Layui：[https://github.com/sentsin/layui](https://github.com/sentsin/layui)
-
-* Jquery：[https://github.com/jquery/jquery](https://github.com/jquery/jquery)
-
-* RequireJs：[https://github.com/requirejs/requirejs](https://github.com/requirejs/requirejs)
-
-* CKEditor：[https://github.com/ckeditor/ckeditor4](https://github.com/ckeditor/ckeditor4)
-
-* Echarts：[https://github.com/apache/incubator-echarts](https://github.com/apache/incubator-echarts)
-  
- ## 捐赠支持
- 
-开源项目不易，若此项目能得到你的青睐，可以捐赠支持作者持续开发与维护，感谢所有支持开源的朋友。
-
- ![Image text](https://chung-common.oss-cn-beijing.aliyuncs.com/donate_qrcode.png)
-=======
-# 个人站点
-
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
-
-#### 软件架构
-软件架构说明
-
-
-#### 安装教程
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
 >>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
