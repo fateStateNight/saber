@@ -12,8 +12,8 @@ function pullCode(){
     return true;
 }
 
-function getAllHeaders(){
-    $headers = array();
+function getServerInfo(){
+    $headers = [];
     foreach($_SERVER as $key=>$value){
         if(substr($key, 0, 5)==='HTTP_'){
             $key = substr($key, 5);
