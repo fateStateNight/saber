@@ -13,8 +13,8 @@ if($headerInfo['x-gitee-token'] == '12345678'){
 
 
 function pullCode(){
-    $shell1 = "cd /app/ && git reset --hard origin/master 2>&1";
-    $shell2 = "git pull origin master 2>&1";
+    $shell1 = "cd /app/ && sudo git reset --hard origin/master 2>&1";
+    $shell2 = "sudo git pull origin master 2>&1";
     exec($shell1, $output1);
     var_dump($output1);
     exec($shell2, $output2);
