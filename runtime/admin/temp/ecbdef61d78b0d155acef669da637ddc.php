@@ -1,4 +1,4 @@
-<?php /*a:2:{s:45:"/app/app/admin/view/business/scene/index.html";i:1649933101;s:39:"/app/app/admin/view/layout/default.html";i:1602818599;}*/ ?>
+<?php /*a:2:{s:45:"/app/app/admin/view/business/scene/index.html";i:1681694689;s:39:"/app/app/admin/view/layout/default.html";i:1678949704;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +23,7 @@
         };
     </script>
     <script src="/static/plugs/layui-v2.5.6/layui.all.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
+<!--    <script src="/static/plugs/lay-module/layim-v3.7.6/dist/layui.all.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>-->
     <script src="/static/plugs/require-2.3.6/require.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
     <script src="/static/config-admin.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
 </head>
@@ -44,7 +45,23 @@
 <script type="text/html" id="controlPlanScene">
     <a class="layui-btn layui-btn-xs layui-btn-normal" target="_self" layuimini-content-href="<?php echo __url('business.goods/index'); ?>?eventId={{d.eventId}}" href="javascript:void(0);" lay-event="check" data-title="报名商品列表">审核</a>
 
-    <a class="layui-btn layui-btn-xs layui-btn-success" event_link="ad.alimama.com/zhaoshang/cpevent/index.htm?keyword={{d.eventId}}&from=cp" lay-event="copy_link" id="copy_link" data-title="复制活动链接" >活动链接</a>
+    <a class="layui-btn layui-btn-xs layui-btn-success" event_link="
+{{#  if(d.sceneId == 6){ }}
+https://ad.alimama.com/portal/v2/pages/zhaoshang/normal/list.htm?mode=all&srcCode=1&from=cp&keyword={{d.eventId}}&showOnlySellerCanJoin=false
+{{# } else if(d.sceneId == 8){ }}
+https://ad.alimama.com/portal/v2/pages/zhaoshang/content/list.htm?mode=all&srcCode=1&from=cp&keyword={{d.eventId}}&showOnlySellerCanJoin=false
+{{#  } else if(d.sceneId == 10 || d.sceneId == 13 || d.sceneId == 14){ }}
+{{d.eventId}}
+{{#  } else if(d.sceneId == 16){ }}
+https://ad.alimama.com/portal/v2/pages/zhaoshang/topN/list.htm?mode=all&from=cp&keyword={{d.eventId}}&showOnlySellerCanJoin=false&from=cp
+{{#  } else if(d.sceneId == 27){ }}
+https://ad.alimama.com/portal/v2/pages/zhaoshang/superU2/list.htm?mode=all&srcCode=1&from=cp&keyword={{d.eventId}}&showOnlySellerCanJoin=false
+{{#  } else { }}
+未知活动类型，请联系管理员处理
+{{#  }  }}
+" lay-event="copy_link" id="copy_link" data-title="复制活动链接" >活动链接</a>
+
+
 </script>
 </body>
 </html>

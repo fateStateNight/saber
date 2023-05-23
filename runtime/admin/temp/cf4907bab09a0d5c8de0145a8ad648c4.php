@@ -1,4 +1,4 @@
-<?php /*a:2:{s:52:"/app/app/admin/view/system/taobao_account/index.html";i:1600337731;s:39:"/app/app/admin/view/layout/default.html";i:1602818599;}*/ ?>
+<?php /*a:2:{s:52:"/app/app/admin/view/system/taobao_account/index.html";i:1600337731;s:39:"/app/app/admin/view/layout/default.html";i:1678949704;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +23,7 @@
         };
     </script>
     <script src="/static/plugs/layui-v2.5.6/layui.all.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
+<!--    <script src="/static/plugs/lay-module/layim-v3.7.6/dist/layui.all.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>-->
     <script src="/static/plugs/require-2.3.6/require.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
     <script src="/static/config-admin.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
 </head>

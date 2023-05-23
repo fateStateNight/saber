@@ -4,16 +4,11 @@ namespace app\admin\controller;
 
 
 use app\admin\model\SystemAdmin;
-<<<<<<< HEAD
 use app\admin\model\SystemAdminGroup;
 use app\admin\model\SystemAdminGroupRelation;
 use app\admin\model\SystemQuick;
 use app\common\controller\AdminController;
 use EasyAdmin\upload\Uploadfile;
-=======
-use app\admin\model\SystemQuick;
-use app\common\controller\AdminController;
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
 use think\App;
 use think\facade\Env;
 
@@ -27,10 +22,7 @@ class Index extends AdminController
      */
     public function index()
     {
-<<<<<<< HEAD
         $this->assign('user_id',session('admin')['id']);
-=======
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
         return $this->fetch('', [
             'admin' => session('admin'),
         ]);
@@ -49,7 +41,6 @@ class Index extends AdminController
             ->limit(8)
             ->select();
         $this->assign('quicks', $quicks);
-<<<<<<< HEAD
         //获取当月成交总金额
         $businessSceneModel = new \app\admin\model\BusinessScene();
         $accountInfo = $businessSceneModel->getALiAccountInfo(session('admin')['taobao_accountId']);
@@ -83,8 +74,6 @@ class Index extends AdminController
             ->where('endTime', '>=', $currentTime)->count();
         $this->assign('goodsCount',$goodsCount);
 
-=======
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
         return $this->fetch();
     }
 
@@ -169,7 +158,6 @@ class Index extends AdminController
         return $this->fetch();
     }
 
-<<<<<<< HEAD
 
 
     /**
@@ -356,6 +344,4 @@ class Index extends AdminController
 
 
 
-=======
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
 }

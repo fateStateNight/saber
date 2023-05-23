@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<?php /*a:2:{s:49:"/app/app/admin/view/system/admin_group/index.html";i:1651143860;s:39:"/app/app/admin/view/layout/default.html";i:1602818599;}*/ ?>
-=======
-<?php /*a:2:{s:49:"/app/app/admin/view/system/admin_group/index.html";i:1606447388;s:39:"/app/app/admin/view/layout/default.html";i:1602818599;}*/ ?>
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
+<?php /*a:2:{s:49:"/app/app/admin/view/system/admin_group/index.html";i:1651143860;s:39:"/app/app/admin/view/layout/default.html";i:1678949704;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +23,7 @@
         };
     </script>
     <script src="/static/plugs/layui-v2.5.6/layui.all.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
+<!--    <script src="/static/plugs/lay-module/layim-v3.7.6/dist/layui.all.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>-->
     <script src="/static/plugs/require-2.3.6/require.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
     <script src="/static/config-admin.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
 </head>
@@ -36,7 +33,6 @@
     <div class="layuimini-main">
         <div class="layui-card">
             <div class="layui-card-header" style="line-height: normal;height:auto;">
-<<<<<<< HEAD
                 <form class="layui-form layui-form-pane form-search" action="">
 
 
@@ -56,25 +52,6 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">群组创建时间</label>
                                     <div class="layui-input-inline">
-=======
-                <form class="layui-form" action="">
-                    <div class="layui-row layui-col-space10">
-                        <div class="layui-col-md3">
-                            <div class="grid-demo grid-demo-bg1">
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">群组名称</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入群组名称" class="layui-input">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="layui-col-md3">
-                            <div class="grid-demo">
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">群组创建时间</label>
-                                    <div class="layui-input-block">
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                                         <input type="text" name="date" id="date" lay-verify="date" data-date="" data-date-type="date" autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
@@ -87,18 +64,11 @@
                                 </button>
                             </div>
                         </div>
-<<<<<<< HEAD
 
                 </form>
 
                 <div class="layui-row layui-col-space10">
                     <div class="layui-col-md3">
-=======
-                    </div>
-                </form>
-                <div class="layui-row layui-col-space10">
-                    <div class="layui-col-md2">
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                         <button type="button" class="layui-btn" data-open="system.admin_group/add" data-full="true">
                             <i class="layui-icon">&#xe608;</i> 新建
                         </button>
@@ -117,11 +87,7 @@
                     <div class="layui-col-md3 card-box" style="margin:20px 40px;border-radius: 18px;border: 2px solid #d2d2d2;background-color: #fbfbfb;">
                         <div class="layuiadmin-card-text">
                             <div class="layui-text-top">
-<<<<<<< HEAD
                                 <div class="layui-row layui-form layui-col-space10">
-=======
-                                <div class="layui-row layui-form">
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                                     <div class="layui-col-xs1">
                                         <?php if($groupInfo['create_id'] == $adminInfo['id']): ?>
                                         <div class="layui-form-item" style="margin-top:-10px;" pane="">
@@ -132,7 +98,6 @@
                                         <?php endif; ?>
                                     </div>
                                     <div class="layui-col-xs4">
-<<<<<<< HEAD
                                         <img src="<?php echo htmlentities($groupInfo['group_image']); ?>" style="width:70px;height:100px;">
                                     </div>
                                     <div class="layui-col-xs7">
@@ -151,26 +116,6 @@
                                     <div class="layui-col-xs7">
                                         <label class="">公开：</label>
                                         <div class="layui-input-inline">
-=======
-                                        <img src="<?php echo htmlentities($groupInfo['group_image']); ?>" style="width:100%;height:140px;">
-                                    </div>
-                                    <div class="layui-col-xs7">
-                                        <label class="layui-form-label"> 群组名称：</label>
-                                        <div class="layui-form-mid layui-word-aux"><?php echo htmlentities($groupInfo['title']); ?></div>
-                                    </div>
-                                    <div class="layui-col-xs7">
-                                        <label class="layui-form-label"> 群组人数：</label>
-                                        <div class="layui-form-mid layui-word-aux"><?php echo htmlentities($groupInfo['member_num']); ?></div>
-                                    </div>
-                                    <div class="layui-col-xs7">
-                                        <label class="layui-form-label"> 备注：</label>
-                                        <div class="layui-form-mid layui-word-aux"><?php echo htmlentities($groupInfo['remark']); ?></div>
-                                    </div>
-                                    <?php if($groupInfo['create_id'] == $adminInfo['id']): ?>
-                                    <div class="layui-col-xs7">
-                                        <label class="layui-form-label">是否公开：</label>
-                                        <div class="layui-input-block">
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                                             <input type="checkbox" name="publish" publish-groupId="<?php echo htmlentities($groupInfo['id']); ?>" lay-filter="publish-switch" lay-skin="switch" lay-text="ON|OFF" <?php if($groupInfo['publish'] == '1'): ?>checked="checked"<?php endif; ?> >
                                         </div>
                                     </div>

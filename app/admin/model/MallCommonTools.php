@@ -4,10 +4,7 @@ namespace app\admin\model;
 
 include_once ROOT_PATH."extend/dataokesdk/ApiSdk.php";
 include_once "/app/extend/taobaosdk/TopSdk.php";
-<<<<<<< HEAD
 include_once "/app/extend/douyinsdk/autoload.php";
-=======
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
 
 use app\common\model\TimeModel;
 
@@ -23,7 +20,6 @@ class MallCommonTools extends TimeModel
     //版本号  必填
     protected $version = 'v1.2.3';
 
-<<<<<<< HEAD
     //抖音接口公共参数
     protected $douAppKey = '7216292262077072953';
 
@@ -31,8 +27,6 @@ class MallCommonTools extends TimeModel
 
     protected $douHost = 'https://openapi-fxg.jinritemai.com';
 
-=======
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
 
     public function analysisSecret($content)
     {
@@ -142,7 +136,6 @@ class MallCommonTools extends TimeModel
         return $resultData;
     }
 
-<<<<<<< HEAD
     //抖音API接口
     //抖口令解析
     public function analysisDouCommand($token, $command){
@@ -244,7 +237,5 @@ class MallCommonTools extends TimeModel
         return $result;
     }
 
-=======
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
 
 }

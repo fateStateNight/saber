@@ -21,11 +21,7 @@ class TaoLiJinOrderResult extends Command
     {
         // 指令配置
         $this->setName('taolijinOrderResult')
-<<<<<<< HEAD
             ->setDescription('更新淘礼金投放结果的数据');
-=======
-            ->setDescription('the taolijinOrderResult command');        
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
     }
 
     protected function execute(Input $input, Output $output)

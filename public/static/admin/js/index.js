@@ -32,7 +32,6 @@ define(["jquery", "easy-admin", "echarts", "echarts-theme", "miniAdmin", "miniTa
             /*var socket = new WebSocket('wss://www.childrendream.cn/websocket/');
             //连接成功时触发
             socket.onopen = function(){
-<<<<<<< HEAD
                 //console.log('hello,ready?');
                 socket.send('连接成功,Hi Server, I am someone!');
                 var user_id = $("#user_id").html();
@@ -41,16 +40,6 @@ define(["jquery", "easy-admin", "echarts", "echarts-theme", "miniAdmin", "miniTa
                     "type":"reg",
                     "content":{
                         "uid":user_id,
-=======
-                console.log('hello,ready?');
-                //socket.send('连接成功,Hi Server, I am someone!');
-                //var user_id = $("#user_id").html();
-                console.log(1);
-                let message = {
-                    "type":"reg",
-                    "content":{
-                        "uid":1,
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                     },
                 };
                 socket.send(JSON.stringify(message));
@@ -58,11 +47,7 @@ define(["jquery", "easy-admin", "echarts", "echarts-theme", "miniAdmin", "miniTa
 
             //监听接收消息
             socket.onmessage = function(res){
-<<<<<<< HEAD
                 //console.log(res);
-=======
-                console.log(res);
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                 if(typeof res === 'object'){
                     var content = JSON.parse(res.data);
                     res = content;
@@ -73,7 +58,6 @@ define(["jquery", "easy-admin", "echarts", "echarts-theme", "miniAdmin", "miniTa
                 }
             };*/
 
-<<<<<<< HEAD
 
 
 
@@ -81,9 +65,6 @@ define(["jquery", "easy-admin", "echarts", "echarts-theme", "miniAdmin", "miniTa
         },
 
 
-=======
-        },
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
         welcome: function () {
 
             miniTab.listen();
@@ -118,80 +99,6 @@ define(["jquery", "easy-admin", "echarts", "echarts-theme", "miniAdmin", "miniTa
                     }
                 });
             });
-<<<<<<< HEAD
-=======
-
-            /**
-             * 报表功能
-             */
-            /*var echartsRecords = echarts.init(document.getElementById('echarts-records'), 'walden');
-            var optionRecords = {
-                title: {
-                    text: '访问统计'
-                },
-                tooltip: {
-                    trigger: 'axis'
-                },
-                legend: {
-                    data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
-                },
-                grid: {
-                    left: '3%',
-                    right: '4%',
-                    bottom: '3%',
-                    containLabel: true
-                },
-                toolbox: {
-                    feature: {
-                        saveAsImage: {}
-                    }
-                },
-                xAxis: {
-                    type: 'category',
-                    boundaryGap: false,
-                    data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
-                },
-                yAxis: {
-                    type: 'value'
-                },
-                series: [
-                    {
-                        name: '邮件营销',
-                        type: 'line',
-                        stack: '总量',
-                        data: [120, 132, 101, 134, 90, 230, 210]
-                    },
-                    {
-                        name: '联盟广告',
-                        type: 'line',
-                        stack: '总量',
-                        data: [220, 182, 191, 234, 290, 330, 310]
-                    },
-                    {
-                        name: '视频广告',
-                        type: 'line',
-                        stack: '总量',
-                        data: [150, 232, 201, 154, 190, 330, 410]
-                    },
-                    {
-                        name: '直接访问',
-                        type: 'line',
-                        stack: '总量',
-                        data: [320, 332, 301, 334, 390, 330, 320]
-                    },
-                    {
-                        name: '搜索引擎',
-                        type: 'line',
-                        stack: '总量',
-                        data: [820, 932, 901, 934, 1290, 1330, 1320]
-                    }
-                ]
-            };
-            echartsRecords.setOption(optionRecords);
-            window.addEventListener("resize", function () {
-                echartsRecords.resize();
-            });*/
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
         },
         editAdmin: function () {
             ea.listen();
@@ -202,11 +109,8 @@ define(["jquery", "easy-admin", "echarts", "echarts-theme", "miniAdmin", "miniTa
     };
     return Controller;
 });
-<<<<<<< HEAD
 
 
 
 
 
-=======
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e

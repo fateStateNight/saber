@@ -3,12 +3,8 @@ define(["jquery", "easy-admin", "cryptojs"], function ($, ea, crypto) {
     var init = {
         table_elem: '#currentTable',
         table_render_id: 'currentTableRenderId',
-<<<<<<< HEAD
         analysis_dou_command_url: 'mall.common_tools/analysisDouCommand',
         activity_transfer_url: 'mall.common_tools/activityTransfer',
-=======
-        business_effect_url: 'mall.common_tools/getBusinessInfo',
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
         analysis_url: 'mall.common_tools/analysis',
         transfer_url: 'mall.common_tools/transfer',
         effective_url: 'mall.common_tools/effective',
@@ -21,7 +17,6 @@ define(["jquery", "easy-admin", "cryptojs"], function ($, ea, crypto) {
     };
 
     var Controller = {
-<<<<<<< HEAD
         index: function () {
             //抖音口令解析
             $("#dou_command_analysis").on('click', function () {
@@ -67,36 +62,6 @@ define(["jquery", "easy-admin", "cryptojs"], function ($, ea, crypto) {
                             "商品短链接："+ transfer_data.data.data.z_link +"\n";
                         $("#dou_transfer_result").val(html);
                         ea.msg.success('转链成功！');
-=======
-
-        index: function () {
-
-            //获取招商效果数据
-            $("#business_get").on('click', function () {
-                var activeId = $('#activeId').val();
-                var cookie_content = $('#cookie_content').val();
-                if(activeId == ''){
-                    ea.msg.error('请输入活动ID！');
-                    return false;
-                }
-                if(cookie_content == ''){
-                    ea.msg.error('请输入账号cookie！');
-                    return false;
-                }
-
-                $.ajax({
-                    type: "POST",
-                    url: ea.url(init.business_effect_url),
-                    data: {"activeId": activeId,"cookie_content":cookie_content},
-                    dataType: "json",
-                    success: function (data) {
-                        //将生成的文件链接放入页面
-                        let orderHtml = "<a href=\""+data.data.businessFile+"\" class=\"layui-btn\">招商订单数据下载</a>";
-                        let saleHtml = "<a href=\""+data.data.saleFile+"\" class=\"layui-btn\">招商效果数据下载</a></div>";
-                        $("#order_file").append(orderHtml);
-                        $("#sale_file").append(saleHtml);
-                        ea.msg.success('导出成功，请在当天下载！');
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                     }
                 });
 
@@ -205,11 +170,7 @@ define(["jquery", "easy-admin", "cryptojs"], function ($, ea, crypto) {
             });
 
 
-<<<<<<< HEAD
             //测试
-=======
-            //高效转链功能
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
             $("#get-group-btn").on('click', function () {
                 $.ajax({
                     type: "POST",
@@ -232,15 +193,12 @@ define(["jquery", "easy-admin", "cryptojs"], function ($, ea, crypto) {
                     return false;
                 }
 
-<<<<<<< HEAD
                 let ret_data = Controller.littleWork(source_string,function(sign, text){
                     $("#resolve_result").val(text);
                     ea.msg.success('解密成功！');
                 });
                 return true;
 
-=======
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                 //第一步 根据店铺ID获取加密信息
                 $.ajax({
                     type: "POST",
@@ -342,10 +300,7 @@ define(["jquery", "easy-admin", "cryptojs"], function ($, ea, crypto) {
             } else cb ('no Refer');
         },
         aesCrypt: function (data, key, iv) {
-<<<<<<< HEAD
             data = (data + '').replace(/\n*$/g, '').replace(/\n/g, ''); //增加这一行，将换行符替换为空
-=======
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
             var decrypt = CryptoJS.AES.decrypt(data, CryptoJS.enc.Utf8.parse(key), {
                 iv: CryptoJS.enc.Latin1.parse(iv),
                 mode: CryptoJS.mode.CBC,

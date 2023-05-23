@@ -1,7 +1,4 @@
 # EasyAdmin
-=======
-# 个人站点
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
 
 #### Description
 {**When you're done, you can delete the content in this README and update the file with details for others getting started with your repository**}

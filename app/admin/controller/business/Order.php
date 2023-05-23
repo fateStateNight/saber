@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 namespace app\admin\controller\business;
 
 use app\admin\model\BusinessGoods;
@@ -12,15 +11,6 @@ use EasyAdmin\tool\CommonTool;
 use think\App;
 use think\facade\Db;
 
-=======
-
-namespace app\admin\controller\business;
-
-use app\common\controller\AdminController;
-use EasyAdmin\annotation\ControllerAnnotation;
-use EasyAdmin\annotation\NodeAnotation;
-use think\App;
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
 
 /**
  * @ControllerAnnotation(title="服务订单记录")
@@ -30,23 +20,17 @@ class Order extends AdminController
 
     use \app\admin\traits\Curd;
 
-<<<<<<< HEAD
     protected $taskModelObj;
 
     protected $adminModelObj;
 
-=======
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
     public function __construct(App $app)
     {
         parent::__construct($app);
 
         $this->model = new \app\admin\model\BusinessOrder();
-<<<<<<< HEAD
 
         $this->adminModelObj = new \app\admin\model\SystemAdmin();
-=======
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
         
         $this->assign('getTkStatusList', $this->model->getTkStatusList());
 
@@ -66,7 +50,6 @@ class Order extends AdminController
                 return $this->selectList();
             }
             list($page, $limit, $where) = $this->buildTableParames();
-<<<<<<< HEAD
             $businessGoodsModel = new \app\admin\model\BusinessGoods();
             if($where){
                 $isTimeLimit = false;
@@ -154,13 +137,6 @@ class Order extends AdminController
             }
             $count = $this->model->where($where)->count();
             $list = $this->model->where($where)
-=======
-            $count = $this->model
-                ->where($where)
-                ->count();
-            $list = $this->model
-                ->where($where)
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                 ->page($page, $limit)
                 ->order($this->sort)
                 ->select();
@@ -171,7 +147,6 @@ class Order extends AdminController
                 'data'  => $list,
             ];
             return json($data);
-<<<<<<< HEAD
 
             /*if(session('admin')['auth_ids'] == 7 || session('admin')['auth_ids'] == 1){
                 $data = $this->makeSelectSql($page, $limit, $where);
@@ -436,10 +411,5 @@ class Order extends AdminController
         $save?$this->success("导出任务已创建，请稍后在任务列表中下载！"):$this->error("导出任务创建失败，请稍后再试！");
         return true;
     }
-=======
-        }
-        return $this->fetch();
-    }
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
     
 }

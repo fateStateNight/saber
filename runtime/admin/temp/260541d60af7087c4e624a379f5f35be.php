@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<?php /*a:2:{s:36:"/app/app/admin/view/index/index.html";i:1639013632;s:39:"/app/app/admin/view/layout/default.html";i:1602818599;}*/ ?>
-=======
-<?php /*a:2:{s:36:"/app/app/admin/view/index/index.html";i:1604061878;s:39:"/app/app/admin/view/layout/default.html";i:1602818599;}*/ ?>
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
+<?php /*a:2:{s:36:"/app/app/admin/view/index/index.html";i:1678704968;s:39:"/app/app/admin/view/layout/default.html";i:1678949704;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,15 +23,19 @@
         };
     </script>
     <script src="/static/plugs/layui-v2.5.6/layui.all.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
+<!--    <script src="/static/plugs/lay-module/layim-v3.7.6/dist/layui.all.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>-->
     <script src="/static/plugs/require-2.3.6/require.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
     <script src="/static/config-admin.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
 </head>
 <body>
 <link rel="stylesheet" href="/static/plugs/lay-module/layuimini/layuimini.css?v=<?php echo time(); ?>" media="all">
 <link rel="stylesheet" href="/static/plugs/lay-module/layuimini/themes/default.css?v=<?php echo time(); ?>" media="all">
+<link rel="stylesheet" href="/static/plugs/lay-module/layim-v3.7.6/dist/css/layui.css" media="all">
+<!--<script src="/static/plugs/lay-module/layim-v3.7.6/dist/layui.js" charset="utf-8"></script>-->
 <style id="layuimini-bg-color">
 </style>
 <body class="layui-layout-body layuimini-all">
+<div id="user_id" style="display: none"><?php echo htmlentities($user_id); ?></div>
 <div class="layui-layout layui-layout-admin">
 
     <div class="layui-header header">

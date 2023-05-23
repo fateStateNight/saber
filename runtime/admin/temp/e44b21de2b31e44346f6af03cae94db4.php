@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<?php /*a:2:{s:38:"/app/app/admin/view/index/welcome.html";i:1662003952;s:39:"/app/app/admin/view/layout/default.html";i:1602818599;}*/ ?>
-=======
-<?php /*a:2:{s:38:"/app/app/admin/view/index/welcome.html";i:1603360822;s:39:"/app/app/admin/view/layout/default.html";i:1602818599;}*/ ?>
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
+<?php /*a:2:{s:38:"/app/app/admin/view/index/welcome.html";i:1684807540;s:39:"/app/app/admin/view/layout/default.html";i:1678949704;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +23,7 @@
         };
     </script>
     <script src="/static/plugs/layui-v2.5.6/layui.all.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
+<!--    <script src="/static/plugs/lay-module/layim-v3.7.6/dist/layui.all.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>-->
     <script src="/static/plugs/require-2.3.6/require.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
     <script src="/static/config-admin.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
 </head>
@@ -35,15 +32,9 @@
 <div class="layuimini-container">
     <div class="layuimini-main">
         <div class="layui-row layui-col-space15">
-<<<<<<< HEAD
             <div class="layui-col-md9">
                 <div class="layui-row layui-col-space15">
                     <div class="layui-col-md8">
-=======
-            <div class="layui-col-md8">
-                <div class="layui-row layui-col-space15">
-                    <div class="layui-col-md6">
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                         <div class="layui-card">
                             <div class="layui-card-header"><i class="fa fa-warning icon"></i>数据统计</div>
                             <div class="layui-card-body">
@@ -54,19 +45,11 @@
                                                 <div class="panel-body">
                                                     <div class="panel-title">
                                                         <span class="label pull-right layui-bg-blue">实时</span>
-<<<<<<< HEAD
                                                         <h5>上月付款总金额</h5>
                                                     </div>
                                                     <div class="panel-content">
                                                         <h1 class="no-margins"><?php echo htmlentities($currentMonthPrice); ?></h1>
                                                         <small>截止到上月底</small>
-=======
-                                                        <h5>用户统计</h5>
-                                                    </div>
-                                                    <div class="panel-content">
-                                                        <h1 class="no-margins">1234</h1>
-                                                        <small>当前分类总记录数</small>
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                                                     </div>
                                                 </div>
                                             </div>
@@ -76,19 +59,11 @@
                                                 <div class="panel-body">
                                                     <div class="panel-title">
                                                         <span class="label pull-right layui-bg-cyan">实时</span>
-<<<<<<< HEAD
                                                         <h5>报名商品统计</h5>
                                                     </div>
                                                     <div class="panel-content">
                                                         <h1 class="no-margins"><?php echo htmlentities($goodsCount); ?></h1>
                                                         <small>报名活动并且认领</small>
-=======
-                                                        <h5>商品统计</h5>
-                                                    </div>
-                                                    <div class="panel-content">
-                                                        <h1 class="no-margins">1234</h1>
-                                                        <small>当前分类总记录数</small>
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                                                     </div>
                                                 </div>
                                             </div>
@@ -98,19 +73,11 @@
                                                 <div class="panel-body">
                                                     <div class="panel-title">
                                                         <span class="label pull-right layui-bg-orange">实时</span>
-<<<<<<< HEAD
                                                         <h5>待定</h5>
                                                     </div>
                                                     <div class="panel-content">
                                                         <h1 class="no-margins">0</h1>
                                                         <small>截止到当前</small>
-=======
-                                                        <h5>浏览统计</h5>
-                                                    </div>
-                                                    <div class="panel-content">
-                                                        <h1 class="no-margins">1234</h1>
-                                                        <small>当前分类总记录数</small>
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                                                     </div>
                                                 </div>
                                             </div>
@@ -120,19 +87,11 @@
                                                 <div class="panel-body">
                                                     <div class="panel-title">
                                                         <span class="label pull-right layui-bg-green">实时</span>
-<<<<<<< HEAD
                                                         <h5>待定</h5>
                                                     </div>
                                                     <div class="panel-content">
                                                         <h1 class="no-margins">0</h1>
                                                         <small>截止到当前</small>
-=======
-                                                        <h5>订单统计</h5>
-                                                    </div>
-                                                    <div class="panel-content">
-                                                        <h1 class="no-margins">1234</h1>
-                                                        <small>当前分类总记录数</small>
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                                                     </div>
                                                 </div>
                                             </div>
@@ -142,25 +101,15 @@
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
                     <div class="layui-col-md4">
                         <div class="layui-card">
                             <div class="layui-card-header"><i class="fa fa-credit-card icon icon-blue"></i>待处理业务</div>
-=======
-                    <div class="layui-col-md6">
-                        <div class="layui-card">
-                            <div class="layui-card-header"><i class="fa fa-credit-card icon icon-blue"></i>快捷入口</div>
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                             <div class="layui-card-body">
                                 <div class="welcome-module">
                                     <div class="layui-row layui-col-space10 layuimini-qiuck">
 
                                         <?php foreach($quicks as $vo): ?>
-<<<<<<< HEAD
                                         <div class="layui-col-xs4 layuimini-qiuck-module">
-=======
-                                        <div class="layui-col-xs3 layuimini-qiuck-module">
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                                             <a layuimini-content-href="<?php echo url($vo['href']); ?>" data-title="<?php echo htmlentities($vo['title']); ?>">
                                                 <i class="<?php echo $vo['icon']; ?>"></i>
                                                 <cite><?php echo htmlentities($vo['title']); ?></cite>
@@ -178,26 +127,16 @@
                         <div class="layui-card">
                             <div class="layui-card-header"><i class="fa fa-line-chart icon"></i>报表统计</div>
                             <div class="layui-card-body">
-<<<<<<< HEAD
                                 <div id="echarts-records" style="width: 100%;min-height:200px"></div>
-=======
-                                <div id="echarts-records" style="width: 100%;min-height:500px"></div>
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-<<<<<<< HEAD
             <div class="layui-col-md3">
 
                 <!--<div class="layui-card">
-=======
-            <div class="layui-col-md4">
-
-                <div class="layui-card">
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                     <div class="layui-card-header"><i class="fa fa-bullhorn icon icon-tip"></i>系统公告</div>
                     <div class="layui-card-body layui-text">
                         <div class="layuimini-notice">
@@ -285,7 +224,6 @@
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
                 </div>-->
 
                 <div class="layui-card">
@@ -298,62 +236,11 @@
                                 后续功能开发中。<br>
                             </div>
                         </div>
-=======
-                </div>
-
-                <div class="layui-card">
-                    <div class="layui-card-header"><i class="fa fa-fire icon"></i>版本信息</div>
-                    <div class="layui-card-body layui-text">
-                        <table class="layui-table">
-                            <colgroup>
-                                <col width="100">
-                                <col>
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <td>框架名称</td>
-                                <td>
-                                    EasyAdmin
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>当前版本</td>
-                                <td>v2.0.0</td>
-                            </tr>
-                            <tr>
-                                <td>主要特色</td>
-                                <td>零门槛 / 响应式 / 清爽 / 极简</td>
-                            </tr>
-                            <tr>
-                                <td>Gitee</td>
-                                <td style="padding-bottom: 0;">
-                                    <div class="layui-btn-container">
-                                        <!--<a href="https://gitee.com/zhongshaofa/easyadmin" style="margin-right: 15px"><img src="https://gitee.com/zhongshaofa/easyadmin/badge/star.svg?theme=dark" alt="star"></a>
-                                        <a href="https://gitee.com/zhongshaofa/easyadmin"><img src="https://gitee.com/zhongshaofa/easyadmin/badge/fork.svg?theme=dark" alt="fork"></a>-->
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Github</td>
-                                <td style="padding-bottom: 0;">
-                                    <div class="layui-btn-container">
-                                        <!--<iframe src="https://ghbtns.com/github-btn.html?user=zhongshaofa&repo=easyadmin&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
-                                        <iframe src="https://ghbtns.com/github-btn.html?user=zhongshaofa&repo=easyadmin&type=fork&count=true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>-->
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                     </div>
                 </div>
 
                 <div class="layui-card">
-<<<<<<< HEAD
                     <div class="layui-card-header"><i class="fa fa-fire icon"></i></div>
-=======
-                    <div class="layui-card-header"><i class="fa fa-paper-plane-o icon"></i></div>
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                     <div class="layui-card-body layui-text layadmin-text">
                         <p></p>
                         <p class="layui-red"></p>

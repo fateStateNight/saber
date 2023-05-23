@@ -1,4 +1,4 @@
-<?php /*a:2:{s:41:"/app/app/admin/view/system/admin/add.html";i:1603249359;s:39:"/app/app/admin/view/layout/default.html";i:1602818599;}*/ ?>
+<?php /*a:2:{s:41:"/app/app/admin/view/system/admin/add.html";i:1647849331;s:39:"/app/app/admin/view/layout/default.html";i:1678949704;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +23,7 @@
         };
     </script>
     <script src="/static/plugs/layui-v2.5.6/layui.all.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
+<!--    <script src="/static/plugs/lay-module/layim-v3.7.6/dist/layui.all.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>-->
     <script src="/static/plugs/require-2.3.6/require.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
     <script src="/static/config-admin.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
 </head>
@@ -62,6 +63,14 @@
             <div class="layui-input-block">
                 <input type="text" name="phone" class="layui-input" lay-reqtext="请输入用户手机" placeholder="请输入用户手机" value="">
                 <tip>填写用户手机。</tip>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">关联联盟账号</label>
+            <div class="layui-input-block">
+                <select name="taobao_accountId" data-select="<?php echo url('system.taobaoAccount/index'); ?>" data-fields="id,name" lay-search>
+                </select>
             </div>
         </div>
 

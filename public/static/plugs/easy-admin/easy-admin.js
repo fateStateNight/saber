@@ -63,11 +63,7 @@ define(["jquery", "tableSelect", "ckeditor"], function ($, tableSelect, undefine
                 };
                 ex = ex || function (res) {
                 };
-<<<<<<< HEAD
                 if (option.url === '') {
-=======
-                if (option.url == '') {
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                     admin.msg.error('请求地址不能为空');
                     return false;
                 }
@@ -187,11 +183,7 @@ define(["jquery", "tableSelect", "ckeditor"], function ($, tableSelect, undefine
                 options.limit = options.limit || 15;
                 options.limits = options.limits || [10, 15, 20, 25, 50, 100];
                 options.cols = options.cols || [];
-<<<<<<< HEAD
                 options.defaultToolbar = (options.defaultToolbar === undefined && !options.search) ? ['filter', 'print', 'exports'] : ['filter', {
-=======
-                options.defaultToolbar = (options.defaultToolbar === undefined && !options.search) ? ['filter', 'print', 'exports'] : ['filter', 'print', 'exports', {
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                     title: '搜索',
                     layEvent: 'TABLE_SEARCH',
                     icon: 'layui-icon-search',
@@ -362,11 +354,7 @@ define(["jquery", "tableSelect", "ckeditor"], function ($, tableSelect, undefine
 
                     $(elem).before('<fieldset id="searchFieldset_' + tableId + '" class="table-search-fieldset layui-hide">\n' +
                         '<legend>条件搜索</legend>\n' +
-<<<<<<< HEAD
                         '<form class="layui-form layui-form-pane form-search" lay-filter="' + tableId + '_filter">\n' +
-=======
-                        '<form class="layui-form layui-form-pane form-search">\n' +
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                         formHtml +
                         '<div class="layui-form-item layui-inline" style="margin-left: 115px">\n' +
                         '<button type="submit" class="layui-btn layui-btn-normal" data-type="tableSearch" data-table="' + tableId + '" lay-submit lay-filter="' + tableId + '_filter"> 搜 索</button>\n' +
@@ -729,7 +717,6 @@ define(["jquery", "tableSelect", "ckeditor"], function ($, tableSelect, undefine
                     table.reload(tableId, {
                         page: {
                             curr: 1
-<<<<<<< HEAD
                         },
                         where: {
                             filter: JSON.stringify(formatFilter),
@@ -740,12 +727,6 @@ define(["jquery", "tableSelect", "ckeditor"], function ($, tableSelect, undefine
                             if(res.data === '' && res.msg !== ''){
                                 admin.msg.tips(res.msg,res.wait);
                             }
-=======
-                        }
-                        , where: {
-                            filter: JSON.stringify(formatFilter),
-                            op: JSON.stringify(formatOp)
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                         }
                     }, 'data');
                     return false;
@@ -1030,10 +1011,7 @@ define(["jquery", "tableSelect", "ckeditor"], function ($, tableSelect, undefine
                     addons = $(this).attr('data-addons'),
                     checkbox = $(this).attr('data-checkbox');
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                 var postData = {};
                 if(checkbox === 'true'){
                     tableId = tableId || init.table_render_id;
@@ -1053,10 +1031,7 @@ define(["jquery", "tableSelect", "ckeditor"], function ($, tableSelect, undefine
                 if (addons !== true && addons !== 'true') {
                     url = admin.url(url);
                 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                 title = title || '确定进行该操作？';
                 tableId = tableId || init.table_render_id;
                 admin.msg.confirm(title, function () {
@@ -1075,7 +1050,6 @@ define(["jquery", "tableSelect", "ckeditor"], function ($, tableSelect, undefine
             // excel导出
             $('body').on('click', '[data-table-export]', function () {
                 var tableId = $(this).attr('data-table-export'),
-<<<<<<< HEAD
                     postData = {},
                     checkbox = $(this).attr('data-checkbox'),
                     url = $(this).attr('data-url'),
@@ -1155,13 +1129,6 @@ define(["jquery", "tableSelect", "ckeditor"], function ($, tableSelect, undefine
                             }});
                     });
                 }
-=======
-                    url = $(this).attr('data-url');
-                var index = admin.msg.confirm('根据查询进行导出，确定导出？', function () {
-                    window.location = admin.url(url);
-                    layer.close(index);
-                });
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
             });
 
             // 数据表格多删除
@@ -1195,7 +1162,6 @@ define(["jquery", "tableSelect", "ckeditor"], function ($, tableSelect, undefine
                 return false;
             });
 
-<<<<<<< HEAD
             // 数据表格多修改
             $('body').on('click', '[data-table-edit]', function () {
                 var clienWidth = $(this).attr('data-width'),
@@ -1275,8 +1241,6 @@ define(["jquery", "tableSelect", "ckeditor"], function ($, tableSelect, undefine
                 return false;
             });
 
-=======
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
         },
         api: {
             form: function (url, data, ok, no, ex, refreshTable) {

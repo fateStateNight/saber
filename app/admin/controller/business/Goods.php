@@ -474,7 +474,7 @@ class Goods extends AdminController
                 $this->error('批量修改审核状态失败！');
             }
             //20230519 根据修改结果判断是否成功
-            if($verifyRet['data'] != ''){
+            if($verifyRet['data']){
                 $this->error($verifyRet['data'][0]['extInfo']['title']."<br/>".$verifyRet['data'][0]['bizCheckErrorInfoList'][0]);
             }
             //修改数据表中数据状态

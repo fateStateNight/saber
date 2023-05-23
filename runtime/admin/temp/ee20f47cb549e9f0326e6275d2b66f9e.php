@@ -1,4 +1,4 @@
-<?php /*a:2:{s:48:"/app/app/admin/view/mall/common_tools/index.html";i:1630376126;s:39:"/app/app/admin/view/layout/default.html";i:1602818599;}*/ ?>
+<?php /*a:2:{s:48:"/app/app/admin/view/mall/common_tools/index.html";i:1681097690;s:39:"/app/app/admin/view/layout/default.html";i:1678949704;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,13 +23,15 @@
         };
     </script>
     <script src="/static/plugs/layui-v2.5.6/layui.all.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
+<!--    <script src="/static/plugs/lay-module/layim-v3.7.6/dist/layui.all.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>-->
     <script src="/static/plugs/require-2.3.6/require.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
     <script src="/static/config-admin.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
 </head>
 <body>
 <div class="layui-tab layui-tab-card">
     <ul class="layui-tab-title">
-        <li class="layui-this">招商效果数据导出</li>
+        <li class="layui-this">抖口令解析</li>
+        <li>抖音活动转链</li>
         <li class="">淘口令解析</li>
         <li>生成淘口令</li>
         <li>高效转链</li>
@@ -42,22 +44,22 @@
         <div class="layui-tab-item layui-show">
             <div class="layui-col-xs6 layui-col-sm7 layui-col-md12">
                 <div class="layui-card">
-                    <div class="layui-card-header">招商效果数据导出</div>
+                    <div class="layui-card-header">抖口令解析</div>
                     <div class="layui-card-body">
                         <div class="layui-row">
                             <div class="layui-col-xs6 layui-col-sm6 layui-col-md5">
                                 <div class="">
-                                    <textarea id="activeId" required="" lay-verify="required" placeholder="请输入活动ID，多个ID请用逗号隔开，注意是英文逗号" class="layui-textarea"></textarea>
+                                    <textarea id="douCommand" required="" lay-verify="required" placeholder="请输入完整的抖口令" class="layui-textarea"></textarea>
                                 </div>
                             </div>
                             <div class="layui-col-xs6 layui-col-sm6 layui-col-md2" style="min-height: 100px;">
                                 <div class="" style="text-align: center;line-height: 100px;">
-                                    <button id="business_get" type="button" class="layui-btn layui-btn-radius">开始获取</button>
+                                    <button id="dou_command_analysis" type="button" class="layui-btn layui-btn-radius">开始解析</button>
                                 </div>
                             </div>
                             <div class="layui-col-xs4 layui-col-sm12 layui-col-md5">
                                 <div class="">
-                                    <textarea id="cookie_content" name="" required="" lay-verify="required" placeholder="请输入账号cookie" class="layui-textarea"></textarea>
+                                    <textarea id="dou_command_result" name="" required="" lay-verify="required" placeholder="解析结果" class="layui-textarea"></textarea>
                                 </div>
                             </div>
 
@@ -66,6 +68,47 @@
                         <div class="layui-row" style="margin-top:20px;">
                             <div id="order_file" class="layui-col-md2"></div>
                             <div id="sale_file" class="layui-col-md2"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-tab-item">
+            <div class="layui-col-xs6 layui-col-sm7 layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-header">抖音活动转链</div>
+                    <div class="layui-card-body">
+                        <div class="layui-row">
+                            <div class="layui-col-xs6 layui-col-sm6 layui-col-md5">
+                                <div class="">
+                                    <textarea id="material_id" rows="10" required="" lay-verify="required" placeholder="请输入活动ID" class="layui-textarea"></textarea>
+                                </div>
+                            </div>
+                            <div class="layui-col-xs6 layui-col-sm6 layui-col-md2" style="min-height: 100px;">
+                                <div class="" style="text-align: center;line-height: 100px;">
+                                    <div class="layui-inline layui-form">
+                                        <div class="layui-input-inline">
+                                            <select name="dou_account_id" >
+                                                <?php foreach($douAccountList as $k=>$v): ?>
+                                                <option value='<?php echo htmlentities($k); ?>' ><?php echo htmlentities($v); ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <div class="layui-input-inline">
+                                            <button id="dou_activity_btn" type="button" class="layui-btn layui-btn-normal layui-btn-radius">活动转链</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-xs4 layui-col-sm12 layui-col-md5">
+                                <div class="">
+                                    <textarea id="dou_transfer_result" rows="10" name="" required="" lay-verify="required" placeholder="转链结果" class="layui-textarea"></textarea>
+                                </div>
+                            </div>
                         </div>
 
                     </div>

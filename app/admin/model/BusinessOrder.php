@@ -11,7 +11,6 @@ class BusinessOrder extends TimeModel
 
     protected $deleteTime = false;
 
-<<<<<<< HEAD
     /*public function goodsEvent()
     {
         return $this->belongsTo('\app\admin\model\BusinessGoods', 'event_id', 'eventId');
@@ -22,9 +21,6 @@ class BusinessOrder extends TimeModel
         return $this->belongsTo('\app\admin\model\BusinessGoods', 'item_id', 'itemId')
             ->field('itemId,eventId,auditorId');
     }
-=======
-    
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
     
     public function getTkStatusList()
     {

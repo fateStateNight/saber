@@ -1,4 +1,4 @@
-<?php /*a:2:{s:45:"/app/app/admin/view/business/goods/index.html";i:1654137990;s:39:"/app/app/admin/view/layout/default.html";i:1602818599;}*/ ?>
+<?php /*a:2:{s:45:"/app/app/admin/view/business/goods/index.html";i:1680000328;s:39:"/app/app/admin/view/layout/default.html";i:1678949704;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +23,7 @@
         };
     </script>
     <script src="/static/plugs/layui-v2.5.6/layui.all.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
+<!--    <script src="/static/plugs/lay-module/layim-v3.7.6/dist/layui.all.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>-->
     <script src="/static/plugs/require-2.3.6/require.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
     <script src="/static/config-admin.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
 </head>
@@ -119,8 +120,9 @@
             <?php if($adminInfo['auth_ids'] == 7 || $adminInfo['auth_ids'] == 1): ?>
 
             <button class="layui-btn layui-btn-sm" admin-data="<?php echo htmlentities($adminInfo['id']); ?>" data-url="business.goods/edit" data-table-edit="currentTableRenderId" data-title="修改" data-width="50%" data-height="50%"><i class="layui-icon layui-icon-edit"></i>修改 </button>
-
             <?php endif; ?>
+            <button class="layui-btn layui-btn-sm" admin-data="<?php echo htmlentities($adminInfo['id']); ?>" data-checkbox="true" data-table-export="currentTableRenderId" data-url="business.goods/export" data-title="导出" data-width="50%" data-height="50%"><i class="layui-icon layui-icon-export"></i>导出 </button>
+
 
             <button id="claimAll" class="layui-btn layui-btn-sm layui-btn-warm claimAll" admin-data="<?php echo htmlentities($adminInfo['id']); ?>" data-checkbox="true" data-request="business.goods/claimAll" data-title="批量认领" ><i class="layui-icon layui-icon-edit"></i>批量认领 </button>
 
@@ -145,7 +147,8 @@
     {{#  if(d.priveledge == 7 || d.priveledge == 1){ }}
     <a class="layui-btn layui-btn-xs" data-open="business.goods/edit?id={{d.id}}" data-title="修改" data-width="50%" data-height="50%">修改</a>
     {{# } }}
-    <a class="layui-btn layui-btn-xs layui-btn-success" data-open="business.goods/detail?id={{d.id}}" href="javascript:void(0);" data-title="商品推广效果详情" data-full="false">查看</a>
+    <a class="layui-btn layui-btn-xs layui-btn-normal" target="_self" layuimini-content-href="<?php echo __url('business.goods_effect/index'); ?>?id={{d.id}}" href="javascript:void(0);" lay-event="check" data-title="{{d.title}}">推广详情</a>
+    <!--<a class="layui-btn layui-btn-xs layui-btn-success" data-open="business.goods/detail?id={{d.id}}" href="javascript:void(0);" data-title="商品推广效果详情" data-full="false">查看</a>-->
 </script>
 
 

@@ -28,11 +28,7 @@ class Synchronous extends Command
     {
         // 指令配置
         $this->setName('synchronous')
-<<<<<<< HEAD
             ->setDescription('同步订单数据以及导出订单数据');
-=======
-            ->setDescription('the synchronous command');        
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
     }
 
     protected function execute(Input $input, Output $output)

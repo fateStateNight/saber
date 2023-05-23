@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<?php /*a:2:{s:45:"/app/app/admin/view/business/order/index.html";i:1652163312;s:39:"/app/app/admin/view/layout/default.html";i:1602818599;}*/ ?>
-=======
-<?php /*a:2:{s:45:"/app/app/admin/view/business/order/index.html";i:1607917603;s:39:"/app/app/admin/view/layout/default.html";i:1602818599;}*/ ?>
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
+<?php /*a:2:{s:45:"/app/app/admin/view/business/order/index.html";i:1652163312;s:39:"/app/app/admin/view/layout/default.html";i:1678949704;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,21 +23,14 @@
         };
     </script>
     <script src="/static/plugs/layui-v2.5.6/layui.all.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
+<!--    <script src="/static/plugs/lay-module/layim-v3.7.6/dist/layui.all.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>-->
     <script src="/static/plugs/require-2.3.6/require.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
     <script src="/static/config-admin.js?v=<?php echo htmlentities($version); ?>" charset="utf-8"></script>
 </head>
 <body>
 <div class="layuimini-container">
     <div class="layuimini-main">
-<<<<<<< HEAD
         <table id="currentTable" class="layui-table layui-hide" lay-filter="currentTable">
-=======
-        <table id="currentTable" class="layui-table layui-hide"
-               data-auth-add="<?php echo auth('business.order/add'); ?>"
-               data-auth-edit="<?php echo auth('business.order/edit'); ?>"
-               data-auth-delete="<?php echo auth('business.order/delete'); ?>"
-               lay-filter="currentTable">
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
         </table>
     </div>
 </div>
@@ -53,15 +42,9 @@
         <div class="layui-table-tool-temp">
             <button class="layui-btn layui-btn-sm layuimini-btn-primary" data-table-refresh="currentTableRenderId"><i class="fa fa-refresh"></i> </button>
             <a class="layui-btn layui-btn-sm layui-bg-green" target="_self" href="javascript:void(0);" layuimini-content-href="<?php echo __url('system.script_task/index'); ?>" data-title="查看任务列表" ><i class="layui-icon layui-icon-list"></i>查看任务</a>
-<<<<<<< HEAD
             <!--<button class="layui-btn layui-btn-normal layui-btn-sm" data-open="system.script_task/addOrder" data-title="创建数据任务"><i class="fa fa-plus"></i> 创建任务</button>
             <a class="layui-btn layui-btn-sm layui-bg-orange" target="_blank" href="https://www.childrendream.cn/grafana/" data-title="统计报表" ><i class="layui-icon layui-icon layui-icon-chart-screen"></i>统计报表</a>-->
             <button class="layui-btn layui-btn-sm layui-btn-success easyadmin-export-btn" data-url="business.order/export" data-table-export="currentTableRenderId"><i class="fa fa-file-excel-o"></i> 导出</button>
-=======
-            <button class="layui-btn layui-btn-normal layui-btn-sm" data-open="system.script_task/addOrder" data-title="创建数据任务"><i class="fa fa-plus"></i> 创建任务</button>
-            <a class="layui-btn layui-btn-sm layui-bg-orange" target="_blank" href="https://www.childrendream.cn/grafana/" data-title="统计报表" ><i class="layui-icon layui-icon layui-icon-chart-screen"></i>统计报表</a>
-<!--            <button class="layui-btn layui-btn-sm layui-btn-success easyadmin-export-btn" data-url="business.order/export" data-table-export="currentTableRenderId"><i class="fa fa-file-excel-o"></i> 导出</button>-->
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
         </div>
     </div>
 </script>

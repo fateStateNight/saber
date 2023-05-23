@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<?php /*a:5:{s:35:"/app/view/company/blog-classic.html";i:1611564047;s:27:"/app/view/company/head.html";i:1609377799;s:29:"/app/view/company/header.html";i:1654080379;s:29:"/app/view/company/footer.html";i:1611566401;s:36:"/app/view/company/mobile-header.html";i:1611288526;}*/ ?>
-=======
-<?php /*a:5:{s:35:"/app/view/company/blog-classic.html";i:1611564047;s:27:"/app/view/company/head.html";i:1609377799;s:29:"/app/view/company/header.html";i:1611562212;s:29:"/app/view/company/footer.html";i:1611566401;s:36:"/app/view/company/mobile-header.html";i:1611288526;}*/ ?>
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
+<?php /*a:5:{s:35:"/app/view/company/blog-classic.html";i:1611564047;s:27:"/app/view/company/head.html";i:1609377799;s:29:"/app/view/company/header.html";i:1654080379;s:29:"/app/view/company/footer.html";i:1683340666;s:36:"/app/view/company/mobile-header.html";i:1611288526;}*/ ?>
 ﻿<!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -126,23 +122,14 @@
                         </button>
                     </div>
                     <!-- Header Mobile Menu Toggle End -->
-<<<<<<< HEAD
                     <div class="col-xl-2 col-auto order-3">
                         <a href="/manage/login.html" class="btn btn-light btn-hover-primary">登录</a>
                     </div>
-=======
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                 </div>
                 <!-- Header Main Menu End -->
 
                 <!-- Header Right Start -->
-<<<<<<< HEAD
 
-=======
-                <div class="col-xl-2 col d-none d-sm-flex justify-content-end order-1 order-xl-2">
-                    <a href="/manage/login.html" class="btn btn-light btn-hover-primary">登录</a>
-                </div>
->>>>>>> 81d30d90cacb2d3f44cb1e832c96f4c5286f4d8e
                 <!-- Header Right End -->
 
             </div>
@@ -485,7 +472,7 @@
         <!-- Footer Copyright Start -->
         <div class="row">
             <div class="col">
-                <p class="copyright">Copyright © 2017 亿品 版权所有ICP证：  | <a target="_blank" href="http://www.beian.miit.gov.cn">鄂ICP备20009800号-2</a></p>
+                <p class="copyright">Copyright © 2017 亿品 版权所有ICP证：  | <a target="_blank" href="https://beian.miit.gov.cn">鄂ICP备20009800号-2</a></p>
             </div>
         </div>
         <!-- Footer Copyright End -->
