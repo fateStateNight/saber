@@ -13,10 +13,13 @@ if($headerInfo['x-gitee-token'] == '12345678'){
 
 
 function pullCode(){
-    //$shell = "cd /app/ && sudo git pull origin master >> /app/runtime/log/`date -d 'today' +\%Y\%m\%d`.log 2>&1";
-    $shell = "cd /app/ && git fetch --all && git reset --hard origin/master && git pull origin master 2>&1";
-    exec($shell, $output);
-    return $output;
+    $shell1 = "cd /app/ && git reset --hard origin/master 2>&1";
+    $shell2 = "git pull origin master 2>&1";
+    exec($shell1, $output1);
+    var_dump($output1);
+    exec($shell2, $output2);
+    var_dump($output2);
+    return $output2;
 }
 
 function getServerInfo(){
