@@ -7,6 +7,7 @@ $headerInfo = getServerInfo();
 write_log('/tmp/20230523.log', $parameter);
 if($headerInfo['x-gitee-token'] == '12345678'){
     $ret = pullCode();
+    var_dump($ret);
     write_log('/tmp/20230523.log', json_encode($ret));
 }
 
