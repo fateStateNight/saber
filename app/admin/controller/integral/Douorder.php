@@ -51,6 +51,7 @@ class Douorder extends AdminController
             }
             $count = $this->model->where('pid', '=', $accountInfo['publishID'])
                 ->whereBetweenTime('pay_success_time', $startTime, $endTime)
+                ->where('order_status', '<>', 'REFUND')
                 ->count();
             $orderInfo = $this->model->where('pid', '=', $accountInfo['publishID'])
                 ->whereBetweenTime('pay_success_time', $startTime, $endTime)

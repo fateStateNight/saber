@@ -9,11 +9,12 @@ if($headerInfo['x-gitee-token'] == '12345678'){
     $ret = pullCode();
     var_dump($ret);
     write_log('/tmp/20230523.log', json_encode($ret));
+    sendDingDingMsg(json_decode($parameter,true));
 }
 
 
 function pullCode(){
-    $shell1 = "cd /app/ && sudo git pull origin master 2>&1";
+    $shell1 = "cd /app/ && sudo git reset --hard origin/master && sudo git pull origin master 2>&1";
     //$shell2 = " sudo git reset --hard origin/master  2>&1";
     exec($shell1, $output1, $retCode);
     var_dump($retCode);
@@ -42,11 +43,12 @@ function write_log($filename, $content){
     return true;
 }
 //钉钉提醒
-function sendDingDingMsg()
+function sendDingDingMsg($parameter)
 {
     //获取任务信息
-    $name = '';
-    $message = "Hello,".$name.",你的任务《》已完成了哦，赶快处理吧！";
+    $name = $parameter['commits']['committer']['username'];
+    $title = $parameter['commits']['message'];
+    $message = "Hello,".$name.",你git提交的任务《".$title."》已完成了哦，查收一下吧！";
     $webhook = "https://oapi.dingtalk.com/robot/send?access_token=d61f7604aa6dfc87d2052d19ed4b29d24463ffdbfe6257068e4e6fad0cf1d4c5";
     $data = array ('msgtype' => 'text','text' => array ('content' => $message));
     $data_string = json_encode($data);
