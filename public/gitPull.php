@@ -42,8 +42,8 @@ function write_log($filename, $content){
 function sendDingDingMsg($parameter)
 {
     //获取任务信息
-    $name = $parameter['commits']['committer']['username'];
-    $title = $parameter['commits']['message'];
+    $name = $parameter['commits'][0]['committer']['username'];
+    $title = $parameter['commits'][0]['message'];
     $message = "Hello,".$name.",你git提交的任务《".$title."》已完成了哦，查收一下吧！";
     $webhook = "https://oapi.dingtalk.com/robot/send?access_token=d61f7604aa6dfc87d2052d19ed4b29d24463ffdbfe6257068e4e6fad0cf1d4c5";
     $data = array ('msgtype' => 'text','text' => array ('content' => $message));
