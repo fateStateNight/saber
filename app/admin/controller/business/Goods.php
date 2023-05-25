@@ -287,10 +287,15 @@ class Goods extends AdminController
         $row->isEmpty() && $this->error('数据不存在');
         if ($this->request->isAjax()) {
             $post = $this->request->post();
-            $rule = [];
-            $this->validate($post, $rule);
-            $adminArr = $this->model->getSystemAdminList();
-            $post['auditorNick'] = $adminArr[$post['auditorId']];
+            //$rule = [];
+            //$this->validate($post, $rule);
+            if($post['auditorId'] == ''){
+                $post['auditorId'] = 0;
+                $post['auditorNick'] = '';
+            }else{
+                $adminArr = $this->model->getSystemAdminList();
+                $post['auditorNick'] = $adminArr[$post['auditorId']];
+            }
             try {
                 foreach($ids as $id){
                     $save = $row->where('id',$id)->update($post);

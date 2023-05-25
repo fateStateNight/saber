@@ -4,10 +4,9 @@ $parameter = file_get_contents('php://input');
 $headerInfo = getServerInfo();
 //var_export($headerInfo['x-gitee-token']);
 //var_export(json_decode($parameter,true));//die;
-write_log('/tmp/20230523.log', $parameter);
+//write_log('/tmp/20230523.log', $parameter);
 if($headerInfo['x-gitee-token'] == '12345678'){
     $ret = pullCode();
-    var_dump($ret);
     write_log('/tmp/20230523.log', json_encode($ret));
     sendDingDingMsg(json_decode($parameter,true));
 }
@@ -17,9 +16,6 @@ function pullCode(){
     $shell1 = "cd /app/ && sudo git reset --hard origin/master && sudo git pull origin master 2>&1";
     //$shell2 = " sudo git reset --hard origin/master  2>&1";
     exec($shell1, $output1, $retCode);
-    var_dump($retCode);
-    //exec($shell2, $output2);
-    //var_dump($output2);
     return $output1;
 }
 
