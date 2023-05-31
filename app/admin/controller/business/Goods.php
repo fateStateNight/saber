@@ -261,7 +261,7 @@ class Goods extends AdminController
                 $this->model->sycEventGoodsInfoToDB($eventData);
             }
             //更新时间超过5分钟允许更新活动效果数据
-            if($diffTime > 60){
+            if($diffTime > 300){
                 if($showEventArr['groupId'] > 0){
                     $this->businessSceneModel->sycNewEventEffectInfoToDB($accountInfo[0], $showEventArr['eventId'], $showEventArr['groupId'], $showEventArr['startTime']);
                 }else{
