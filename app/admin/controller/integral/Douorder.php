@@ -46,9 +46,9 @@ class Douorder extends AdminController
             if(time() > strtotime($endTime)){
                 $endTime = date('Y-m-d H:i:s');
             }
-            if(time()-strtotime($startTime) > 3600*24*30){
+            /*if(time()-strtotime($startTime) > 3600*24*30){
                 $startTime = date('Y-m-d H:i:s', strtotime('-1 month'));
-            }
+            }*/
             $count = $this->model->where('pid', '=', $accountInfo['publishID'])
                 ->whereBetweenTime('pay_success_time', $startTime, $endTime)
                 ->where('order_status', '<>', 'REFUND')
