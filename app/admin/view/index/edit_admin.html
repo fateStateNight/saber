@@ -31,10 +31,26 @@
             </div>
 
             <div class="layui-form-item">
-                <label class="layui-form-label">用户手机</label>
+                <label class="layui-form-label">常用手机号</label>
                 <div class="layui-input-block">
-                    <input type="text" name="phone" class="layui-input" lay-reqtext="请输入用户手机" placeholder="请输入用户手机" value="{$row.phone|default=''}">
+                    <input type="text" name="phone" class="layui-input" lay-reqtext="请输入常用手机" placeholder="请输入常用手机" value="{$row.phone|default=''}">
                     <tip>填写用户手机。</tip>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">所有手机号</label>
+                <div class="layui-input-block">
+                    <input type="text" name="phone_number" class="layui-input" lay-reqtext="请填写所有手机号" placeholder="请填写所有手机号" value="{$row.phone_number|default=''}">
+                    <tip>填写所有手机号，多个手机号中间用逗号“,”隔开</tip>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">所有微信号</label>
+                <div class="layui-input-block">
+                    <input type="text" name="weixin_number" class="layui-input" lay-reqtext="请填写所有微信号" placeholder="请填写所有微信号" value="{$row.weixin_number|default=''}">
+                    <tip>填写所有微信号，多个微信号中间用逗号“,”隔开</tip>
                 </div>
             </div>
 
