@@ -24,7 +24,7 @@ use think\facade\Log;
  * Class Draw
  * @package app\admin\controller\integral
  */
-class Draw extends AdminController
+class Contact extends AdminController
 {
 
     //use \app\admin\traits\Curd;
