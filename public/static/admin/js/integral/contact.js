@@ -1,7 +1,6 @@
-// global variables
 
 // endpoint allowing to build the URL
-const endpoint = 'https://openlibrary.org/search.json';
+const endpoint = 'https://www.childrendream.cn/manage/integral.draw/searchContact';
 // limit capping the number of results returned from the call to the API
 const limit = 10;
 
@@ -56,8 +55,8 @@ const handleSubmit = (e) => {
   const title = form.querySelector('input').value;
   if (title) {
     // remove existing content from the section
-    section.innerHTML = '<article><h3>Searching...</h3></article>';
-    const url = `${endpoint}?title=${title}&limit=${limit}`;
+    section.innerHTML = '<article><h3>查找中...</h3></article>';
+    const url = `${endpoint}?title=${title}`;
     /* following the fetch request handle the following cases
     - the request returns an array of results, call a function to add them through article and svg elements
     - the request returns an empty array, call a function to detail as such
@@ -77,3 +76,4 @@ const handleSubmit = (e) => {
   }
 };
 form.addEventListener('submit', handleSubmit);
+

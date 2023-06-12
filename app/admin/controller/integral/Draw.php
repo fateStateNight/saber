@@ -47,4 +47,10 @@ class Draw extends AdminController
         return $this->fetch();
     }
 
+    public function searchContact()
+    {
+        $data = file_get_contents('php://input');
+        var_dump($data);die;
+    }
+
 }
