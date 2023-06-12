@@ -42,6 +42,15 @@ class Contact extends AdminController
 
     public function index()
     {
+        if ($this->request->isAjax()) {
+            $post = $this->request->post();
+            try {
+                var_dump($post);
+            } catch (\Exception $e) {
+                $this->error('保存失败');
+            }
+            $this->success('保存成功');
+        }
         return $this->fetch();
     }
 
