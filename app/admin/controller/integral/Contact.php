@@ -70,10 +70,10 @@ class Contact extends AdminController
         //判断是否是手机号
         if(preg_match("/^1[3456789]\d{9}$/", $parameter['title'])){
             //查询手机号
-            $result = $adminObj->where('phone_number','like','%'.$parameter['title'].'%')->findOrEmpty();
+            $result = $adminObj->where('phone_number','like','%'.$parameter['title'].'%')->find();
         }else{
             //查询微信号
-            $result = $adminObj->where('weixin_number','like','%'.$parameter['title'].'%')->findOrEmpty();
+            $result = $adminObj->where('weixin_number','like','%'.$parameter['title'].'%')->find();
         }
         if($result){
             $ret = [

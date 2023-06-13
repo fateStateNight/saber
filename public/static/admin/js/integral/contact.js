@@ -68,13 +68,12 @@ const handleSubmit = (e) => {
     */
     fetch(url)
       .then(response => response.json())
-      .then((json) => {
-        const { docs: books } = json;
-        console.log(books);
-        if (books.length > 0) {
-          showBooks(books);
+      .then(data => {
+        console.log(data);
+        if (data.code === 0) {
+          showBooks(data);
         } else {
-          showMissingBooks();
+          showMissingBooks(data);
         }
       })
       .catch(err => showError(err));
