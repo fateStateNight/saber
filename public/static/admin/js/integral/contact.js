@@ -17,7 +17,7 @@ const section = document.querySelector('section');
 const showBooks = (books) => {
   // for each book retrieve the name, author and year of first publication
   // describe the details in a wrapping container and following an SVG drawing the book from one of the defined graphics
-  section.innerHTML = books
+  /*section.innerHTML = books
     .map(({ title, author_name: author, first_publish_year: year }, index) => `
     <article style="animation-delay: ${0.1 * index}s;">
       <svg viewBox="0 0 25 125" width="25" height="125">
@@ -30,7 +30,12 @@ const showBooks = (books) => {
       </div>
     </article>
     `)
-    .join('');
+    .join('');*/
+  section.innerHTML = `
+  <article>
+  <h3>此信息属于本公司员工的联系方式</h3>
+  </article>
+  `;
 };
 
 // function to show the lack of books
