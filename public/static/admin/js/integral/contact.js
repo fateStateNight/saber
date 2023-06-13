@@ -38,7 +38,7 @@ const showMissingBooks = () => {
   form.reset();
   section.innerHTML = `
   <article>
-  <h3>Sorry, no match</h3>
+  <h3>此信息未知，不属于本公司员工信息</h3>
   </article>
   `;
 };
@@ -48,7 +48,7 @@ const showError = (error) => {
   form.reset();
   section.innerHTML = `
     <article>
-      <h3>${error}</h3>
+      <h3>服务器繁忙，请稍后再试！</h3>
     </article>
   `;
 };
@@ -70,6 +70,7 @@ const handleSubmit = (e) => {
       .then(response => response.json())
       .then((json) => {
         const { docs: books } = json;
+        console.log(books);
         if (books.length > 0) {
           showBooks(books);
         } else {

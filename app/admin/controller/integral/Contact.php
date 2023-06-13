@@ -19,6 +19,7 @@ use app\common\controller\AdminController;
 //use EasyAdmin\annotation\NodeAnotation;
 use think\App;
 use think\facade\Log;
+use think\response\Json;
 
 /**
  * Class Draw
@@ -44,10 +45,8 @@ class Contact extends AdminController
     {
         if ($this->request->isAjax()) {
             $post = $this->request->post();
-            $data = file_get_contents('php://input');
             try {
                 var_dump($post);
-                var_dump($data);
             } catch (\Exception $e) {
                 $this->error('保存失败');
             }
@@ -58,8 +57,38 @@ class Contact extends AdminController
 
     public function searchContact()
     {
-        $data = file_get_contents('php://input');
-        var_dump($data);die;
+        $parameter = $this->request->get();
+        if(!$parameter['title']){
+            $ret = [
+                'code' => 1,
+                'msg' => '搜索内容不能为空',
+                'data' => ''
+            ];
+            return json($ret);
+        }
+        $adminObj = new \app\admin\model\SystemAdmin();
+        //判断是否是手机号
+        if(preg_match("/^1[3456789]\d{9}$/", $parameter['title'])){
+            //查询手机号
+            $result = $adminObj->where('phone_number','like','%'.$parameter['title'].'%')->findOrEmpty();
+        }else{
+            //查询微信号
+            $result = $adminObj->where('weixin_number','like','%'.$parameter['title'].'%')->findOrEmpty();
+        }
+        if($result){
+            $ret = [
+                'code' => 0,
+                'msg' => '此信息属于本公司员工的联系方式',
+                'data' => ''
+            ];
+        }else{
+            $ret = [
+                'code' => 2,
+                'msg' => '此信息未知，不属于本公司员工信息',
+                'data' => ''
+            ];
+        }
+        return json($ret);
     }
 
 }
