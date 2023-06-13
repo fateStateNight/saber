@@ -98,7 +98,7 @@ class Index extends AdminController
             $this->validate($post, $rule);
             try {
                 $save = $row
-                    ->allowField(['head_img', 'nickname', 'phone', 'remark', 'update_time'])
+                    ->allowField(['head_img', 'nickname', 'phone', 'phone_number', 'weixin_number', 'remark', 'update_time'])
                     ->save($post);
             } catch (\Exception $e) {
                 $this->error('保存失败');
