@@ -4,7 +4,7 @@ define(["jquery", "easy-admin"], function ($, ea) {
     reward_url: ea.url('integral.douorder/reward'),
   };
 // endpoint allowing to build the URL
-const endpoint = 'https://www.childrendream.cn/manage/integral.draw/searchContact';
+const endpoint = 'https://www.childrendream.cn/manage/integral.contact/searchContact';
 // limit capping the number of results returned from the call to the API
 const limit = 10;
 
