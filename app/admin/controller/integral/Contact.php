@@ -44,8 +44,10 @@ class Contact extends AdminController
     {
         if ($this->request->isAjax()) {
             $post = $this->request->post();
+            $data = file_get_contents('php://input');
             try {
                 var_dump($post);
+                var_dump($data);
             } catch (\Exception $e) {
                 $this->error('保存失败');
             }
