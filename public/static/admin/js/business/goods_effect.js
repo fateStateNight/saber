@@ -77,6 +77,7 @@ define(["jquery", "easy-admin", "echarts"], function ($, ea, echarts) {
                                 ea.request.post({
                                     url: init.export_url,
                                     data: {"Id":goodsId},
+                                    dataType: "json"
                                 }, function (res) {
                                     ea.msg.success(res.msg, function () {
                                         let url = res.url;

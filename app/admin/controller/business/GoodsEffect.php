@@ -128,7 +128,7 @@ class GoodsEffect extends AdminController
      */
     public function export()
     {
-        $id = $this->request->post('id');
+        $id = $this->request->post('Id');
         $allowField = ['goods_id','publish_date','enterShopUvTk','alipayAmt','paymentTkNum','alipayNum','cpPreServiceShareFee','preCommissionFee'];
         $row = $this->model->where('goods_id',$id)->select();
         //$row = $this->model->whereIn('id', $ids)->field($allowField)->select();
