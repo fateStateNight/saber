@@ -3,9 +3,17 @@ define(["jquery", "easy-admin", "echarts"], function ($, ea, echarts) {
     var init = {
         table_elem: '#currentTable',
         table_render_id: 'currentTableRenderId',
-        apt_test_url: 'mall.common_tools/apiTest',
+        export_url: ea.url('business.goods_effect/export'),
     };
 
+    var goodsId = getUrlParam('id');
+
+    function getUrlParam(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg); //匹配目标参数
+        if (r!=null) return unescape(r[2]); return null; //返回参数值
+    }
 
     var Controller = {
 
@@ -59,7 +67,54 @@ define(["jquery", "easy-admin", "echarts"], function ($, ea, echarts) {
                 },
                 toolbox: {
                     feature: {
-                        saveAsImage: {}
+                        saveAsImage: {},
+                        myTools: {
+                            show: true,
+                            title: '导出为excel',
+                            icon: 'path://M6.75 19.25H17.25C18.3546 19.25 19.25 18.3546 19.25 17.25V9.82843C19.25 9.29799 19.0393 8.78929 18.6642 8.41421L15.5858 5.33579C15.2107 4.96071 14.702 4.75 14.1716 4.75H6.75C5.64543 4.75 4.75 5.64543 4.75 6.75V17.25C4.75 18.3546 5.64543 19.25 6.75 19.25Z',
+                            color:'red',
+                            onclick: function () {
+                                ea.request.post({
+                                    url: init.export_url,
+                                    data: {"Id":goodsId},
+                                }, function (res) {
+                                    ea.msg.success(res.msg, function () {
+                                        let url = res.url;
+                                        let xhr = new XMLHttpRequest();
+                                        xhr.open('get', url, true);
+                                        xhr.responseType = "blob";
+                                        xhr.onload = function () {
+                                            if (this.status === 200) {
+                                                var blob = this.response;
+                                                var href = window.URL.createObjectURL(blob);  // 创建下载链接
+                                                // 判断是否是IE浏览器，是则返回true
+                                                if (window.navigator.msSaveBlob) {
+                                                    try {
+                                                        window.navigator.msSaveBlob(blob, '商品推广效果表.xlsx')
+                                                    } catch (e) {
+                                                        console.log(e);
+                                                    }
+                                                } else {
+                                                    // 非IE浏览器，创建a标签，添加download属性下载
+                                                    let a = document.createElement('a');  // 创建下载链接
+                                                    a.href = href;
+                                                    a.target = '_blank';  // 新开页下载
+                                                    a.download = '商品推广效果表.xlsx'; // 下载文件名
+                                                    document.body.appendChild(a);  // 添加dom元素
+                                                    a.click();  //  点击下载
+                                                    document.body.removeChild(a); // 下载后移除元素
+                                                    window.URL.revokeObjectURL(href); // 下载后释放blob对象
+                                                }
+                                            }
+                                        }
+                                        xhr.send();
+                                    });
+                                }, function(){
+                                    //返回失败
+                                    console.log("request fail");
+                                });
+                            },
+                        }
                     }
                 },
                 xAxis: {

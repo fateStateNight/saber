@@ -2,13 +2,16 @@
 
 namespace app\admin\controller\business;
 
+include_once "/app/extend/xlsxwriter.class.php";
 use app\admin\model\BusinessGoods;
 use app\admin\model\BusinessScene;
 use app\common\controller\AdminController;
 use EasyAdmin\annotation\ControllerAnnotation;
 use EasyAdmin\annotation\NodeAnotation;
+use EasyAdmin\tool\CommonTool;
 use think\App;
 use think\facade\Cache;
+use think\facade\Db;
 
 /**
  * @ControllerAnnotation(title="商品推广效果")
@@ -120,6 +123,46 @@ class GoodsEffect extends AdminController
         return $msectime;
     }
 
+    /**
+     * @NodeAnotation(title="商品推广效果导出")
+     */
+    public function export()
+    {
+        $id = $this->request->post('id');
+        $allowField = ['goods_id','publish_date','enterShopUvTk','alipayAmt','paymentTkNum','alipayNum','cpPreServiceShareFee','preCommissionFee'];
+        $row = $this->model->where('goods_id',$id)->select();
+        //$row = $this->model->whereIn('id', $ids)->field($allowField)->select();
+        $row->isEmpty() && $this->error('报名商品效果数据不存在');
+
+        $tableName = $this->model->getName();
+        $tableName = CommonTool::humpToLine(lcfirst($tableName));
+        $prefix = config('database.connections.mysql.prefix');
+        $dbList = Db::query("show full columns from {$prefix}{$tableName}");
+        $header = [];
+
+        foreach ($dbList as $vo) {
+            $comment = !empty($vo['Comment']) ? $vo['Comment'] : $vo['Field'];
+            if(!in_array($vo['Field'],$allowField)){
+                continue;
+            }
+            $header[$comment] = 'string';
+        }
+        $writer = new \XLSXWriter();
+        $writer->writeSheetHeader('Sheet1', $header );
+        $goodsArr = $row->toArray();
+        foreach($goodsArr as $item){
+            $writer->writeSheetRow('Sheet1', $item);
+        }
+        //判断文件夹不存在则创建
+        if(!is_dir('/app/public/download/eventGoods/')){
+            mkdir('/app/public/download/eventGoods/');
+        }
+        $fileName = 'eventGoodsEffect'.time();
+        $filePath = '/app/public/download/eventGoods/'.$fileName.'.xlsx';
+        $writer->writeToFile($filePath);
+        sleep(3);
+        $this->success('导出成功','','https://www.childrendream.cn/download/eventGoods/'.$fileName.'.xlsx');
+    }
     
 }
 
