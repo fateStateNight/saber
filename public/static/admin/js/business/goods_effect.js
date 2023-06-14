@@ -112,7 +112,7 @@ define(["jquery", "easy-admin", "echarts"], function ($, ea, echarts) {
                                     });
                                 }, function(){
                                     //返回失败
-                                    console.log("request fail");
+                                    ea.msg.error('导出失败！');
                                 });
                             },
                         }

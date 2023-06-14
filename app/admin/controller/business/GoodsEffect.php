@@ -130,7 +130,7 @@ class GoodsEffect extends AdminController
     {
         $id = $this->request->post('Id');
         $allowField = ['goods_id','publish_date','enterShopUvTk','alipayAmt','paymentTkNum','alipayNum','cpPreServiceShareFee','preCommissionFee'];
-        $row = $this->model->where('goods_id',$id)->select();
+        $row = $this->model->where('goods_id',$id)->field($allowField)->select();
         //$row = $this->model->whereIn('id', $ids)->field($allowField)->select();
         $row->isEmpty() && $this->error('报名商品效果数据不存在');
 
