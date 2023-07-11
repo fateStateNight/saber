@@ -76,7 +76,7 @@ class CommonTools extends AdminController
     }
 
 
-    //获取招商数据并导出
+    //抖音口令解析
     public function analysisDouCommand()
     {
         $post = $this->request->post();
@@ -94,7 +94,7 @@ class CommonTools extends AdminController
     }
 
 
-    //获取招商数据并导出
+    //抖音活动转链
     public function activityTransfer()
     {
         $post = $this->request->post();
@@ -112,6 +112,19 @@ class CommonTools extends AdminController
             'data'  => $result,
         ];
         return json($data);
+    }
+
+    //指定商品历史数据
+    public function getGoodsHistory()
+    {
+        $post = $this->request->post();
+        if($post['goods_option'] == ''){
+            $this->error('查询的商品信息不能为空！');
+        }
+        //获取淘宝联盟账号信息
+        $systemAccountModel = new \app\admin\model\SystemTaobaoAccount();
+        $accountInfo = $systemAccountModel->getTaoBaoAccountInfo($post['account_id']);
+        $goodsHistoryData = $this->getDataPublicInfo();
     }
 
     //导出招商数据
@@ -267,6 +280,52 @@ class CommonTools extends AdminController
 
         $url = 'https://pub.alimama.com/cp/item/effect.json?t='.$timeStr.'&_tb_token_='.$token.'&eventId='.$eventId.'&toPage='.$page.'&perPageSize='.$pageSize.'&keyword=&sort=&desc=';
 
+        //执行请求获取数据
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        //https调用
+        //curl_setopt ($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        //curl_setopt ($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        $header = [
+            'Content-Type: application/json'
+        ];
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($ch, CURLOPT_POST, false);
+        curl_setopt($ch, CURLOPT_COOKIE, $cookies);
+        $output = curl_exec($ch);
+        $a = curl_error($ch);
+        if(!empty($a)){
+            return json_encode(array('code'=>-10003,'msg'=>$a));
+        }
+        curl_close($ch);
+        $result = json_decode($output,true);
+        $result = $result?$result:[];
+        return $result;
+    }
+
+    //获取指定商品的历史推广数据
+    public function getDataPublicInfo($goodsId,$startDate,$stopDate,$token,$cookies)
+    {
+        $timeStr = $this->msectime();
+
+        $sourceUrl = 'https://pub.alimama.com/openapi/json2/1/gateway.unionpub/xt.entry.json?';
+        $parameter = array(
+            't' => $timeStr,
+            '_tb_token_' => $token,
+            '_data_' => '{
+                "floorId":69812,
+                "pageSize":100,
+                "pageNum":1,
+                "variableMap":{
+                    "itemId":"'.$goodsId.'",
+                    "startDate":"'.$startDate.'",
+                    "endDate":"'.$stopDate.'"
+                }
+            }',
+        );
+        $url = $sourceUrl.http_build_query($parameter);
         //执行请求获取数据
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);

@@ -760,7 +760,7 @@ class Goods extends AdminController
         }
         $writer = new \XLSXWriter();
         $writer->writeSheetHeader('Sheet1', $header );
-        $auditStatus = ['0'=>'所有商品状态','1'=>'待团长审核','2'=>'通过','3'=>'拒绝','5'=>'取消报名'];
+        $auditStatus = ['0'=>'所有商品状态','1'=>'待团长审核','2'=>'通过','3'=>'拒绝','5'=>'取消报名','7'=>'超级U选通过'];
         $goodsArr = $row->toArray();
         foreach($goodsArr as $item){
             $item['auditStatus'] = $auditStatus[$item['auditStatus']];

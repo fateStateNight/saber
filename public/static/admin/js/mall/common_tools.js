@@ -5,6 +5,7 @@ define(["jquery", "easy-admin", "cryptojs"], function ($, ea, crypto) {
         table_render_id: 'currentTableRenderId',
         analysis_dou_command_url: 'mall.common_tools/analysisDouCommand',
         activity_transfer_url: 'mall.common_tools/activityTransfer',
+        get_goods_history_url: 'mall.common_tools/getGoodsHistory',
         analysis_url: 'mall.common_tools/analysis',
         transfer_url: 'mall.common_tools/transfer',
         effective_url: 'mall.common_tools/effective',
@@ -62,6 +63,32 @@ define(["jquery", "easy-admin", "cryptojs"], function ($, ea, crypto) {
                             "商品短链接："+ transfer_data.data.data.z_link +"\n";
                         $("#dou_transfer_result").val(html);
                         ea.msg.success('转链成功！');
+                    }
+                });
+
+            });
+
+            //指定商品历史推广数据
+            $("#search-history-btn").on('click', function () {
+                var goods_option = $('#goods_option').val();
+                var taobao_accountId = $("select[name='taobao_account_id']").val();
+                if(goods_option === ''){
+                    ea.msg.error('商品信息不能为空！');
+                    return false;
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: ea.url(init.get_goods_history_url),
+                    data: {"goods_option": goods_option,"account_id": taobao_accountId},
+                    dataType: "json",
+                    success: function (goods_data) {
+                        /*var html = "商品口令："+ transfer_data['tpwd'] +"\n" +
+                            "商品短链接："+ transfer_data['shortUrl'] +"\n" +
+                            "商品长链接："+ transfer_data['couponClickUrl'] +"\n";
+                        $("#new_goods_link").val(html);*/
+                        console.log(goods_data);
+                        ea.msg.success('查询成功！');
                     }
                 });
 

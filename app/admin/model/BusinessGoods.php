@@ -20,7 +20,7 @@ class BusinessGoods extends TimeModel
     
     public function getAuditStatusList()
     {
-        return ['0'=>'所有商品状态','1'=>'待团长审核','2'=>'通过','3'=>'拒绝','5'=>'取消报名'];
+        return ['0'=>'所有商品状态','1'=>'待团长审核','2'=>'通过','3'=>'拒绝','5'=>'取消报名','7'=>'超级U选通过'];
     }
 
     public function getSystemAdminList()
