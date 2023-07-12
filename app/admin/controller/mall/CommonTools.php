@@ -122,7 +122,7 @@ class CommonTools extends AdminController
         if($post['goods_option'] == ''){
             $this->error('查询的商品信息不能为空！');
         }
-        $goodsOption = explode(" ",$post['goods_option']);
+        $goodsOption = explode(PHP_EOL,$post['goods_option']);
         if(strpos($goodsOption[0],',')){
             $goodsIdArr = explode(",", $goodsOption[0]);
         }else{
