@@ -11,6 +11,7 @@ use think\App;
 use think\facade\Cache;
 use function Qiniu\base64_urlSafeDecode;
 use app\admin\model\SystemDouyinAccount;
+use app\admin\model\BusinessScene;
 
 /**
  * @ControllerAnnotation(title="常用工具")
@@ -121,10 +122,30 @@ class CommonTools extends AdminController
         if($post['goods_option'] == ''){
             $this->error('查询的商品信息不能为空！');
         }
+        $goodsOption = explode(" ",$post['goods_option']);
+        if(strpos($goodsOption[0],',')){
+            $goodsIdArr = explode(",", $goodsOption[0]);
+        }else{
+            $goodsIdArr[] = $goodsOption[0];
+        }
         //获取淘宝联盟账号信息
-        $systemAccountModel = new \app\admin\model\SystemTaobaoAccount();
-        $accountInfo = $systemAccountModel->getTaoBaoAccountInfo($post['account_id']);
-        $goodsHistoryData = $this->getDataPublicInfo();
+        $businessSceneModel = new \app\admin\model\BusinessScene();
+        //获取账号cookie
+        $accountInfo = $businessSceneModel->getALiAccountInfo('','',$post['account_id']);
+        //检测账号是否在线
+        $onlineInfo = $businessSceneModel->getOnlineAccountInfo($accountInfo[0]['token'], $accountInfo[0]['cookies']);
+        if(!$onlineInfo && !array_key_exists('data', $onlineInfo)){
+            $this->error('团长账号不在线！');
+        }
+        if($goodsIdArr == null){
+            $this->error('查询的商品ID不能为空！');
+        }
+        $result = [];
+        foreach($goodsIdArr as $key=>$goodsId){
+            $goodsHistoryData = $this->getDataPublicInfo($goodsId,$goodsOption[1],$goodsOption[2],$accountInfo[0]['token'],$accountInfo[0]['cookies']);
+            $result[$goodsId] = $goodsHistoryData;
+        }
+        return json($result);
     }
 
     //导出招商数据
