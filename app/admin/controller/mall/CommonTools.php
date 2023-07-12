@@ -131,7 +131,7 @@ class CommonTools extends AdminController
         //获取淘宝联盟账号信息
         $businessSceneModel = new \app\admin\model\BusinessScene();
         //获取账号cookie
-        $accountInfo = $businessSceneModel->getALiAccountInfo('','',$post['account_id']);
+        $accountInfo = $businessSceneModel->getALiAccountInfo($post['account_id']);
         //检测账号是否在线
         $onlineInfo = $businessSceneModel->getOnlineAccountInfo($accountInfo[0]['token'], $accountInfo[0]['cookies']);
         if(!$onlineInfo && !array_key_exists('data', $onlineInfo)){
