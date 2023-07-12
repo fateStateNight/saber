@@ -83,11 +83,12 @@ define(["jquery", "easy-admin", "cryptojs"], function ($, ea, crypto) {
                     data: {"goods_option": goods_option,"account_id": taobao_accountId},
                     dataType: "json",
                     success: function (goods_data) {
-                        /*var html = "商品口令："+ transfer_data['tpwd'] +"\n" +
-                            "商品短链接："+ transfer_data['shortUrl'] +"\n" +
-                            "商品长链接："+ transfer_data['couponClickUrl'] +"\n";
-                        $("#new_goods_link").val(html);*/
-                        console.log(goods_data);
+                        var html = "";
+                        $.each(goods_data, function (i, v) {
+                            html += "商品ID："+i+"\r\n"+
+                                "商品历史数据："+v+"\r\n";
+                        });
+                        $("#goods-history-data").val(html);
                         ea.msg.success('查询成功！');
                     }
                 });
