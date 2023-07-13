@@ -115,7 +115,9 @@ class CommonTools extends AdminController
         return json($data);
     }
 
-    //指定商品历史数据
+    /**
+     * @NodeAnotation(title="获取指定商品历史数据")
+     */
     public function getGoodsHistory()
     {
         $post = $this->request->post();
