@@ -11,6 +11,7 @@ use app\common\controller\AdminController;
 use EasyAdmin\upload\Uploadfile;
 use think\App;
 use think\facade\Env;
+use EasyAdmin\annotation\NodeAnotation;
 
 class Index extends AdminController
 {
