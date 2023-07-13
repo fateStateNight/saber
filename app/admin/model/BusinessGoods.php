@@ -505,7 +505,7 @@ class BusinessGoods extends TimeModel
                     }
                     //自增分页数
                     $page++;
-                }while($limitNum > $page);
+                }while($limitNum >= $page);
             }
         }
         return true;

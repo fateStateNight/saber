@@ -65,20 +65,20 @@ class SycEventGoodsData extends Command
             $where[] = ['status', '=', $eventStatus];
         }
         //判断新旧版本数据
-        $where1 = $where;
-        $where1[] = ['version', '=', 0];
+        //$where1 = $where;
+        //$where1[] = ['version', '=', 0];
         //$where1[] = ['eventId', '=', '390300532'];
-        $eventData = $this->businessSceneModel->getEventInfoFromData($accountArr, $where1);
+        //$eventData = $this->businessSceneModel->getEventInfoFromData($accountArr, $where1);
         $where2 = $where;
         $where2[] = ['version', '=', 1];
         //$where2[] = ['eventId', '=', '1000961852'];
         $eventData1 = $this->businessSceneModel->getEventInfoFromData($accountArr, $where2);
-        if($eventData){
+        /*if($eventData){
             //根据活动数据同步报名活动的商品数据
             $this->businessGoodsModel->sycEventGoodsInfoToDB($eventData);
             //根据活动数据同步报名活动商品的效果数据
             $this->businessGoodsModel->sycEventGoodsEffectToDB($eventData);
-        }
+        }*/
         //var_export($eventData1);die;
         if($eventData1){
             //根据新版活动数据同步报名活动的商品数据
