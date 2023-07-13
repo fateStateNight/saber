@@ -84,9 +84,13 @@ define(["jquery", "easy-admin", "cryptojs"], function ($, ea, crypto) {
                     dataType: "json",
                     success: function (goods_data) {
                         var html = "";
-                        $.each(goods_data, function (i, v) {
+                        $.each(goods_data, function (i, goods_info) {
                             html += "商品ID："+i+"\r\n"+
-                                "商品历史数据："+v+"\r\n";
+                                "商品历史数据：日期 | 价格 | 券面额 | 佣金率 | 佣金 | 销量 | 推广销量 | 推广淘客数 \r\n";
+                            $.each(goods_info, function(key, value){
+                                html += value.date +" | "+value.price+" | "+value.couponAmount+" | "+value.commissionRate+" | "+value.commissionFee+" | "+value.sales+" | "+value.promotionSales+" | "+value.promotionTkCount+"\r\n";
+                            });
+                            html += "\r\n";
                         });
                         $("#goods-history-data").val(html);
                         ea.msg.success('查询成功！');
