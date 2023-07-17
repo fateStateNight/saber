@@ -146,6 +146,7 @@ class CommonTools extends AdminController
         foreach($goodsIdArr as $key=>$goodsId){
             $goodsHistoryData = $this->getDataPublicInfo($goodsId,$goodsOption[1],$goodsOption[2],$accountInfo[0]['token'],$accountInfo[0]['cookies']);
             $result[$goodsId] = $goodsHistoryData['data']['resultList'];
+            usleep(100000);
         }
         return json($result);
     }
