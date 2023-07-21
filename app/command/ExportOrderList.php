@@ -98,10 +98,10 @@ class ExportOrderList extends Command
         $interval_time = 3600*24;
         $loopNum = 0;
         //处理excel文件头部信息
-        $tableName = $this->orderModelObj->getName();
+        /*$tableName = $this->orderModelObj->getName();
         $tableName = CommonTool::humpToLine(lcfirst($tableName));
         $prefix = config('database.connections.mysql.prefix');
-        $dbList = Db::query("show full columns from {$prefix}{$tableName}");
+        $dbList = Db::query("show full columns from {$prefix}{$tableName}");*/
         $header = [
             '创建时间' => 'datetime',
             '点击时间' => 'datetime',
@@ -169,7 +169,7 @@ class ExportOrderList extends Command
             'id'=>''
         ];
 
-        foreach ($dbList as $vo) {
+        /*foreach ($dbList as $vo) {
             $comment = !empty($vo['Comment']) ? $vo['Comment'] : $vo['Field'];
             //$header[] = [$comment, $vo['Field']];
             if($vo['Field'] == 'tk_deposit_time' || $vo['Field'] == 'tb_deposit_time'){
@@ -181,7 +181,7 @@ class ExportOrderList extends Command
             }else{
                 $header[$comment] = 'string';
             }
-        }
+        }*/
         //var_export($header);die;
         $writer = new \XLSXWriter();
         $writer->writeSheetHeader('Sheet1', $header );
