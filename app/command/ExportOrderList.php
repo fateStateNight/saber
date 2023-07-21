@@ -102,7 +102,70 @@ class ExportOrderList extends Command
         $tableName = CommonTool::humpToLine(lcfirst($tableName));
         $prefix = config('database.connections.mysql.prefix');
         $dbList = Db::query("show full columns from {$prefix}{$tableName}");
-        $header = [];
+        $header = [
+            '创建时间' => 'datetime',
+            '点击时间' => 'datetime',
+            '商品信息' => 'string',
+            '商品ID' => 'string',
+            '掌柜旺旺' => 'string',
+            '所属店铺' => 'string',
+            '商品数' => 'string',
+            '商品单价' => 'price',
+            '订单状态' => 'string',
+            '服务费率' => 'string',
+            '付款金额' => 'price',
+            '预估付款服务费' => 'string',
+            '付款时间' => 'datetime',
+            '结算时间' => 'datetime',
+            '结算金额' => 'price',
+            '预估结算服务费' => 'string',
+            '淘宝订单编号' => 'string',
+            '淘宝子订单编号' => 'string',
+            '活动id' => 'string',
+            '定金付款时间' => 'string',
+            '定金淘宝付款时间' => 'string',
+            '定金付款金额' => 'price',
+            '招商渠道ID' => 'string',
+            '招商渠道名称' => 'string',
+            '推广者ID' => 'string',
+            '推广者昵称' => 'string',
+            '佣金类型' => 'string',
+            '营销类型' => 'string',
+            '产品类型' => 'string',
+            '推广名称' => 'string'
+        ];
+        $templateArr = [
+            'tk_create_time'=>'',
+            'click_time'=>'',
+            'item_title'=>'',
+            'item_id'=>'',
+            'seller_nick'=>'',
+            'seller_shop_title'=>'',
+            'item_num'=>'',
+            'item_price'=>'',
+            'tk_status'=>'',
+            'tk_service_rate'=>'',
+            'alipay_total_price'=>'',
+            'pre_service_fee'=>'',
+            'tk_paid_time'=>'',
+            'tk_earning_time'=>'',
+            'pay_price'=>'',
+            'service_fee'=>'',
+            'trade_parent_id'=>'',
+            'trade_children_id'=>'',
+            'event_id'=>'',
+            'tk_deposit_time'=>'',
+            'tb_deposit_time'=>'',
+            'deposit_price'=>'',
+            'cp_channel_id'=>'',
+            'cp_channel_name'=>'',
+            'pub_id'=>'',
+            'pub_nick_name'=>'',
+            'commission_type'=>'',
+            'marketing_type'=>'',
+            'product_type'=>'',
+            'pub_name'=>''
+        ];
 
         foreach ($dbList as $vo) {
             $comment = !empty($vo['Comment']) ? $vo['Comment'] : $vo['Field'];
@@ -198,6 +261,11 @@ class ExportOrderList extends Command
             $dataNum = 0;
             $orderList = $this->orderModelObj->where($taskContent['where'])
                 ->page($pageNum*$pageSize, $pageSize)
+                ->field(['tk_create_time','click_time','item_title','item_id','seller_nick','seller_shop_title','item_num',
+                    'item_price','tk_status','tk_service_rate','alipay_total_price','pre_service_fee','	tk_paid_time','tk_earning_time',
+                    'pay_price','service_fee','trade_parent_id','event_id','tk_deposit_time',
+                    'tb_deposit_time','deposit_price','cp_channel_id','cp_channel_name','pub_id','pub_nick_name',
+                    'marketing_type'])
                 ->order('id', 'asc')
                 ->select();
             if($orderList->isEmpty()){
@@ -209,7 +277,8 @@ class ExportOrderList extends Command
             //echo "读取数据完毕开始写入 \r\n";
             foreach($orderInfo as $row){
                 $row['tk_status'] = $orderStatus[$row['tk_status']];
-                $writer->writeSheetRow('Sheet1', $row );
+                $newRow = array_merge($templateArr, $row);
+                $writer->writeSheetRow('Sheet1', $newRow );
                 $dataNum++;
             }
             $pageNum++;

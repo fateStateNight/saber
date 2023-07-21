@@ -145,6 +145,9 @@ class CommonTools extends AdminController
         $result = [];
         foreach($goodsIdArr as $key=>$goodsId){
             $goodsHistoryData = $this->getDataPublicInfo($goodsId,$goodsOption[1],$goodsOption[2],$accountInfo[0]['token'],$accountInfo[0]['cookies']);
+            if(!array_key_exists('resultList', $goodsHistoryData['data'])){
+                $this->error('查询数据失败，请检查查询参数！');
+            }
             $result[$goodsId] = $goodsHistoryData['data']['resultList'];
             usleep(100000);
         }
