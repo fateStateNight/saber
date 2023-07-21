@@ -132,7 +132,8 @@ class ExportOrderList extends Command
             '佣金类型' => 'string',
             '营销类型' => 'string',
             '产品类型' => 'string',
-            '推广名称' => 'string'
+            '推广名称' => 'string',
+            'ID'=>'string'
         ];
         $templateArr = [
             'tk_create_time'=>'',
@@ -164,7 +165,8 @@ class ExportOrderList extends Command
             'commission_type'=>'',
             'marketing_type'=>'',
             'product_type'=>'',
-            'pub_name'=>''
+            'pub_name'=>'',
+            'id'=>''
         ];
 
         foreach ($dbList as $vo) {
@@ -265,7 +267,7 @@ class ExportOrderList extends Command
                     'item_price','tk_status','tk_service_rate','alipay_total_price','pre_service_fee','	tk_paid_time','tk_earning_time',
                     'pay_price','service_fee','trade_parent_id','event_id','tk_deposit_time',
                     'tb_deposit_time','deposit_price','cp_channel_id','cp_channel_name','pub_id','pub_nick_name',
-                    'marketing_type'])
+                    'marketing_type','id'])
                 ->order('id', 'asc')
                 ->select();
             if($orderList->isEmpty()){
