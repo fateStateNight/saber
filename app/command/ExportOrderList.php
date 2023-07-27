@@ -250,7 +250,7 @@ class ExportOrderList extends Command
             ]];
         }
 
-        $pageNum = 0;
+        $pageNum = 1;
         $pageSize = 5000;
         $orderStatus = [
             '3' => '订单结算',
@@ -262,7 +262,7 @@ class ExportOrderList extends Command
         do{
             $dataNum = 0;
             $orderList = $this->orderModelObj->where($taskContent['where'])
-                ->page($pageNum*$pageSize, $pageSize)
+                ->page($pageNum, $pageSize)
                 ->field(['tk_create_time','click_time','item_title','item_id','seller_nick','seller_shop_title','item_num',
                     'item_price','tk_status','tk_service_rate','alipay_total_price','pre_service_fee','	tk_paid_time','tk_earning_time',
                     'pay_price','service_fee','trade_parent_id','event_id','tk_deposit_time',
