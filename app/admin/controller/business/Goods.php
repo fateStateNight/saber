@@ -441,6 +441,7 @@ class Goods extends AdminController
         $goodsIdArr = [];
         $signGoodsInfo = [];
         $version = 'old';
+        $goodsLimitNum = 0;
         foreach($goodsArr as $goodsInfo){
             if($goodsInfo['auditorId'] <= 0){
                 $this->error("请先认领商品！");
@@ -457,6 +458,10 @@ class Goods extends AdminController
                 $itemArr[$goodsInfo['eventId']][] = $goodsInfo['itemId'];
                 $goodsIdArr[$goodsInfo['eventId']][] = $goodsInfo['id'];
             }
+            $goodsLimitNum++;
+        }
+        if($goodsLimitNum >= 20){
+            $this->error("亲，单次审核数量超过了最大上限，请调整后重试！");
         }
         $accountInfo = $this->businessSceneModel->getALiAccountInfo(session('admin')['taobao_accountId']);
         //初始化在线账号变量
