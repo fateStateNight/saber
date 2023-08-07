@@ -84,6 +84,10 @@ define(["jquery", "easy-admin", "cryptojs"], function ($, ea, crypto) {
                     dataType: "json",
                     success: function (goods_data) {
                         var html = "";
+                        if(goods_data.hasOwnProperty("msg")){
+                            ea.msg.error(goods_data.msg);
+                            return false;
+                        }
                         $.each(goods_data, function (i, goods_info) {
                             html += "商品ID："+i+"\r\n"+
                                 "商品历史数据：日期 | 价格 | 券面额 | 佣金率 | 佣金 | 销量 | 推广销量 | 推广淘客数 \r\n";
